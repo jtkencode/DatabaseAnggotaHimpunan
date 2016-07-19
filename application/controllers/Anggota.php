@@ -44,10 +44,14 @@ class Anggota extends CI_Controller {
 			$update = $this->Anggota_Model->update_profile($nim);
 
 			if ($update){
-				echo "Update Berhasil";
+				redirect('anggota/success');
 			} else echo "Update Gagal";
 		}
-		
+	}
+
+	public function success()
+	{
+		$this->load->view('anggota/succes');
 	}
 
 
