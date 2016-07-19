@@ -39,7 +39,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 									'id' => 'inputPasswordLama',
 									'name' => 'password_lama',
 									'placeholder' => 'Password Lama',
-									'autofocus' => ''
+									'autofocus' => '',
 									'type' => 'password'
 								))); ?>
 							</div>
@@ -51,7 +51,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 									'id' => 'inputPasswordBaru',
 									'name' => 'password_baru',
 									'placeholder' => 'Password baru',
-									'autofocus' => ''
+									'autofocus' => '',
 									'type' => 'password'
 								))); ?>
 							</div>
@@ -63,7 +63,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 									'id' => 'inputPasswordBaru2',
 									'name' => 'password_baru2',
 									'placeholder' => 'Password Baru',
-									'autofocus' => ''
+									'autofocus' => '',
 									'type' => 'password'
 								))); ?>
 							</div>
