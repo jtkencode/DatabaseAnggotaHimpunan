@@ -51,7 +51,7 @@ class Anggota extends CI_Controller {
 
 	public function success()
 	{
-		$this->load->view('anggota/succes');
+		$this->load->view('anggota/success');
 	}
 
 
