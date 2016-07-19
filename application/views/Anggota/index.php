@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<div class="btn-group">
 			<a href="<?php echo site_url('anggota/edit_profile');?>" class="button btn btn-default">Ubah Data Pribadi</a>
-			<a href="#" class="button btn btn-default">Ganti Password</a>
+			<a href="<?php echo site_url('anggota/change_password');?>" class="button btn btn-default">Ganti Password</a>
 			<a href="#" class="button btn btn-default">Tambah Kontak</a>
 			<a href="#" class="button btn btn-default">Tambah Riwayat Pendidikan</a>
 			<a href="#" class="button btn btn-default">Lihat Kegiatan</a>
