@@ -25,7 +25,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 
 	<div class="container">
 		<div class="page-header">
-			<h1>Edit Profile <a href="<?php echo site_url('anggota');?>" class="btn btn-sm btn-success">Kembali ke Dashboard</a></h1>
+			<h1>Ganti Password <a href="<?php echo site_url('anggota');?>" class="btn btn-sm btn-success">Kembali ke Dashboard</a></h1>
 		</div>
 
 		<!--Start Row -->
@@ -42,9 +42,10 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 									'autofocus' => '',
 									'type' => 'password'
 								))); ?>
-							</div>
 						</div>
+					</div>
 
+					<div class="form-group">
 						<?php echo form_label('Password Baru', 'inputPasswordBaru', $attrLabel); ?>
 						<div class="col-md-10">
 							<?php echo form_input(array_merge($attrInput, array(
@@ -54,9 +55,10 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 									'autofocus' => '',
 									'type' => 'password'
 								))); ?>
-							</div>
-						</div>			
+						</div>
+					</div>			
 
+					<div class="form-group">
 						<?php echo form_label('Masukkan Kembali Password Baru', 'inputPasswordLama', $attrLabel); ?>
 						<div class="col-md-10">
 							<?php echo form_input(array_merge($attrInput, array(
@@ -66,14 +68,14 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 									'autofocus' => '',
 									'type' => 'password'
 								))); ?>
-							</div>
-						</div>							
-
-						<div class="form-group">
-							<div class="col-md-8 col-md-offset-2">
-								<?php echo form_submit('', 'Ganti Password', array('class' => 'btn btn-primary')); ?>
-							</div>
 						</div>
+					</div>							
+
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-2">
+							<?php echo form_submit('', 'Ganti Password', array('class' => 'btn btn-primary')); ?>
+						</div>
+					</div>
 
 				<?php echo form_close(); ?>
 			</div>
