@@ -41,12 +41,11 @@ class Anggota extends CI_Controller {
 			$this->load->view('anggota/edit_profile',$data);
 
 		} else {
-			echo $this->input->post('nama_lengkap');
-			echo $this->input->post('nama_panggilan');
-			echo $this->input->post('tempat_lahir');
-			echo $this->input->post('alamat_asal');
-			echo $this->input->post('alamat_sekarang');
-			$update = $this->Anggota_Model->update_profile();
+			$update = $this->Anggota_Model->update_profile($nim);
+
+			if ($update){
+				echo "Update Berhasil";
+			} else echo "Update Gagal";
 		}
 		
 	}

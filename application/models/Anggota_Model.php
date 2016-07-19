@@ -60,21 +60,20 @@ class Anggota_Model extends CI_Model{
 		return $this->db->count_all_results();
 	}
 
-	public function update_profile()
+	public function update_profile($nim)
 	{
-		//$this->$nama_lengkap = $this->input->post('nama_lengkap');
-		$this->$nama_panggilan = $this->input->post('nama_panggilan');
-		$this->$tempat_lahir = $this->input->post('tempat_lahir');
-		$this->$alamat_asal = $this->input->post('alamat_asal');
-		$this->$alamat_sekarang = $this->input->post('alamat_sekarang');
+		$data = array(
+				'NAMA_LENGKAP' => $this->input->post('nama_lengkap'),
+				'NAMA_PANGGILAN' => $this->input->post('nama_panggilan'),
+				'TEMPAT_LAHIR' => $this->input->post('tempat_lahir'),
+				'ALAMAT_ASAL' => $this->input->post('alamat_asal'),
+				'ALAMAT_SEKARANG' => $this->input->post('alamat_sekarang')
+		);
 
-		//echo $this->input->post('nama_lengkap');
-		echo $this->input->post('nama_panggilan');
-		echo $this->input->post('tempat_lahir');
-		echo $this->input->post('alamat_asal');
-		echo $this->input->post('alamat_sekarang');
-
-
+		/*Update to DB*/
+		$this->db->where('NIM', $nim);
+		$query = $this->db->update('anggota',$data);
+		return $query;
 	}
 
 }
