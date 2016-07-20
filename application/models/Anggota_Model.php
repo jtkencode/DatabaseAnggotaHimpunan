@@ -80,8 +80,8 @@ class Anggota_Model extends CI_Model{
 	{
 		$data = array(
 				'NIM' => $nim,
-				'DETIL_KONTAK' => $this->input->post('detil_kontak');
-				'JENIS_KONTAK' => $this->input->post('jenis_kontak');
+				'DETIL_KONTAK' => $this->input->post('detil_kontak'),
+				'JENIS_KONTAK' => $this->input->post('jenis_kontak')
 			);
 
 		$query = $this->db->update('kontak',$data);
