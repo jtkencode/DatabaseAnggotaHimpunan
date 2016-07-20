@@ -86,14 +86,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>Jenis Kontak</th>
-									<th>Kontak</th>
+									<th class="text-center">Detil Kontak</th>
 								</tr>
 							</thead>
 							<tbody id="tableBodyKontak">
 							<?php foreach ($kontak as $row) : ?>
 								<tr>
-									<td><?=$row->JENIS_KONTAK?></td>
 									<td><?=$row->DETIL_KONTAK?></td>
 								</tr>
 							<?php endforeach ;?>								
