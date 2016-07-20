@@ -33,45 +33,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h3 class="panel-title text-center">Data Pribadi</h3>
 					</div>
 					<div class="panel-body">
-						<table class="table table-bordered">
-							<tr>
-								<th>Nama Lengkap</th>
-								<td><?php echo $anggota->NAMA_LENGKAP ;?></td>
-							</tr>
-							<tr>
-								<th>Nama Panggilan</th>
-								<td><?php echo $anggota->NAMA_PANGGILAN ;?></td>
-							</tr>
-							<tr>
-								<th>Nama Bagus</th>
-								<td><?php echo $anggota->NAMA_BAGUS ;?></td>
-							</tr>
-							<tr>
-								<th>NIM</th>
-								<td><?php echo $anggota->NIM ;?></td>
-							</tr>
-							<tr>
-								<th>Kelas</th>
-								<td><?php echo $anggota->NAMA_KELAS." ".$anggota->ID_PS ;?></td>
-							</tr>
-							<tr>
-								<th>Tempat Lahir</th>
-								<td><?php echo $anggota->TEMPAT_LAHIR ;?></td>
-							</tr>
-							<tr>
-								<th>Tanggal Lahir</th>
-								<td><?php echo $anggota->TANGGAL_LAHIR ;?></td>
-							</tr>
-							<tr>
-								<th>Alamat Asal</th>
-								<td><?php echo $anggota->ALAMAT_ASAL ;?></td>
-							</tr>
-							<tr>
-								<th>Alamat Sekarang</th>
-								<td><?php echo $anggota->ALAMAT_SEKARANG ;?></td>
-							</tr>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th width="30%"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>NIM</td>
+									<td><strong><?php echo $anggota->NIM ;?></strong></td>
+								</tr>
+								<tr>
+									<td>Nama Lengkap</td>
+									<td><strong><?php echo $anggota->NAMA_LENGKAP ;?></strong></td>
+								</tr>
+								<tr>
+									<td>Nama Panggilan</td>
+									<td><strong><?php echo $anggota->NAMA_PANGGILAN ;?></strong></td>
+								</tr>
+								<tr>
+									<td>Nama Bagus</td>
+									<td><strong><?php echo $anggota->NAMA_BAGUS ;?></strong></td>
+								</tr>
+								
+								<tr>
+									<td>Kelas</td>
+									<td><strong><?php echo $anggota->NAMA_KELAS." ".$anggota->ID_PS ;?></strong></td>
+								</tr>
+								<tr>
+									<td>Tempat, Tanggal Lahir</td>
+									<td><strong><?php echo $anggota->TEMPAT_LAHIR.", ".date_format(date_create($anggota->TANGGAL_LAHIR), 'd F Y') ;?></strong></td>
 
+								</tr>
+								
+								<tr>
+									<td>Alamat Asal</td>
+									<td><strong><?php echo $anggota->ALAMAT_ASAL ;?></strong></td>
+								</tr>
+								<tr>
+									<td>Alamat Sekarang</td>
+									<td><strong><?php echo $anggota->ALAMAT_SEKARANG ;?></strong></td>
+								</tr>	
+							</tbody>
 						</table>
+						<button class="btn btn-default">Ubah Data Pribadi</button>
 					</div>
 				</div> <!--End Panel data pribadi -->
 			</div> <!-- End Col Data Pribadi -->
@@ -100,6 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div> <!--End Panel Kontak -->
 			</div> <!-- End Col Kontak -->
+			
 		</div> <!-- End Row -->
 		
 	</div>
