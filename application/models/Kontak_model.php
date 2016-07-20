@@ -17,10 +17,7 @@ class Kontak_model extends CI_Model{
 		$query = $this->db->where('nim', $id)->get('kontak');
 		$result = $query->result();
 
-		if (count($result))
-			return $result;
-
-		return FALSE;
+		return $result;
 	}
 
 	
