@@ -91,7 +91,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</tr>
 							</thead>
 							<tbody id="tableBodyKontak">
-
+							<?php foreach ($kontak as $row) : ?>
+								<tr>
+									<td><?=$row->JENIS_KONTAK?></td>
+									<td><?=$row->DETIL_KONTAK?></td>
+								</tr>
+							<?php endforeach ;?>								
 							</tbody>
 						</table>
 						<button type="button" class="btn btn-default" id="btnAddContact">Tambah Kontak</button>
