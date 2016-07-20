@@ -76,6 +76,15 @@ class Anggota_Model extends CI_Model{
 		return $query;
 	}
 
+	public function add_contact($nim)
+	{
+		$data = array(
+				'NIM' => $nim,
+				'DETIL_KONTAK' => $this->input->post('detil_kontak');
+				'JENIS_KONTAK' => $this->input->post('jenis_kontak');
+			);
+	}
+
 }
 
 ?>
