@@ -68,13 +68,16 @@ class Anggota extends CI_Controller {
 	public function add_contact()
 	{ 
 		$data['nim'] = $this->session->userdata('user');
-		$data['jenis_kontak']['H'] = "No Handphone";
-		$data['jenis_kontak']['E'] = "Email";
-
+		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$this->load->view('anggota/add_contact',$data);
 		} else {
 			$update = $this->Anggota_Model->change_password($nim);
+			$data_update = array(
+							'NIM' => $nim,
+							'DETIL_KONTAK' => $this->input->post('detil_kontak');
+							'JENIS_KONTAK' => $this->input->post('jenis_kontak');
+						);
 
 			if ($update){
 				redirect('anggota/success');
