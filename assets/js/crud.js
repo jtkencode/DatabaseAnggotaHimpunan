@@ -13,7 +13,7 @@ $(document).ready(function() {
             dataType: "JSON",
             cache: false,
             success: function(json) {
-            	reloadTableKontak(json);
+            	//reloadTableKontak(json);
             } 
         });
 
