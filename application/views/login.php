@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<!-- start col login -->
 				<div class="col-sm-offset-4 col-sm-4">
 					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Restricted area</h3>
+						<div class="panel-heading text-center">
+							<img src="<?php echo base_url('assets/img/logo_himakom.png'); ?>" style="max-width: 75%;">
 						</div>
 						<div class="panel-body">
 							<?php if (isset($error)) echo $error ;?>
