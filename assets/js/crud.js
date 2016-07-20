@@ -5,17 +5,22 @@ $(document).ready(function() {
 
 	$('#btnAddContactModal').click(function(){
 		var form = document.forms['formKontak'];
-		
+		var dataString = $('#formKontak').serialize();
 		$.ajax({
             type: "POST",
-            url: "update-modal.php",
+            url: "<?= site_url('anggota/add_contact') ; ?>",
             data: dataString,
+            dataType: "JSON",
             cache: false,
-            success: function(html) {
-                $("#body-tabel-rekomendasi").html(html);
-                $('#recomender-modal').modal('show'); 
+            success: function(json) {
+              
             } 
         });
 
 	});
 });
+
+
+function reloadTableKontak(){
+	
+}
