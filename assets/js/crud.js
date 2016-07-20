@@ -5,6 +5,17 @@ $(document).ready(function() {
 
 	$('#btnAddContactModal').click(function(){
 		var form = document.forms['formKontak'];
-		form.submit();
+		
+		$.ajax({
+            type: "POST",
+            url: "update-modal.php",
+            data: dataString,
+            cache: false,
+            success: function(html) {
+                $("#body-tabel-rekomendasi").html(html);
+                $('#recomender-modal').modal('show'); 
+            } 
+        });
+
 	});
 });
