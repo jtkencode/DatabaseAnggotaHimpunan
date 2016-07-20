@@ -1,0 +1,52 @@
+<!-- Bootstrap Modal -->
+
+<!-- Modal for add contact -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="contactModalLabel">Tambah Kontak</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputKontak">Detil kontak</label>
+						<div class="col-md-8">
+							<input name="detil_kontak" class="form-control" id="inputKontak" required="" type="text" placeholder="Detil kontak value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+					<label class="col-md-4 control-label" for="inputJenisKontak">Jenis kontak</label>					<div class="col-md-8">
+							<div class="radio">
+								<label>
+									<input name="jenis_kontak" required="" type="radio" value="H">
+									No. Handphone	
+								</label>
+							</div>
+							
+							<div class="radio">
+								<label>
+									<input name="jenis_kontak" required="" type="radio" value="E">
+									Email
+								</label>
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_contact_modal">Close</button>
+				<button type="button" class="btn btn-primary" id="add_contact_modal">Tambah Kontak</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal for edit contact -->
+
+
+<!-- Modal for edit profile -->
+
