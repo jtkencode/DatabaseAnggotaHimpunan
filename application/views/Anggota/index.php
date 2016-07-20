@@ -91,10 +91,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Kontak</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									
-								</tr>
+							<tbody id="tableBodyKontak">
+
 							</tbody>
 						</table>
 						<button type="button" class="btn btn-default" id="btnAddContact">Tambah Kontak</button>
