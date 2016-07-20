@@ -16,6 +16,7 @@ class Anggota extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->model('Anggota_Model');
+		$this->load->model('Kontak_model');
 	}
 
 	public function index()
@@ -74,15 +75,30 @@ class Anggota extends CI_Controller {
 		} else {
 			$insert = $this->Anggota_Model->add_contact($data['nim']);
 			if ($insert){
-				return $update;
+				 echo json_encode(array("status" => TRUE));
 			} else echo "Update Gagal";
 		}	
+	}
+
+	public function get_contact_ajax()
+	{
+		$nim = $this->session->userdata('user');
+		$data = $this->Kontak_model->get_id($nim);
+
+		$html='';
+		foreach ($data as $kontak) {
+			$html.= "<tr> <td>".$kontak->JENIS_KONTAK."</td>"."<td>".$kontak->DETIL_KONTAK."</td></tr>";
+		}
+
+		echo $html;
 	}
 
 	public function success()
 	{
 		$this->load->view('anggota/success');
 	}
+
+
 
 
 }

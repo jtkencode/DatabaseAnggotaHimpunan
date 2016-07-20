@@ -52,7 +52,7 @@
 <!-- Modal for edit profile -->
 
 <script>
-	$(document).ready(function() {
+$(document).ready(function() {
 	$('#btnAddContact').click(function(){
 		$('#contactModal').modal('show'); 
 	});
@@ -67,10 +67,23 @@
             dataType: "JSON",
             cache: false,
             success: function(json) {
-            	//reloadTableKontak(json);
+            	reloadTableKontak();
+            	$('#formKontak')[0].reset();
             } 
         });
 
 	});
 });
+
+function reloadTableKontak(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_contact_ajax') ; ?>",
+		cache: false,
+		success: function(html) {
+        	$("#tableBodyKontak").html(html);
+        	$('#contactModal').modal('hide'); 
+        } 
+    });
+}
 </script>
