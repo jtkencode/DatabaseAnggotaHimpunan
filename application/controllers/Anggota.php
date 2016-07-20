@@ -72,9 +72,8 @@ class Anggota extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$this->load->view('anggota/add_contact',$data);
 		} else {
-
-			$update = $this->Anggota_Model->add_contact($data['nim']);
-			if ($update){
+			$insert = $this->Anggota_Model->add_contact($data['nim']);
+			if ($insert){
 				return $update;
 			} else echo "Update Gagal";
 		}	

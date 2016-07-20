@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var dataString = $('#formKontak').serialize();
 		$.ajax({
             type: "POST",
-            url: "<?= site_url('anggota/add_contact') ; ?>",
+            url: "<?php echo site_url('anggota/add_contact') ; ?>",
             data: dataString,
             dataType: "JSON",
             cache: false,

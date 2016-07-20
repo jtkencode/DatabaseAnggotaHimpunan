@@ -84,11 +84,8 @@ class Anggota_Model extends CI_Model{
 				'JENIS_KONTAK' => $this->input->post('jenis_kontak')
 			);
 
-		$query = $this->db->update('kontak',$data);
-
-		if ($query) {
-			return $this->db->insert_id();
-		} else return $query;
+		$query = $this->db->insert('kontak',$data);
+		return $query;
 
 	}
 
