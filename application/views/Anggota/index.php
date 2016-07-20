@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<!--Start Row -->
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-7">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title text-center">Data Pribadi</h3>
@@ -76,43 +76,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div> <!--End Panel data pribadi -->
 			</div> <!-- End Col Data Pribadi -->
 			
-			<!-- start col riwayat pendidikan -->
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title text-center">Riwayat Pendidikan</h3>
+						<h3 class="panel-title text-center">Kontak</h3>
 					</div>
 					<div class="panel-body">
 						<table class="table table-bordered small">
 							<thead>
 								<tr>
-									<th>Nama Institusi</th>
-									<th>Tahun Masuk - Lulus </th>
-									<th>Bidang</th>
+									<th>Jenis Kontak</th>
+									<th>Kontak</th>
 								</tr>
 							</thead>
+							<tbody>
+								<tr>
+									
+								</tr>
+							</tbody>
 						</table>
 					</div>
-				</div> <!--End Panel riwayat pendidikan -->
-			</div> <!-- End Col riwayat pendidikan-->
-
-			<!-- start col pengalaman organisasi -->
-			<div class="col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title text-center">Pengalaman Berorganisasi</h3>
-					</div>
-					<div class="panel-body">
-						<table class="table table-bordered small">
-							<tr>
-								<th>Nama Organisasi</th>
-								<th>Tahun Mulai-Selesai</th>
-								<th>Jabatan</th>
-							</tr>
-						</table>
-					</div>
-				</div> <!--End Panel pengalaman organisasi -->
-			</div> <!-- End Col pengalaman organisasi-->
+				</div> <!--End Panel Kontak -->
+			</div> <!-- End Col Kontak -->
+			
 
 		</div> <!-- End Row -->
 		
