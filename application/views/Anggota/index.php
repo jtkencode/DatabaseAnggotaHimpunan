@@ -97,6 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</tr>
 							</tbody>
 						</table>
+						<button type="button" class="btn btn-default" id="btnAddContact">Tambah Kontak</button>
 					</div>
 				</div> <!--End Panel Kontak -->
 			</div> <!-- End Col Kontak -->
@@ -104,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 	</div>
 
-	<?php $this->load->view('modals.html'); ?>
+	<?php $this->load->view('Anggota/modals.html'); ?>
 	
 </body>
 </html>
