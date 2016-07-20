@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="btn-group">
 			<a href="<?php echo site_url('anggota/edit_profile');?>" class="button btn btn-default">Ubah Data Pribadi</a>
 			<a href="<?php echo site_url('anggota/change_password');?>" class="button btn btn-default">Ganti Password</a>
-			<a href="#" class="button btn btn-default">Tambah Kontak</a>
+			<a href="<?php echo site_url('anggota/add_contact');?>" class="button btn btn-default">Tambah Kontak</a>
 			<a href="#" class="button btn btn-default">Tambah Riwayat Pendidikan</a>
 			<a href="#" class="button btn btn-default">Lihat Kegiatan</a>
 			<a href="<?php echo site_url('anggota/logout') ;?>" class="button btn btn-default">Logout</a>
@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h3 class="panel-title text-center">Data Pribadi</h3>
 					</div>
 					<div class="panel-body">
-						<table class="table table-bordered small">
+						<table class="table table-bordered">
 							<tr>
 								<th>Nama Lengkap</th>
 								<td><?php echo $anggota->NAMA_LENGKAP ;?></td>
@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h3 class="panel-title text-center">Kontak</h3>
 					</div>
 					<div class="panel-body">
-						<table class="table table-bordered small">
+						<table class="table table-bordered">
 							<thead>
 								<tr>
 									<th>Jenis Kontak</th>
