@@ -72,15 +72,14 @@ class Anggota extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$this->load->view('anggota/add_contact',$data);
 		} else {
-			$update = $this->Anggota_Model->change_password($nim);
 			$data_update = array(
 							'NIM' => $nim,
 							'DETIL_KONTAK' => $this->input->post('detil_kontak');
 							'JENIS_KONTAK' => $this->input->post('jenis_kontak');
 						);
-
+			$update = $this->Anggota_Model->add_contact($data_update);
 			if ($update){
-				redirect('anggota/success');
+				return $update;
 			} else echo "Update Gagal";
 		}	
 	}
