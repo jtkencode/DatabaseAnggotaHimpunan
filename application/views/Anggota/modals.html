@@ -46,6 +46,87 @@
 	</div>
 </div>
 
+<!-- Modal for add riwayat pendidikan -->
+<div class="modal fade" id="riwayatPendidikanModal" tabindex="-1" role="dialog" aria-labelledby="riwayatPendidikanModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="riwayatPendidikanModalLabel">Tambah Riwayat Pendidikan</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="formRiwayatPendidikan">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputJenjangPendidikan">Jenjang Pendidikan</label>
+						<div class="col-md-7">
+							<div class="radio">
+								<label>
+									<input name="jenjang_pendidikan" required="" type="radio" value="D">
+									SD
+								</label>
+							</div>
+							
+							<div class="radio">
+								<label>
+									<input name="jenjang_pendidikan" required="" type="radio" value="P">
+									SMP
+								</label>
+							</div>
+
+							<div class="radio">
+								<label>
+									<input name="jenjang_pendidikan" required="" type="radio" value="A">
+									SMA / SMK
+								</label>
+							</div>
+
+							<div class="radio">
+								<label>
+									<input name="jenjang_pendidikan" required="" type="radio" value="T">
+									Perguruan Tinggi
+								</label>
+							</div>
+							<br>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaInstitusi">Nama Institusi</label>
+						<div class="col-md-7">
+							<input name="nama_institusi" class="form-control" id="inputNamaInstitusi" required="" type="text" placeholder="Nama Institusi" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputTahunMasuk">Tahun Masuk</label>
+						<div class="col-md-7">
+							<input name="tahun_masuk" class="form-control" id="inputTahunMasuk" required="" type="text" placeholder="Tahun masuk" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputTahunLulus">Tahun Lulus</label>
+						<div class="col-md-7">
+							<input name="tahun_lulus" class="form-control" id="inputTahunLulus" required="" type="text" placeholder="Tahun lulus" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputBidang">Bidang</label>
+						<div class="col-md-7">
+							<input name="bidang" class="form-control" id="inputBidang" type="text" placeholder="Bidang" value="" autocomplete="off">
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_contact_modal">Close</button>
+				<button type="button" class="btn btn-primary" id="btnAddContactModal">Tambah Riwayat</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- Modal for edit contact -->
 
 
@@ -58,6 +139,10 @@
 $(document).ready(function() {
 	$('#btnAddContact').click(function(){
 		$('#contactModal').modal('show'); 
+	});
+
+	$('#btnAddRiwayatPendidikan').click(function(){
+		$('#riwayatPendidikanModal').modal('show'); 
 	});
 
 	$('#btnAddContactModal').click(function(){
