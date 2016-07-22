@@ -167,11 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</thead>
 
 							<tbody id="tableBodyRiwayatPendidikan">
-							<?php foreach ($riwayat_pendidikan as $row) :?>
-								<tr>
-									
-								</tr>
-							<?php endforeach ; ?>
+							
 							</tbody>
 						</table>
 					</div>
