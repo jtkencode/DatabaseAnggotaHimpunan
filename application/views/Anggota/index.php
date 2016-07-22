@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 
 		<hr>
-
 		<!--Start Row -->
 		<div class="row">
 			<div class="col-md-7">
@@ -149,7 +148,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> <!-- end row of riwayat -->
+
+		<div class="row">
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title text-center">Riwayat Organisasi</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nama Organisasi</th>
+									<th>Jabatan</th>
+									<th>Tahun Mulai - Tahun Selesai</th>
+								</tr>
+							</thead>
+
+							<tbody id="tableBodyRiwayatPendidikan">
+							<?php foreach ($riwayat_pendidikan as $row) :?>
+								<tr>
+									
+								</tr>
+							<?php endforeach ; ?>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" id="btnAddRiwayatPendidikan">Tambah Riwayat</button>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end row of riwayat -->
 		
 	</div>
 
