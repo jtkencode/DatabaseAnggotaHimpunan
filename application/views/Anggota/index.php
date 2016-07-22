@@ -77,6 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</tr>	
 							</tbody>
 						</table>
+					</div>
+					<div class="panel-footer">
 						<button class="btn btn-default">Ubah Data Pribadi</button>
 					</div>
 				</div> <!--End Panel data pribadi -->
@@ -102,12 +104,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<?php endforeach ;?>								
 							</tbody>
 						</table>
+						
+					</div>
+
+					<div class="panel-footer">
 						<button type="button" class="btn btn-default" id="btnAddContact">Tambah Kontak</button>
 					</div>
 				</div> <!--End Panel Kontak -->
-			</div> <!-- End Col Kontak -->
-			
+			</div> <!-- End Col Kontak -->	
 		</div> <!-- End Row -->
+
+		<!-- Row for Riwayat -->
+		<div class="row">
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title text-center">Riwayat Pendidikan</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Jenjang Pendidikan</th>
+									<th>Nama Institusi</th>
+									<th>Tahun Masuk - Tahun Lulus</th>
+									<th>Bidang Pendidikan</th>
+								</tr>
+							</thead>
+
+							<tbody id="tableBodyRiwayatPendidikan">
+							
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" id="btnAddRiwayatPendidikan">Tambah Riwayat</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 	</div>
 
