@@ -121,7 +121,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_contact_modal">Close</button>
-				<button type="button" class="btn btn-primary" id="btnAddContactModal">Tambah Riwayat</button>
+				<button type="button" class="btn btn-primary" id="btnAddRiwayatPendidikanModal">Tambah Riwayat</button>
 			</div>
 		</div>
 	</div>
@@ -161,6 +161,24 @@ $(document).ready(function() {
         });
 
 	});
+
+	$('#btnAddRiwayatPendidikanModal').click(function(){
+		var form = document.forms['formRiwayatPendidikan'];
+		var dataString = $('#formRiwayatPendidikan').serialize();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/add_riwayat_pendidikan') ; ?>",
+            data: dataString,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatPendidikan();
+            	$('#formRiwayatPendidikan')[0].reset();
+            } 
+        });
+
+	});
+
 });
 
 function reloadTableKontak(){
@@ -174,4 +192,17 @@ function reloadTableKontak(){
         } 
     });
 }
+
+function reloadTableRiwayatPendidikan(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_riwayat_pendidikan_ajax') ; ?>",
+		cache: false,
+		success: function(html) {
+        	$("#tableBodyRiwayatPendidikan").html(html);
+        	$('#riwayatPendidikanModal').modal('hide'); 
+        } 
+    });
+}
+
 </script>

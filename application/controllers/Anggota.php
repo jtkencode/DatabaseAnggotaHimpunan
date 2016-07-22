@@ -17,6 +17,7 @@ class Anggota extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
+		$this->load->model('Riwayat_Pendidikan_model');
 	}
 
 	public function index()
@@ -24,6 +25,7 @@ class Anggota extends CI_Controller {
 		$nim = $this->session->userdata('user');
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
+		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($nim);
 		$this->load->view('anggota/index',$data);
 	}
 
@@ -74,10 +76,24 @@ class Anggota extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$this->load->view('anggota/add_contact',$data);
 		} else {
-			$insert = $this->Anggota_Model->add_contact($data['nim']);
+			$insert = $this->Kontak_model->add_contact($data['nim']);
 			if ($insert){
 				 echo json_encode(array("status" => TRUE));
 			} else echo "Update Gagal";
+		}	
+	}
+
+	public function add_riwayat_pendidikan()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/add_riwayat_pendidikan',$data);
+		} else {
+			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($data['nim']);
+			if ($insert){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
 		}	
 	}
 
@@ -89,6 +105,25 @@ class Anggota extends CI_Controller {
 		$html='';
 		foreach ($data as $kontak) {
 			$html.= "<tr> <td>".$kontak->JENIS_KONTAK."</td>"."<td>".$kontak->DETIL_KONTAK."</td></tr>";
+		}
+
+		echo $html;
+	}
+
+	public function get_riwayat_pendidikan_ajax()
+	{
+		$nim = $this->session->userdata('user');
+		$data = $this->Riwayat_Pendidikan_model->get_id($nim);
+
+		var_dump($data);
+		$html='';
+		foreach ($data as $riwayat_pendidikan) {
+			$html.= "<tr>". 
+						"<td>".$riwayat_pendidikan->JENJANG_PENDIDIKAN."</td>".
+						"<td>".$riwayat_pendidikan->NAMA_INSTITUSI_PENDIDIKAN."</td>".
+						"<td>".$riwayat_pendidikan->TAHUN_MASUK_PENDIDIKAN." - ".$riwayat_pendidikan->TAHUN_LULUS_PENDIDIKAN."</td>".
+						"<td>".$riwayat_pendidikan->BIDANG_PENDIDIKAN."</td>".
+					"</tr>";
 		}
 
 		echo $html;

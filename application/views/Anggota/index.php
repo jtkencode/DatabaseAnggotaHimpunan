@@ -133,7 +133,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</thead>
 
 							<tbody id="tableBodyRiwayatPendidikan">
-							
+							<?php foreach ($riwayat_pendidikan as $row) :?>
+								<tr>
+									<td><?php echo $row->JENJANG_PENDIDIKAN; ?></td>
+									<td><?php echo $row->NAMA_INSTITUSI_PENDIDIKAN; ?></td>
+									<td><?php echo $row->TAHUN_MASUK_PENDIDIKAN." - ".$row->TAHUN_LULUS_PENDIDIKAN; ?></td>
+									<td><?php echo $row->BIDANG_PENDIDIKAN; ?></td>
+								</tr>
+							<?php endforeach ; ?>
 							</tbody>
 						</table>
 					</div>
