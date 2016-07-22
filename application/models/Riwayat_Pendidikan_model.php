@@ -21,10 +21,7 @@ class Riwayat_Pendidikan_model extends CI_Model{
 		$query = $this->db->where('nim', $id)->get('riwayat_pendidikan');
 		$result = $query->result();
 
-		if (count($result))
-			return $result;
-
-		return FALSE;
+		return $result;
 	}
 
 	public function get_last_no($id)
