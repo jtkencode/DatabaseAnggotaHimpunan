@@ -209,12 +209,9 @@
 						<div class="col-md-7">
 							<select name="tingkat_prestasi" class="form-control" id="inputTingkatPrestasi" required="">
 								<option value="">--Pilih Tingkat Prestasi--</option>
-								<option value=1>Institusi</option>
-								<option value=2>Kabupaten/Kota</option>
-								<option value=3>Provinsi</option>
-								<option value=4>Nasional</option>
-								<option value=5>Regional</option>
-								<option value=6>Internasional</option>
+								<?php foreach ($tingkat_prestasi as $row) : ?>
+									<option value=<?php echo $row->ID_TINGKAT_PRESTASI; ?>> <?php echo $row->NAMA_TINGKAT_PRESTASI; ?> </option>
+								<?php endforeach; ?>
 							</select>
 						</div>
 					</div>
@@ -347,6 +344,22 @@ $(document).ready(function() {
 
 	});
 
+	$('#btnAddRiwayatPrestasiModal').click(function(){
+		var dataString = $('#formRiwayatPrestasi').serialize();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/add_riwayat_prestasi') ; ?>",
+            data: dataString,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatPrestasi();
+            	$('#formRiwayatPrestasi')[0].reset();
+            } 
+        });
+
+	});
+
 });
 
 function reloadTableKontak(){
@@ -381,6 +394,18 @@ function reloadTableRiwayatOrganisasi(){
 		success: function(html) {
         	$("#tableBodyRiwayatOrganisasi").html(html);
         	$('#riwayatOrganisasiModal').modal('hide'); 
+        } 
+    });
+}
+
+function reloadTableRiwayatPrestasi(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_riwayat_prestasi_ajax') ; ?>",
+		cache: false,
+		success: function(html) {
+        	$("#tableBodyRiwayatPrestasi").html(html);
+        	$('#riwayatPrestasiModal').modal('hide'); 
         } 
     });
 }

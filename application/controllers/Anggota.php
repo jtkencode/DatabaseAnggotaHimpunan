@@ -19,6 +19,8 @@ class Anggota extends CI_Controller {
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pendidikan_model');
 		$this->load->model('Riwayat_Org_model');
+		$this->load->model('Tingkat_Prestasi_model');
+		$this->load->model('Riwayat_Prestasi_model');
 	}
 
 	public function index()
@@ -28,6 +30,8 @@ class Anggota extends CI_Controller {
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($nim);
 		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($nim);
+		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
+		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
 		$this->load->view('anggota/index',$data);
 	}
 
@@ -113,6 +117,20 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function add_riwayat_prestasi()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/add_riwayat_prestasi',$data);
+		} else {
+			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($data['nim']);
+			if ($insert){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
+		}	
+	}
+
 	public function get_contact_ajax()
 	{
 		$nim = $this->session->userdata('user');
@@ -149,7 +167,6 @@ class Anggota extends CI_Controller {
 		$nim = $this->session->userdata('user');
 		$data = $this->Riwayat_Org_model->get_id($nim);
 
-		var_dump($data);
 		$html='';
 		foreach ($data as $riwayat_org) {
 			$html.= "<tr>". 
@@ -157,6 +174,27 @@ class Anggota extends CI_Controller {
 						"<td>".$riwayat_org->JABATAN_ORG."</td>".
 						"<td>".$riwayat_org->TAHUN_MULAI_ORG." - ".$riwayat_org->TAHUN_SELESAI_ORG."</td>".
 						"<td>".$riwayat_org->ORG_KEMAHASISWAAN."</td>".
+					"</tr>";
+		}
+
+		echo $html;
+	}
+
+	public function get_riwayat_prestasi_ajax()
+	{
+		$nim = $this->session->userdata('user');
+		$data = $this->Riwayat_Prestasi_model->get_id($nim);
+
+		var_dump($data);
+		$html='';
+		foreach ($data as $riwayat_prestasi) {
+			$html.= "<tr>". 
+						"<td>".$riwayat_prestasi->NAMA_PRESTASI."</td>".
+						"<td>".$riwayat_prestasi->ID_TINGKAT_PRESTASI."</td>".
+						"<td>".$riwayat_prestasi->PENCAPAIAN_PRESTASI."</td>".
+						"<td>".$riwayat_prestasi->LEMBAGA_PRESTASI."</td>".
+						"<td>".$riwayat_prestasi->TAHUN_PRESTASI."</td>".
+						"<td>".$riwayat_prestasi->JENIS_PRESTASI."</td>".
 					"</tr>";
 		}
 
