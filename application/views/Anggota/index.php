@@ -165,6 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Nama Organisasi</th>
 									<th>Jabatan</th>
 									<th>Tahun Mulai - Tahun Selesai</th>
+									<th>Organisasi Kemahasiswaan</th>
 								</tr>
 							</thead>
 

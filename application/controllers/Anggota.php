@@ -18,6 +18,7 @@ class Anggota extends CI_Controller {
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pendidikan_model');
+		$this->load->model('Riwayat_Org_model');
 	}
 
 	public function index()
@@ -97,6 +98,20 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function add_riwayat_organisasi()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/add_riwayat_organisasi',$data);
+		} else {
+			$insert = $this->Riwayat_Org_model->add_riwayat_organisasi($data['nim']);
+			if ($insert){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
+		}	
+	}
+
 	public function get_contact_ajax()
 	{
 		$nim = $this->session->userdata('user');
@@ -115,7 +130,6 @@ class Anggota extends CI_Controller {
 		$nim = $this->session->userdata('user');
 		$data = $this->Riwayat_Pendidikan_model->get_id($nim);
 
-		var_dump($data);
 		$html='';
 		foreach ($data as $riwayat_pendidikan) {
 			$html.= "<tr>". 
@@ -123,6 +137,25 @@ class Anggota extends CI_Controller {
 						"<td>".$riwayat_pendidikan->NAMA_INSTITUSI_PENDIDIKAN."</td>".
 						"<td>".$riwayat_pendidikan->TAHUN_MASUK_PENDIDIKAN." - ".$riwayat_pendidikan->TAHUN_LULUS_PENDIDIKAN."</td>".
 						"<td>".$riwayat_pendidikan->BIDANG_PENDIDIKAN."</td>".
+					"</tr>";
+		}
+
+		echo $html;
+	}
+
+	public function get_riwayat_org_ajax()
+	{
+		$nim = $this->session->userdata('user');
+		$data = $this->Riwayat_Org_model->get_id($nim);
+
+		var_dump($data);
+		$html='';
+		foreach ($data as $riwayat_org) {
+			$html.= "<tr>". 
+						"<td>".$riwayat_org->NAMA_ORG."</td>".
+						"<td>".$riwayat_org->JABATAN_ORG."</td>".
+						"<td>".$riwayat_org->TAHUN_MULAI_ORG." - ".$riwayat_org->TAHUN_SELESAI_ORG."</td>".
+						"<td>".$riwayat_org->ORG_KEMAHASISWAAN."</td>".
 					"</tr>";
 		}
 
