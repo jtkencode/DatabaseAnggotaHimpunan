@@ -236,6 +236,23 @@ $(document).ready(function() {
 
 	});
 
+	$('#btnAddRiwayatOrganisasiModal').click(function(){
+		var form = document.forms['formRiwayatOrganisasi'];
+		var dataString = $('#formRiwayatOrganisasi').serialize();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/add_riwayat_organisasi') ; ?>",
+            data: dataString,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatOrganisasi();
+            	$('#formRiwayatOrganisasi')[0].reset();
+            } 
+        });
+
+	});
+
 });
 
 function reloadTableKontak(){
