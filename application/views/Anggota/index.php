@@ -150,6 +150,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div> <!-- end row of riwayat -->
 
+
+		<!-- Riwayat Organisasi -->
 		<div class="row">
 			<div class="col-md-7">
 				<div class="panel panel-default">
@@ -166,17 +168,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</tr>
 							</thead>
 
-							<tbody id="tableBodyRiwayatPendidikan">
+							<tbody id="tableBodyRiwayatOrganisasi">
 							
 							</tbody>
 						</table>
 					</div>
 					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btnAddRiwayatPendidikan">Tambah Riwayat</button>
+						<button type="button" class="btn btn-default" id="btnAddRiwayatOrganisasi">Tambah Riwayat</button>
 					</div>
 				</div>
 			</div>
-		</div> <!-- end row of riwayat -->
+		</div> <!-- end row of riwayat organisasi-->
 		
 	</div>
 

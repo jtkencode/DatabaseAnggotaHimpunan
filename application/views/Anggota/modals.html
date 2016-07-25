@@ -1,5 +1,54 @@
 <!-- Bootstrap Modal -->
 
+<!-- Modal for add riwayat organisasi -->
+<div class="modal fade" id="riwayatOrganisasiModal" tabindex="-1" role="dialog" aria-labelledby="riwayatOrganisasiModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="riwayatOrganisasiModalLabel">Tambah Riwayat Organisasi</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="formRiwayatOrganisasi">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaOrganisasi">Nama Organisasi</label>
+						<div class="col-md-7">
+							<input name="nama_organisasi" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputJabatanOrganisasi">Jabatan Organisasi</label>
+						<div class="col-md-7">
+							<input name="jabatan_organisasi" class="form-control" id="inputJabatanOrganisasi" required="" type="text" placeholder="Jabatan Organisasi" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputTahunMulaiOrganisasi">Tahun Mulai</label>
+						<div class="col-md-7">
+							<input name="tahun_mulai_organisasi" class="form-control" id="inputTahunMulaiOrganisasi" required="" type="text" placeholder="Tahun Mulai" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputJabatanOrganisasi">Tahun Selesai</label>
+						<div class="col-md-7">
+							<input name="tahun_selesai_organisasi" class="form-control" id="inputTahunSelesaiOrganisasi" required="" type="text" placeholder="Tahun Selesai" value="" autocomplete="off">
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_riwayatOrganisasi_modal">Close</button>
+				<button type="button" class="btn btn-primary" id="btnAddriwayatOrganisasiModal">Tambah Riwayat</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- Modal for add contact -->
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal">
 	<div class="modal-dialog" role="document">
@@ -127,6 +176,10 @@
 	</div>
 </div>
 
+
+
+
+
 <!-- Modal for edit contact -->
 
 
@@ -142,7 +195,11 @@ $(document).ready(function() {
 	});
 
 	$('#btnAddRiwayatPendidikan').click(function(){
-		$('#riwayatPendidikanModal').modal('show'); 
+		$('#riwayatPendidikanModal').modal('show');
+	});
+
+	$('#btnAddRiwayatOrganisasi').click(function(){
+		$('#riwayatOrganisasiModal').modal('show'); 
 	});
 
 	$('#btnAddContactModal').click(function(){
