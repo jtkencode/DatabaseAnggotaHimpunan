@@ -27,6 +27,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($nim);
+		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($nim);
 		$this->load->view('anggota/index',$data);
 	}
 

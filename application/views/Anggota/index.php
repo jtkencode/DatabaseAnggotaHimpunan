@@ -170,12 +170,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</thead>
 
 							<tbody id="tableBodyRiwayatOrganisasi">
-							
+							<?php foreach ($riwayat_org as $row) :?>
+								<tr>
+									<td><?php echo $row->NAMA_ORG; ?></td>
+									<td><?php echo $row->JABATAN_ORG; ?></td>
+									<td><?php echo $row->TAHUN_MULAI_ORG." - ".$row->TAHUN_SELESAI_ORG; ?></td>
+									<td><?php echo $row->ORG_KEMAHASISWAAN; ?></td>
+								</tr>
+							<?php endforeach ; ?>
 							</tbody>
 						</table>
 					</div>
 					<div class="panel-footer">
 						<button type="button" class="btn btn-default" id="btnAddRiwayatOrganisasi">Tambah Riwayat</button>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end row of riwayat organisasi-->
+
+
+		<!-- Riwayat Prestasi -->
+		<div class="row">
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title text-center">Riwayat Prestasi</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Tingkat Prestasi</th>
+									<th>Nama Prestasi</th>
+									<th>Pencapaian Prestasi</th>
+									<th>Lembaga Prestasi</th>
+									<th>Tahun Prestasi</th>
+									<th>Jenis Prestasi</th>
+								</tr>
+							</thead>
+
+							<tbody id="tableBodyRiwayatPrestasi">
+							
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" id="btnAddRiwayatPrestasi">Tambah Riwayat</button>
 					</div>
 				</div>
 			</div>
