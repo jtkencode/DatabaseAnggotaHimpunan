@@ -22,6 +22,7 @@ class Anggota extends CI_Controller {
 		$this->load->model('Tingkat_Prestasi_model');
 		$this->load->model('Riwayat_Prestasi_model');
 		$this->load->model('Riwayat_Kepanitiaan_model');
+		$this->load->model('Riwayat_Pelatihan_model');
 	}
 
 	public function index()
@@ -34,6 +35,7 @@ class Anggota extends CI_Controller {
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_id($nim);
+		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_id($nim);
 		$this->load->view('anggota/index',$data);
 	}
 
@@ -147,6 +149,20 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function add_riwayat_pelatihan()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/add_riwayat_pelatihan',$data);
+		} else {
+			$insert = $this->Riwayat_Pelatihan_model->add_riwayat_pelatihan($data['nim']);
+			if ($insert){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
+		}	
+	}
+
 
 	public function get_contact_ajax()
 	{
@@ -237,6 +253,26 @@ class Anggota extends CI_Controller {
 
 		echo $html;
 	}
+
+	public function get_riwayat_pelatihan_ajax()
+	{
+		$nim = $this->session->userdata('user');
+		$data = $this->Riwayat_Pelatihan_model->get_id($nim);
+
+		var_dump($data);
+		$html='';
+		foreach ($data as $riwayat_pelatihan) {
+			$html.= "<tr>". 
+						"<td>".$riwayat_pelatihan->NAMA_PELATIHAN."</td>".
+						"<td>".$riwayat_pelatihan->NAMA_PENYELENGGARA_PELATIHAN."</td>".
+						"<td>".$riwayat_pelatihan->TAHUN_PELATIHAN."</td>".
+						"<td>".$riwayat_pelatihan->PELATIHAN_KEMAHASISWAAN."</td>".
+					"</tr>";
+		}
+
+		echo $html;
+	}
+
 
 	public function success()
 	{
