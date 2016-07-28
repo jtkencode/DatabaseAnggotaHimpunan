@@ -318,14 +318,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th>Nama PKM<th>
+									<th>Nama PKM</th>
 									<th>Nama Penyelenggara</th>
 									<th>Tahun PKM</th>
 									<th>PKM Kemahasiswaan</th>
 								</tr>
 							</thead>
 
-							<tbody id="tableBodyRiwayatPelatihan">
+							<tbody id="tableBodyRiwayatPKM">
 							<?php foreach($riwayat_pkm as $row) : ?>
 								<tr> 
 									<td><?php echo $row->NAMA_PKM; ?></td>
