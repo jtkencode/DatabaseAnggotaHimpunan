@@ -220,6 +220,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</div> <!-- end row of riwayat organisasi-->
+
+
+		<!-- Riwayat Prestasi -->
+		<div class="row">
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title text-center">Riwayat Kepanitiaan</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nama Kegiatan</th>
+									<th>Nama Organisasi</th>
+									<th>Jabatan</th>
+									<th>Tahun Kepanitiaan</th>
+									<th>Kepanitiaan Kemahasiswaan</th>
+								</tr>
+							</thead>
+
+							<tbody id="tableBodyRiwayatKepanitiaan">
+							
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" id="btnAddRiwayatKepanitiaan">Tambah Riwayat</button>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end row of riwayat organisasi-->
 		
 	</div>
 

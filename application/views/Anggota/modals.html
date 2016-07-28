@@ -274,6 +274,75 @@
 </div>
 
 
+<!-- Modal for add riwayat Kepanitiaan -->
+<div class="modal fade" id="riwayatKepanitiaanModal" tabindex="-1" role="dialog" aria-labelledby="riwayatKepanitiaanModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="riwayatKepanitiaanModalLabel">Tambah Riwayat Kepanitiaan</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="formRiwayatKepanitiaan">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaKegiatan">Nama Kegiatan</label>
+						<div class="col-md-7">
+							<input name="nama_kegiatan_kepanitiaan" class="form-control" id="inputNamaKegiatan" required="" type="text" placeholder="Nama Kegiatan" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaOrganisasi">Nama Organisasi</label>
+						<div class="col-md-7">
+							<input name="nama_organisasi_kepanitiaan" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputJabatan">Jabatan</label>
+						<div class="col-md-7">
+							<input name="jabatan_kepanitiaan" class="form-control" id="inputJabatan" required="" type="text" placeholder="Jabatan Kepanitiaan" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputTahunKepanitiaan">Tahun Kepanitiaan</label>
+						<div class="col-md-7">
+							<input name="tahun_kepanitiaan" class="form-control" id="inputTahunKepanitiaan" required="" type="text" placeholder="Tahun Kepanitiaan" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputKepanitiaanKemahasiswaan">Kepanitiaan Kemahasiswaan</label>
+						<div class="col-md-7">
+							<div class="radio">
+								<label>
+									<input name="kepanitiaan_kemahasiswaan" required="" type="radio" value=1>
+									Ya
+								</label>
+							</div>
+							
+							<div class="radio">
+								<label>
+									<input name="kepanitiaan_kemahasiswaan" required="" type="radio" value=0>
+									Tidak
+								</label>
+							</div>
+							<br>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_riwayatKepanitiaan_modal">Close</button>
+				<button type="button" class="btn btn-primary" id="btnAddRiwayatKepanitiaanModal">Tambah Riwayat</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- Ajax Script -->
 <script>
 $(document).ready(function() {
@@ -291,6 +360,10 @@ $(document).ready(function() {
 
 	$('#btnAddRiwayatPrestasi').click(function(){
 		$('#riwayatPrestasiModal').modal('show'); 
+	});
+
+	$('#btnAddRiwayatKepanitiaan').click(function(){
+		$('#riwayatKepanitiaanModal').modal('show'); 
 	});
 
 	$('#btnAddContactModal').click(function(){
@@ -360,6 +433,22 @@ $(document).ready(function() {
 
 	});
 
+	$('#btnAddRiwayatKepanitiaanModal').click(function(){
+		var dataString = $('#formRiwayatKepanitiaan').serialize();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/add_riwayat_kepanitiaan') ; ?>",
+            data: dataString,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatPrestasi();
+            	$('#formRiwayatKepanitiaan')[0].reset();
+            } 
+        });
+
+	});
+
 });
 
 function reloadTableKontak(){
@@ -406,6 +495,18 @@ function reloadTableRiwayatPrestasi(){
 		success: function(html) {
         	$("#tableBodyRiwayatPrestasi").html(html);
         	$('#riwayatPrestasiModal').modal('hide'); 
+        } 
+    });
+}
+
+function reloadTableRiwayatKepanitiaan(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_riwayat_kepanitiaan_ajax') ; ?>",
+		cache: false,
+		success: function(html) {
+        	$("#tableBodyRiwayatKepanitiaan").html(html);
+        	$('#riwayatKepanitiaanModal').modal('hide'); 
         } 
     });
 }
