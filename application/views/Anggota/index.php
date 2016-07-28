@@ -222,7 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div> <!-- end row of riwayat organisasi-->
 
 
-		<!-- Riwayat Prestasi -->
+		<!-- Riwayat Kepanitiaan -->
 		<div class="row">
 			<div class="col-md-7">
 				<div class="panel panel-default">
@@ -242,7 +242,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</thead>
 
 							<tbody id="tableBodyRiwayatKepanitiaan">
-							
+							<?php foreach($riwayat_kepanitiaan as $row) : ?>
+								<tr>
+									<td><?php echo $row->NAMA_KEGIATAN_KEPANITIAAN; ?></td>
+									<td><?php echo $row->NAMA_ORG_KEPANITIAAN; ?> </td>
+									<td><?php echo $row->JABATAN_KEPANITIAAN; ?> </td>
+									<td><?php echo $row->TAHUN_KEPANITIAAN; ?> </td>
+									<td><?php echo $row->KEPANITIAAN_KEMAHASISWAAN; ?> </td>
+								</tr>
+							<?php endforeach; ?>
 							</tbody>
 						</table>
 					</div>
@@ -251,7 +259,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-		</div> <!-- end row of riwayat organisasi-->
+		</div> <!-- end row of riwayat kepanitiaan-->
 		
 	</div>
 

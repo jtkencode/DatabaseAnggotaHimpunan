@@ -294,7 +294,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="inputNamaOrganisasi">Nama Organisasi</label>
 						<div class="col-md-7">
-							<input name="nama_organisasi_kepanitiaan" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="" autocomplete="off">
+							<input name="nama_org_kepanitiaan" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="" autocomplete="off">
 						</div>
 					</div>
 
@@ -442,7 +442,7 @@ $(document).ready(function() {
             dataType: "JSON",
             cache: false,
             success: function(json) {
-            	reloadTableRiwayatPrestasi();
+            	reloadTableRiwayatKepanitiaan();
             	$('#formRiwayatKepanitiaan')[0].reset();
             } 
         });

@@ -21,6 +21,7 @@ class Anggota extends CI_Controller {
 		$this->load->model('Riwayat_Org_model');
 		$this->load->model('Tingkat_Prestasi_model');
 		$this->load->model('Riwayat_Prestasi_model');
+		$this->load->model('Riwayat_Kepanitiaan_model');
 	}
 
 	public function index()
@@ -32,6 +33,7 @@ class Anggota extends CI_Controller {
 		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($nim);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
+		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_id($nim);
 		$this->load->view('anggota/index',$data);
 	}
 
@@ -131,6 +133,21 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function add_riwayat_kepanitiaan()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/add_riwayat_kepanitiaan',$data);
+		} else {
+			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($data['nim']);
+			if ($insert){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
+		}	
+	}
+
+
 	public function get_contact_ajax()
 	{
 		$nim = $this->session->userdata('user');
@@ -195,6 +212,26 @@ class Anggota extends CI_Controller {
 						"<td>".$riwayat_prestasi->LEMBAGA_PRESTASI."</td>".
 						"<td>".$riwayat_prestasi->TAHUN_PRESTASI."</td>".
 						"<td>".$riwayat_prestasi->JENIS_PRESTASI."</td>".
+					"</tr>";
+		}
+
+		echo $html;
+	}
+
+	public function get_riwayat_kepanitiaan_ajax()
+	{
+		$nim = $this->session->userdata('user');
+		$data = $this->Riwayat_Kepanitiaan_model->get_id($nim);
+
+		var_dump($data);
+		$html='';
+		foreach ($data as $riwayat_kepanitiaan) {
+			$html.= "<tr>". 
+						"<td>".$riwayat_kepanitiaan->NAMA_KEGIATAN_KEPANITIAAN."</td>".
+						"<td>".$riwayat_kepanitiaan->NAMA_ORG_KEPANITIAAN."</td>".
+						"<td>".$riwayat_kepanitiaan->JABATAN_KEPANITIAAN."</td>".
+						"<td>".$riwayat_kepanitiaan->TAHUN_KEPANITIAAN."</td>".
+						"<td>".$riwayat_kepanitiaan->KEPANITIAAN_KEMAHASISWAAN."</td>".
 					"</tr>";
 		}
 
