@@ -343,6 +343,68 @@
 </div>
 
 
+<!-- Modal for add riwayat Pelatihan -->
+<div class="modal fade" id="riwayatPelatihanModal" tabindex="-1" role="dialog" aria-labelledby="riwayatPelatihanModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="riwayatPelatihanModalLabel">Tambah Riwayat Kepanitiaan</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="formRiwayatPelatihan">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaPelatihan">Nama Pelatihan</label>
+						<div class="col-md-7">
+							<input name="nama_pelatihan" class="form-control" id="inputNamaPelatihan" required="" type="text" placeholder="Nama Pelatihan" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaPenyelenggara">Nama Penyelenggara</label>
+						<div class="col-md-7">
+							<input name="nama_penyelenggara_pelatihan" class="form-control" id="inputNamaPeyelenggara" required="" type="text" placeholder="Nama Penyelenggara" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputJabatan">Tahun Pelatihan</label>
+						<div class="col-md-7">
+							<input name="tahun_pelatihan" class="form-control" id="inputPelatihan" required="" type="text" placeholder="Tahun Pelatihan" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inpuPelatihanKemahasiswaan">Pelatihan Kemahasiswaan</label>
+						<div class="col-md-7">
+							<div class="radio">
+								<label>
+									<input name="pelatihan_kemahasiswaan" required="" type="radio" value=1>
+									Ya
+								</label>
+							</div>
+							
+							<div class="radio">
+								<label>
+									<input name="pelatihan_kemahasiswaan" required="" type="radio" value=0>
+									Tidak
+								</label>
+							</div>
+							<br>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_riwayatKepanitiaan_modal">Close</button>
+				<button type="button" class="btn btn-primary" id="btnAddRiwayatPelatihanModal">Tambah Riwayat</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- Ajax Script -->
 <script>
 $(document).ready(function() {
@@ -364,6 +426,10 @@ $(document).ready(function() {
 
 	$('#btnAddRiwayatKepanitiaan').click(function(){
 		$('#riwayatKepanitiaanModal').modal('show'); 
+	});
+
+	$('#btnAddRiwayatPelatihan').click(function(){
+		$('#riwayatPelatihanModal').modal('show'); 
 	});
 
 	$('#btnAddContactModal').click(function(){
@@ -449,6 +515,22 @@ $(document).ready(function() {
 
 	});
 
+	$('#btnAddRiwayatPelatihanModal').click(function(){
+		var dataString = $('#formRiwayatPelatihan').serialize();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/add_riwayat_pelatihan') ; ?>",
+            data: dataString,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatPelatihan();
+            	$('#formRiwayatPelatihan')[0].reset();
+            } 
+        });
+
+	});
+
 });
 
 function reloadTableKontak(){
@@ -507,6 +589,18 @@ function reloadTableRiwayatKepanitiaan(){
 		success: function(html) {
         	$("#tableBodyRiwayatKepanitiaan").html(html);
         	$('#riwayatKepanitiaanModal').modal('hide'); 
+        } 
+    });
+}
+
+function reloadTableRiwayatPelatihan(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_riwayat_pelatihan_ajax') ; ?>",
+		cache: false,
+		success: function(html) {
+        	$("#tableBodyRiwayatPelatihan").html(html);
+        	$('#riwayatPelatihanModal').modal('hide'); 
         } 
     });
 }
