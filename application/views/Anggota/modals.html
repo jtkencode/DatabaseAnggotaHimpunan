@@ -368,9 +368,9 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label" for="inputJabatan">Tahun Pelatihan</label>
+						<label class="col-md-4 control-label" for="inputTahunPelatihan">Tahun Pelatihan</label>
 						<div class="col-md-7">
-							<input name="tahun_pelatihan" class="form-control" id="inputPelatihan" required="" type="text" placeholder="Tahun Pelatihan" value="" autocomplete="off">
+							<input name="tahun_pelatihan" class="form-control" id="inputTahunPelatihan" required="" type="text" placeholder="Tahun Pelatihan" value="" autocomplete="off">
 						</div>
 					</div>
 
@@ -404,6 +404,66 @@
 	</div>
 </div>
 
+<!-- Modal for add riwayat PKM-->
+<div class="modal fade" id="riwayatPKMModal" tabindex="-1" role="dialog" aria-labelledby="riwayatPKMModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="riwayatPKMModalLabel">Tambah Riwayat Kepanitiaan</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="formRiwayatPKM">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaPKM">Nama PKM</label>
+						<div class="col-md-7">
+							<input name="nama_pkm" class="form-control" id="inputNamaPKM" required="" type="text" placeholder="Nama PKM" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputNamaPenyelenggara">Nama Penyelenggara</label>
+						<div class="col-md-7">
+							<input name="nama_penyelenggara_pkm" class="form-control" id="inputNamaPeyelenggara" required="" type="text" placeholder="Nama Penyelenggara" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inputTahunPKM">Tahun PKM</label>
+						<div class="col-md-7">
+							<input name="tahun_pkm" class="form-control" id="inputPKM" required="" type="text" placeholder="Tahun PKM" value="" autocomplete="off">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="inpuPKMKemahasiswaan">PKM Kemahasiswaan</label>
+						<div class="col-md-7">
+							<div class="radio">
+								<label>
+									<input name="pkm_kemahasiswaan" required="" type="radio" value=1>
+									Ya
+								</label>
+							</div>
+							
+							<div class="radio">
+								<label>
+									<input name="pkm_kemahasiswaan" required="" type="radio" value=0>
+									Tidak
+								</label>
+							</div>
+							<br>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close_riwayatKepanitiaan_modal">Close</button>
+				<button type="button" class="btn btn-primary" id="btnAddRiwayatPKMModal">Tambah Riwayat</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- Ajax Script -->
 <script>
@@ -430,6 +490,10 @@ $(document).ready(function() {
 
 	$('#btnAddRiwayatPelatihan').click(function(){
 		$('#riwayatPelatihanModal').modal('show'); 
+	});
+
+	$('#btnAddRiwayatPKM').click(function(){
+		$('#riwayatPKMModal').modal('show'); 
 	});
 
 	$('#btnAddContactModal').click(function(){
@@ -531,6 +595,22 @@ $(document).ready(function() {
 
 	});
 
+	$('#btnAddRiwayatPKMModal').click(function(){
+		var dataString = $('#formRiwayatPKM').serialize();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/add_riwayat_pkm) ; ?>",
+            data: dataString,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatPKM();
+            	$('#formRiwayatPKM')[0].reset();
+            } 
+        });
+
+	});
+
 });
 
 function reloadTableKontak(){
@@ -601,6 +681,18 @@ function reloadTableRiwayatPelatihan(){
 		success: function(html) {
         	$("#tableBodyRiwayatPelatihan").html(html);
         	$('#riwayatPelatihanModal').modal('hide'); 
+        } 
+    });
+}
+
+function reloadTableRiwayatPKM(){
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_riwayat_pkm_ajax') ; ?>",
+		cache: false,
+		success: function(html) {
+        	$("#tableBodyRiwayatPKM").html(html);
+        	$('#riwayatPKMModal').modal('hide'); 
         } 
     });
 }

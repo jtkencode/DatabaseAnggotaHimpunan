@@ -305,6 +305,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
+		</div> <!-- end row of riwayat Pelatihan-->
+
+		<!-- Riwayat PKM-->
+		<div class="row">
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title text-center">Riwayat PKM</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nama PKM<th>
+									<th>Nama Penyelenggara</th>
+									<th>Tahun PKM</th>
+									<th>PKM Kemahasiswaan</th>
+								</tr>
+							</thead>
+
+							<tbody id="tableBodyRiwayatPelatihan">
+							<?php foreach($riwayat_pkm as $row) : ?>
+								<tr> 
+									<td><?php echo $row->NAMA_PKM; ?></td>
+									<td><?php echo $row->NAMA_PENYELENGGARA_PKM; ?></td>
+									<td><?php echo $row->TAHUN_PKM; ?></td>
+									<td><?php echo $row->PKM_KEMAHASISWAAN; ?></td>
+								</tr>
+							<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" id="btnAddRiwayatPKM">Tambah Riwayat</button>
+					</div>
+				</div>
+			</div>
 		</div> <!-- end row of riwayat kepanitiaan-->
 		
 	</div>
