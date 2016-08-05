@@ -61,34 +61,37 @@
 						<div class="col-md-7">
 							<div class="radio">
 								<label>
-									<input name="jenjang_pendidikan" required="" type="radio" value="D">
+									<input id="radioJenjangPendidikanD" name="jenjang_pendidikan" required="" type="radio" value="D">
 									SD
 								</label>
 							</div>
 							
 							<div class="radio">
 								<label>
-									<input name="jenjang_pendidikan" required="" type="radio" value="P">
+									<input id="radioJenjangPendidikanP" name="jenjang_pendidikan" required="" type="radio" value="P">
 									SMP
 								</label>
 							</div>
 
 							<div class="radio">
 								<label>
-									<input name="jenjang_pendidikan" required="" type="radio" value="A">
+									<input id="radioJenjangPendidikanA" name="jenjang_pendidikan" required="" type="radio" value="A">
 									SMA / SMK
 								</label>
 							</div>
 
 							<div class="radio">
 								<label>
-									<input name="jenjang_pendidikan" required="" type="radio" value="T">
+									<input id="radioJenjangPendidikanT" name="jenjang_pendidikan" required="" type="radio" value="T">
 									Perguruan Tinggi
 								</label>
 							</div>
 							<br>
 						</div>
 					</div>
+
+					<input name="no_urut_pendidikan" class="form-control" id="inputNoUrutPendidikan" required="" type="hidden" value="" autocomplete="off">
+		
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="inputNamaInstitusi">Nama Institusi</label>
@@ -514,19 +517,34 @@ $(document).ready(function() {
 	});
 
 	$('#btnAddRiwayatPendidikanModal').click(function(){
-		var form = document.forms['formRiwayatPendidikan'];
-		var dataString = $('#formRiwayatPendidikan').serialize();
-		$.ajax({
-            type: "POST",
-            url: "<?php echo site_url('anggota/add_riwayat_pendidikan') ; ?>",
-            data: dataString,
-            dataType: "JSON",
-            cache: false,
-            success: function(json) {
-            	reloadTableRiwayatPendidikan();
-            	$('#formRiwayatPendidikan')[0].reset();
-            } 
-        });
+		if ($('#btnAddRiwayatPendidikanModal').text() != 'Ubah Riwayat') {
+			var dataString = $('#formRiwayatPendidikan').serialize();
+			$.ajax({
+	            type: "POST",
+	            url: "<?php echo site_url('anggota/add_riwayat_pendidikan') ; ?>",
+	            data: dataString,
+	            dataType: "JSON",
+	            cache: false,
+	            success: function(json) {
+	            	reloadTableRiwayatPendidikan();
+	            	$('#formRiwayatPendidikan')[0].reset();
+	            } 
+	        });
+		} else {
+			var dataString = $('#formRiwayatPendidikan').serialize();
+			$.ajax({
+	            type: "POST",
+	            url: "<?php echo site_url('anggota/update_riwayat_pendidikan') ; ?>",
+	            data: dataString,
+	            dataType: "JSON",
+	            cache: false,
+	            success: function(json) {
+	            	reloadTableRiwayatPendidikan();
+	            	$('#formRiwayatPendidikan')[0].reset();
+	            } 
+	        });
+			$("#riwayatPendidikanModalLabel").text('Tambah Riwayat Pendidikan');
+		}
 
 	});
 
@@ -611,6 +629,10 @@ $(document).ready(function() {
 
 	});
 
+	$('#btnUpdateRiwayatPendidikanModal').click(function(){
+		resetModalRiwayatPendidikan();
+	});
+
 
 });
 
@@ -630,8 +652,23 @@ function reloadTableRiwayatPendidikan(){
 	$.ajax({
 		type: "POST",
 		url: "<?php echo site_url('anggota/get_riwayat_pendidikan_ajax') ; ?>",
+		dataType: "JSON",
 		cache: false,
-		success: function(html) {
+		success: function(data) {
+			var html = "";
+			//add json data to table via html string
+			for ( i = 0 ; i < data.length ; i++ ){
+				var editFunction = "'editRiwayatPendidikan(" + data[i].NO_URUT_PENDIDIKAN + ")'";
+				var deleteFunction = "'deleteRiwayatPendidikan(" + data[i].NO_URUT_PENDIDIKAN + ")'";
+				html += "<tr>"+ 
+							"<td>"+data[i].JENJANG_PENDIDIKAN+"</td>"+
+							"<td>"+data[i].NAMA_INSTITUSI_PENDIDIKAN+"</td>"+
+							"<td>"+data[i].TAHUN_MASUK_PENDIDIKAN+" - "+data[i].TAHUN_LULUS_PENDIDIKAN+"</td>"+
+							"<td>"+data[i].BIDANG_PENDIDIKAN+"</td>"+
+							"<td>"+"<button class='btn btn-sm btn-info' onclick=" + editFunction + ">" + "edit" + "</button>"+
+							"<td>"+"<button class='btn btn-sm btn-danger' onclick=" + deleteFunction + ">" + "delete" + "</button>"+
+						"</tr>";
+			}
         	$("#tableBodyRiwayatPendidikan").html(html);
         	$('#riwayatPendidikanModal').modal('hide'); 
         } 
@@ -696,6 +733,41 @@ function reloadTableRiwayatPKM(){
         	$('#riwayatPKMModal').modal('hide'); 
         } 
     });
+}
+
+function editRiwayatPendidikan(id){
+	//get riwayat pendidikan data by id (no urut pendidikan)
+	$.ajax({
+		type: "POST",
+		url: "<?php echo site_url('anggota/get_riwayat_pendidikan_ajax') ; ?>" + "/" + id,
+		dataType: "JSON",
+		cache: false,
+		success: function(data) {
+			var idRadio = "radioJenjangPendidikan" + data[0].JENJANG_PENDIDIKAN;
+			
+			//fill form on modal
+			$("#" + idRadio).prop("checked", true);
+			$("#inputNamaInstitusi").val(data[0].NAMA_INSTITUSI_PENDIDIKAN);
+			$("#inputTahunMasuk").val(data[0].TAHUN_MASUK_PENDIDIKAN);
+			$("#inputTahunLulus").val(data[0].TAHUN_LULUS_PENDIDIKAN);
+			$("#inputBidang").val(data[0].BIDANG_PENDIDIKAN);
+			$("#inputNoUrutPendidikan").val(data[0].NO_URUT_PENDIDIKAN);
+
+			//edit title modal and add button 
+			$("#riwayatPendidikanModalLabel").text('Ubah Riwayat Pendidikan');
+			$("#btnAddRiwayatPendidikanModal").text("Ubah Riwayat");
+			
+			$('#riwayatPendidikanModal').modal('show');			
+        } 
+    });	
+}
+
+function resetModalRiwayatPendidikan(){
+	if( $("btnUpdateRiwayatPendidikanModal").attr('value') ) {
+		
+		$("#btnUpdateRiwayatPendidikanModal").attr("id","btnAddRiwayatPendidikanModal");
+		$("#btnAddRiwayatPendidikanModal").text("Tambah Riwayat");
+	}	
 }
 
 </script>

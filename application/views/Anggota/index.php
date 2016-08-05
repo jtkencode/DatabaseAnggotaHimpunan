@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet"> 
 	<script src="<?php echo base_url('assets/js/jquery-2.1.4.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/crud.js'); ?>"></script>
 </head>
 <body>
 	<div class="container">
@@ -128,6 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Nama Institusi</th>
 									<th>Tahun Masuk - Tahun Lulus</th>
 									<th>Bidang Pendidikan</th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -138,6 +140,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->NAMA_INSTITUSI_PENDIDIKAN; ?></td>
 									<td><?php echo $row->TAHUN_MASUK_PENDIDIKAN." - ".$row->TAHUN_LULUS_PENDIDIKAN; ?></td>
 									<td><?php echo $row->BIDANG_PENDIDIKAN; ?></td>
+									<td><button class="btn btn-sm btn-info" onclick="editRiwayatPendidikan(<?php echo $row->NO_URUT_PENDIDIKAN ?>)">edit</button></td>
+									<td><button class="btn btn-sm btn-danger">delete</button></td>
 								</tr>
 							<?php endforeach ; ?>
 							</tbody>

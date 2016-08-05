@@ -31,7 +31,7 @@ class Anggota extends CI_Controller {
 		$nim = $this->session->userdata('user');
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
-		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($nim);
+		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_nim($nim);
 		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($nim);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
@@ -179,6 +179,20 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function update_riwayat_pendidikan()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/add_riwayat_pendidikan',$data);
+		} else {
+			$insert = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($data['nim']);
+			if ($insert){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
+		}	
+	}
+
 
 	public function get_contact_ajax()
 	{
@@ -193,22 +207,16 @@ class Anggota extends CI_Controller {
 		echo $html;
 	}
 
-	public function get_riwayat_pendidikan_ajax()
+	public function get_riwayat_pendidikan_ajax($id = null)
 	{
-		$nim = $this->session->userdata('user');
-		$data = $this->Riwayat_Pendidikan_model->get_id($nim);
-
-		$html='';
-		foreach ($data as $riwayat_pendidikan) {
-			$html.= "<tr>". 
-						"<td>".$riwayat_pendidikan->JENJANG_PENDIDIKAN."</td>".
-						"<td>".$riwayat_pendidikan->NAMA_INSTITUSI_PENDIDIKAN."</td>".
-						"<td>".$riwayat_pendidikan->TAHUN_MASUK_PENDIDIKAN." - ".$riwayat_pendidikan->TAHUN_LULUS_PENDIDIKAN."</td>".
-						"<td>".$riwayat_pendidikan->BIDANG_PENDIDIKAN."</td>".
-					"</tr>";
+		if ($id != null) {
+			$data = $this->Riwayat_Pendidikan_model->get_id($id);
+		} else {
+			$nim = $this->session->userdata('user');
+			$data = $this->Riwayat_Pendidikan_model->get_nim($nim);
 		}
-
-		echo $html;
+		
+		echo json_encode($data);
 	}
 
 	public function get_riwayat_org_ajax()
@@ -303,6 +311,8 @@ class Anggota extends CI_Controller {
 
 		echo $html;
 	}
+
+
 
 
 	public function success()
