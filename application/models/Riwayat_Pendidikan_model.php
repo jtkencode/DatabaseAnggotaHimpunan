@@ -65,9 +65,8 @@ class Riwayat_Pendidikan_model extends CI_Model{
 		return $query;
 	}
 
-	public function update_riwayat_pendidikan($nim)
+	public function update_riwayat_pendidikan($id)
 	{
-		$no_urut = $this->input->post('no_urut_pendidikan');
 		$data = array(
 				'JENJANG_PENDIDIKAN' => $this->input->post('jenjang_pendidikan'),
 				'NAMA_INSTITUSI_PENDIDIKAN' => $this->input->post('nama_institusi'),
@@ -76,9 +75,15 @@ class Riwayat_Pendidikan_model extends CI_Model{
 				'BIDANG_PENDIDIKAN' => $this->input->post('bidang')
 			);
 
-		$this->db->where('NO_URUT_PENDIDIKAN', $no_urut);
-		$this->db->where('NIM', $nim);
+		$this->db->where('NO_URUT_PENDIDIKAN', $id);
 		$query = $this->db->update('riwayat_pendidikan', $data);
+		return $query;
+	}
+
+	public function delete_riwayat_pendidikan($id)
+	{
+		$this->db->where('no_urut_pendidikan', $id);
+		$query = $this->db->delete('riwayat_pendidikan');
 		return $query;
 	}
 

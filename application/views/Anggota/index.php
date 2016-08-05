@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->TAHUN_MASUK_PENDIDIKAN." - ".$row->TAHUN_LULUS_PENDIDIKAN; ?></td>
 									<td><?php echo $row->BIDANG_PENDIDIKAN; ?></td>
 									<td><button class="btn btn-sm btn-info" onclick="editRiwayatPendidikan(<?php echo $row->NO_URUT_PENDIDIKAN ?>)">edit</button></td>
-									<td><button class="btn btn-sm btn-danger">delete</button></td>
+									<td><button class="btn btn-sm btn-danger" onclick="deleteRiwayatPendidikan(<?php echo $row->NO_URUT_PENDIDIKAN ?>)">delete</button></td>
 								</tr>
 							<?php endforeach ; ?>
 							</tbody>

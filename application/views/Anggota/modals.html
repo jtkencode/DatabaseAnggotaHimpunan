@@ -468,6 +468,27 @@
 	</div>
 </div>
 
+<!-- Modal Delete Riwayat Pendidikan -->
+<div class="modal fade" id="deleteRiwayatPendidikanModal" tabindex="-1" role="dialog" aria-labelledby="deleteRiwayatPendidikanModal">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="deleteRiwayatPendidikanModalLabel">Hapus Riwayat</h4>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" name="idDeleteRiwayatPendidikan" id="inputDeleteRiwayatPendidikan" value="">
+				<strong>Apakah anda yakin akan menghapus riwayat ?</strong>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="cancelDeleteRiwayatPendidikanModal">Cancel</button>
+				<button type="button" class="btn btn-primary" id="btnDeleteRiwayatPendidikanModal">Hapus Riwayat</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- Ajax Script -->
 <script>
 $(document).ready(function() {
@@ -629,8 +650,18 @@ $(document).ready(function() {
 
 	});
 
-	$('#btnUpdateRiwayatPendidikanModal').click(function(){
-		resetModalRiwayatPendidikan();
+	$('#btnDeleteRiwayatPendidikanModal').click(function(){
+		var id = $("#inputDeleteRiwayatPendidikan").val();
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('anggota/delete_riwayat_pendidikan'); ?>" + "/" + id,
+            dataType: "JSON",
+            cache: false,
+            success: function(json) {
+            	reloadTableRiwayatPendidikan();
+            	$('#deleteRiwayatPendidikanModal').modal('hide'); 
+            } 
+        });
 	});
 
 
@@ -762,12 +793,11 @@ function editRiwayatPendidikan(id){
     });	
 }
 
-function resetModalRiwayatPendidikan(){
-	if( $("btnUpdateRiwayatPendidikanModal").attr('value') ) {
-		
-		$("#btnUpdateRiwayatPendidikanModal").attr("id","btnAddRiwayatPendidikanModal");
-		$("#btnAddRiwayatPendidikanModal").text("Tambah Riwayat");
-	}	
+function deleteRiwayatPendidikan(id){
+	$("#inputDeleteRiwayatPendidikan").val(id);
+	$('#deleteRiwayatPendidikanModal').modal('show');
+
 }
+
 
 </script>

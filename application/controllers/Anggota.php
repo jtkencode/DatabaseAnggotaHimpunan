@@ -184,10 +184,25 @@ class Anggota extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_riwayat_pendidikan',$data);
+			$this->load->view('anggota/update_riwayat_pendidikan',$data);
 		} else {
-			$insert = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($data['nim']);
-			if ($insert){
+			$id = $this->input->post('no_urut_pendidikan');
+			$update = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($id);
+			if ($update){
+				 echo json_encode(array("status" => TRUE));
+			} else echo "Insert Gagal";
+		}	
+	}
+
+	public function delete_riwayat_pendidikan($id = null)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$this->load->view('anggota/delete_riwayat_pendidikan',$data);
+		} else {
+			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
+			if ($delete){
 				 echo json_encode(array("status" => TRUE));
 			} else echo "Insert Gagal";
 		}	
