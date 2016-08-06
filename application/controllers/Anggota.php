@@ -212,11 +212,12 @@ class Anggota extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_pendidikan']= $this->get_riwayat_pendidikan($id);
 			$this->load->view('anggota/delete_riwayat_pendidikan',$data);
 		} else {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
 			if ($delete){
-				 echo json_encode(array("status" => TRUE));
+				 redirect('anggota/success');
 			} else echo "Insert Gagal";
 		}	
 	}

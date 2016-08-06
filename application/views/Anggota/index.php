@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->TAHUN_MASUK_PENDIDIKAN." - ".$row->TAHUN_LULUS_PENDIDIKAN; ?></td>
 									<td><?php echo $row->BIDANG_PENDIDIKAN; ?></td>
 									<td><a href="<?php echo site_url('anggota/update_riwayat_pendidikan'.'/'.$row->NO_URUT_PENDIDIKAN); ?>" class="btn btn-sm btn-info">edit</a>
-									<td><button class="btn btn-sm btn-danger" onclick="deleteRiwayatPendidikan(<?php echo $row->NO_URUT_PENDIDIKAN ?>)">delete</button></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_pendidikan'.'/'.$row->NO_URUT_PENDIDIKAN); ?>" class="btn btn-sm btn-danger">delete</a>
 								</tr>
 							<?php endforeach ; ?>
 							</tbody>
