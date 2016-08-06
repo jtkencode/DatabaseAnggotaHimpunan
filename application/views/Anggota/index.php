@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</table>
 					</div>
 					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btnAddRiwayatPendidikan">Tambah Riwayat</button>
+						<a href="<?php echo site_url('anggota/add_riwayat_pendidikan');?>" class="button btn btn-default">Tambah Riwayat</a>
 					</div>
 				</div>
 			</div>
