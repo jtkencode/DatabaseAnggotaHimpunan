@@ -29,7 +29,7 @@ class Riwayat_Pendidikan_model extends CI_Model{
 		$query = $this->db->where('no_urut_pendidikan', $id)->get('riwayat_pendidikan');
 		$result = $query->result();
 
-		return $result;
+		return $result[0];
 	}
 
 	public function get_last_no($id)
