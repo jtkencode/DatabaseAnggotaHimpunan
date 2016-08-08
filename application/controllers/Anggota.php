@@ -161,7 +161,7 @@ class Anggota extends CI_Controller {
 		} else {
 			$insert = $this->Riwayat_Pelatihan_model->add_riwayat_pelatihan($data['nim']);
 			if ($insert){
-				 echo json_encode(array("status" => TRUE));
+				  redirect('anggota/success');
 			} else echo "Insert Gagal";
 		}	
 	}

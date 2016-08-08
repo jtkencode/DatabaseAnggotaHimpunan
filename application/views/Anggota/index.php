@@ -302,6 +302,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Nama Penyelenggara</th>
 									<th>Tahun Pelatihan</th>
 									<th>Pelatihan Kemahasiswaan</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -312,13 +314,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->NAMA_PENYELENGGARA_PELATIHAN; ?></td>
 									<td><?php echo $row->TAHUN_PELATIHAN; ?></td>
 									<td><?php echo $row->PELATIHAN_KEMAHASISWAAN; ?></td>
+									<td><a href="<?php echo site_url('anggota/update_riwayat_pelatihan'.'/'.$row->NO_URUT_PELATIHAN); ?>" class="btn btn-sm btn-info">edit</a></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_pelatihan'.'/'.$row->NO_URUT_PELATIHAN); ?>" class="btn btn-sm btn-danger">delete</a></td>
 								</tr>
 							<?php endforeach; ?>
 							</tbody>
 						</table>
 					</div>
 					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btnAddRiwayatPelatihan">Tambah Riwayat</button>
+						<a href="<?php echo site_url('anggota/add_riwayat_pelatihan');?>" class="button btn btn-default">Tambah Riwayat</a>
 					</div>
 				</div>
 			</div>
