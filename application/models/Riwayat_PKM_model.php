@@ -69,7 +69,7 @@ class Riwayat_PKM_model extends CI_Model{
 		return $query;
 	}
 
-	public function delete_riwayat_pkm($id);
+	public function delete_riwayat_pkm($id)
 	{
 		$this->db->where('no_urut_pkm',$id);
 		$query = $this->db->delete('riwayat_pkm');

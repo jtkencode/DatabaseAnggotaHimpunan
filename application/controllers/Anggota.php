@@ -174,7 +174,7 @@ class Anggota extends CI_Controller {
 		} else {
 			$insert = $this->Riwayat_PKM_model->add_riwayat_pkm($data['nim']);
 			if ($insert){
-				 echo json_encode(array("status" => TRUE));
+				 redirect('anggota/success');
 			} else echo "Insert Gagal";
 		}	
 	}
