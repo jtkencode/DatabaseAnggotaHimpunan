@@ -8,12 +8,20 @@ class Riwayat_Pelatihan_model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function get_id($id)
+	public function get_nim($nim)
 	{
-		$query = $this->db->where('nim', $id)->get('riwayat_pelatihan');
+		$query = $this->db->where('nim', $nim)->get('riwayat_pelatihan');
 		$result = $query->result();
 
 		return $result;
+	}
+
+	public function get_id($id)
+	{
+		$query = $this->db->where('no_urut_pelatihan', $id)->get('riwayat_pelatihan');
+		$result = $query->result();
+
+		return $result[0];
 	}
 
 	public function get_last_no($id)
@@ -44,6 +52,27 @@ class Riwayat_Pelatihan_model extends CI_Model{
 			);
 
 		$query = $this->db->insert('riwayat_pelatihan',$data);
+		return $query;
+	}
+
+	public function update_riwayat_pelatihan($id)
+	{		
+		$data = array(
+				'NAMA_PELATIHAN' => $this->input->post('nama_pelatihan'),
+				'NAMA_PENYELENGGARA_PELATIHAN' => $this->input->post('nama_penyelenggara_pelatihan'),
+				'TAHUN_PELATIHAN' => $this->input->post('tahun_pelatihan'),
+				'PELATIHAN_KEMAHASISWAAN' => $this->input->post('pelatihan_kemahasiswaan')
+			);
+
+		$this->db->where('NO_URUT_PELATIHAN',$id);
+		$query = $this->db->update('riwayat_pelatihan',$data);
+		return $query;
+	}
+
+	public function delete_riwayat_pelatihan($id)
+	{
+		$this->db->where('NO_URUT_PELATIHAN',$id);
+		$query = $this->db->delete('riwayat_pelatihan');
 		return $query;
 	}
 
