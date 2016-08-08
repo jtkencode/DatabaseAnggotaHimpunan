@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h1>Delete Riwayat Organisasi <a href="<?php echo site_url('anggota');?>" class="btn btn-sm btn-success">Kembali ke Dashboard</a></h1>
+			<h1>Delete Riwayat Pendidikan <a href="<?php echo site_url('anggota');?>" class="btn btn-sm btn-success">Kembali ke Dashboard</a></h1>
 		</div>
 		<!--Start Row -->
 		<div class="row">
