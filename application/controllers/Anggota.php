@@ -228,6 +228,18 @@ class Anggota extends CI_Controller {
 		return $data;
 	}
 
+	public function get_riwayat_prestasi($id = null)
+	{
+		if ($id != null) {
+			$data = $this->Riwayat_Prestasi_model->get_id($id);
+		} else {
+			$nim = $this->session->userdata('user');
+			$data = $this->Riwayat_Prestasi_model->get_nim($nim);
+		}
+		
+		return $data;
+	}
+
 
 	public function update_riwayat_pendidikan($id)
 	{ 
@@ -284,6 +296,22 @@ class Anggota extends CI_Controller {
 			$this->load->view('anggota/update_riwayat_pkm',$data);
 		} else {
 			$update = $this->Riwayat_PKM_model->update_riwayat_pkm($id);
+			if ($update){
+				  redirect('anggota/success');
+			} else echo "Update Gagal";
+		}	
+	}
+
+	public function update_riwayat_prestasi($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
+			$data['riwayat_prestasi']= $this->get_riwayat_prestasi($id);
+			$this->load->view('anggota/update_riwayat_prestasi',$data);
+		} else {
+			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($id);
 			if ($update){
 				  redirect('anggota/success');
 			} else echo "Update Gagal";
