@@ -37,7 +37,7 @@ class Anggota extends CI_Controller {
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
 		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_id($nim);
-		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_id($nim);
+		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($nim);
 		$this->load->view('anggota/index',$data);
 	}
 

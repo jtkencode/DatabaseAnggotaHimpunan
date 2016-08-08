@@ -8,12 +8,20 @@ class Riwayat_PKM_model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function get_id($id)
+	public function get_nim($nim)
 	{
-		$query = $this->db->where('nim', $id)->get('riwayat_pkm');
+		$query = $this->db->where('nim', $nim)->get('riwayat_pkm');
 		$result = $query->result();
 
 		return $result;
+	}
+
+	public function get_id($id)
+	{
+		$query = $this->db->where('no_urut_pkm', $id)->get('riwayat_pkm');
+		$result = $query->result();
+
+		return $result[0];
 	}
 
 	public function get_last_no($id)
@@ -44,6 +52,27 @@ class Riwayat_PKM_model extends CI_Model{
 			);
 
 		$query = $this->db->insert('riwayat_pkm',$data);
+		return $query;
+	}
+
+	public function update_riwayat_pkm($id)
+	{
+		$data = array(
+				'NAMA_PKM' => $this->input->post('nama_pkm'),
+				'NAMA_PENYELENGGARA_PKM' => $this->input->post('nama_penyelenggara_pkm'),
+				'TAHUN_PKM' => $this->input->post('tahun_pkm'),
+				'PKM_KEMAHASISWAAN' => $this->input->post('pkm_kemahasiswaan')
+			);
+
+		$this->db->where('no_urut_pkm',$id);
+		$query = $this->db->update('riwayat_pkm',$data);
+		return $query;
+	}
+
+	public function delete_riwayat_pkm($id);
+	{
+		$this->db->where('no_urut_pkm',$id);
+		$query = $this->db->delete('riwayat_pkm');
 		return $query;
 	}
 

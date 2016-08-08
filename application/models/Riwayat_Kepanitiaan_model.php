@@ -16,6 +16,14 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 		return $result[0];
 	}
 
+	public function get_id($id)
+	{
+		$query = $this->db->where('NO_URUT_KEPANITIAAN', $id)->get('riwayat_kepanitiaan');
+		$result = $query->result();
+
+		return $result[0];
+	}
+
 	public function get_nim($nim)
 	{
 		$query = $this->db->where('nim', $nim)->get('riwayat_kepanitiaan');
