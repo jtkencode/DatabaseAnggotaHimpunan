@@ -334,6 +334,21 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function delete_riwayat_pkm($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_pkm']= $this->get_riwayat_pkm($id);
+			$this->load->view('anggota/delete_riwayat_pkm',$data);
+		} else {
+			$delete = $this->Riwayat_PKM_model->delete_riwayat_pkm($id);
+			if ($delete){
+				 redirect('anggota/success');
+			} else echo "Delete Gagal";
+		}	
+	}
+
 
 
 	public function success()
