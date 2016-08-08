@@ -35,7 +35,7 @@ class Anggota extends CI_Controller {
 		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($nim);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
-		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_id($nim);
+		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
 		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_id($nim);
 		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_id($nim);
 		$this->load->view('anggota/index',$data);
@@ -146,7 +146,7 @@ class Anggota extends CI_Controller {
 		} else {
 			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($data['nim']);
 			if ($insert){
-				 echo json_encode(array("status" => TRUE));
+				 redirect('anggota/success');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -191,6 +191,19 @@ class Anggota extends CI_Controller {
 		return $data;
 	}
 
+	public function get_riwayat_kepanitiaan($id = null)
+	{
+		if ($id != null) {
+			$data = $this->Riwayat_Kepanitiaan_model->get_id($id);
+		} else {
+			$nim = $this->session->userdata('user');
+			$data = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
+		}
+		
+		return $data;
+	}
+
+
 	public function update_riwayat_pendidikan($id)
 	{ 
 		$data['nim'] = $this->session->userdata('user');
@@ -207,7 +220,22 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
-	public function delete_riwayat_pendidikan($id = null)
+	public function update_riwayat_kepanitiaan($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_kepanitiaan']= $this->get_riwayat_kepanitiaan($id);
+			$this->load->view('anggota/update_riwayat_kepanitiaan',$data);
+		} else {
+			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($id);
+			if ($update){
+				  redirect('anggota/success');
+			} else echo "Update Gagal";
+		}	
+	}
+
+	public function delete_riwayat_pendidikan($id)
 	{ 
 		$data['nim'] = $this->session->userdata('user');
 		
@@ -218,7 +246,22 @@ class Anggota extends CI_Controller {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
 			if ($delete){
 				 redirect('anggota/success');
-			} else echo "Insert Gagal";
+			} else echo "Delete Gagal";
+		}	
+	}
+
+	public function delete_riwayat_kepanitiaan($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_kepanitiaan']= $this->get_riwayat_kepanitiaan($id);
+			$this->load->view('anggota/delete_riwayat_kepanitiaan',$data);
+		} else {
+			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
+			if ($delete){
+				 redirect('anggota/success');
+			} else echo "Delete Gagal";
 		}	
 	}
 

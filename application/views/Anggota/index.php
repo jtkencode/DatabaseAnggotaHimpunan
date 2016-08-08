@@ -130,6 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Tahun Masuk - Tahun Lulus</th>
 									<th>Bidang Pendidikan</th>
 									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -140,8 +141,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->NAMA_INSTITUSI_PENDIDIKAN; ?></td>
 									<td><?php echo $row->TAHUN_MASUK_PENDIDIKAN." - ".$row->TAHUN_LULUS_PENDIDIKAN; ?></td>
 									<td><?php echo $row->BIDANG_PENDIDIKAN; ?></td>
-									<td><a href="<?php echo site_url('anggota/update_riwayat_pendidikan'.'/'.$row->NO_URUT_PENDIDIKAN); ?>" class="btn btn-sm btn-info">edit</a>
-									<td><a href="<?php echo site_url('anggota/delete_riwayat_pendidikan'.'/'.$row->NO_URUT_PENDIDIKAN); ?>" class="btn btn-sm btn-danger">delete</a>
+									<td><a href="<?php echo site_url('anggota/update_riwayat_pendidikan'.'/'.$row->NO_URUT_PENDIDIKAN); ?>" class="btn btn-sm btn-info">edit</a></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_pendidikan'.'/'.$row->NO_URUT_PENDIDIKAN); ?>" class="btn btn-sm btn-danger">delete</a></td>
 								</tr>
 							<?php endforeach ; ?>
 							</tbody>
@@ -251,6 +252,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Jabatan</th>
 									<th>Tahun Kepanitiaan</th>
 									<th>Kepanitiaan Kemahasiswaan</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -262,13 +265,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->JABATAN_KEPANITIAAN; ?> </td>
 									<td><?php echo $row->TAHUN_KEPANITIAAN; ?> </td>
 									<td><?php echo $row->KEPANITIAAN_KEMAHASISWAAN; ?> </td>
+									<td><a href="<?php echo site_url('anggota/update_riwayat_kepanitiaan'.'/'.$row->NO_URUT_KEPANITIAAN); ?>" class="btn btn-sm btn-info">edit</a></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_kepanitiaan'.'/'.$row->NO_URUT_KEPANITIAAN); ?>" class="btn btn-sm btn-danger">delete</a></td>
 								</tr>
 							<?php endforeach; ?>
 							</tbody>
 						</table>
 					</div>
 					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btnAddRiwayatKepanitiaan">Tambah Riwayat</button>
+						<a href="<?php echo site_url('anggota/add_riwayat_kepanitiaan');?>" class="button btn btn-default">Tambah Riwayat</a>
 					</div>
 				</div>
 			</div>

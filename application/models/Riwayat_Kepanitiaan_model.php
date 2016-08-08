@@ -10,7 +10,15 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 
 	public function get_id($id)
 	{
-		$query = $this->db->where('nim', $id)->get('riwayat_kepanitiaan');
+		$query = $this->db->where('NO_URUT_KEPANITIAAN', $id)->get('riwayat_kepanitiaan');
+		$result = $query->result();
+
+		return $result[0];
+	}
+
+	public function get_nim($nim)
+	{
+		$query = $this->db->where('nim', $nim)->get('riwayat_kepanitiaan');
 		$result = $query->result();
 
 		return $result;
@@ -45,6 +53,30 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 			);
 
 		$query = $this->db->insert('riwayat_kepanitiaan',$data);
+		return $query;
+	}
+
+
+	public function update_riwayat_kepanitiaan($id)
+	{	
+		$data = array(
+				'NAMA_KEGIATAN_KEPANITIAAN' => $this->input->post('nama_kegiatan_kepanitiaan'),
+				'NAMA_ORG_KEPANITIAAN' => $this->input->post('nama_org_kepanitiaan'),
+				'JABATAN_KEPANITIAAN' => $this->input->post('jabatan_kepanitiaan'),
+				'TAHUN_KEPANITIAAN' => $this->input->post('tahun_kepanitiaan'),
+				'KEPANITIAAN_KEMAHASISWAAN' => $this->input->post('kepanitiaan_kemahasiswaan')
+			);
+
+		$this->db->where('NO_URUT_KEPANITIAAN',$id);
+		$query = $this->db->update('riwayat_kepanitiaan',$data);
+		return $query;
+	}
+
+
+	public function delete_riwayat_kepanitiaan($id)
+	{
+		$this->db->where('no_urut_kepanitiaan', $id);
+		$query = $this->db->delete('riwayat_kepanitiaan');
 		return $query;
 	}
 
