@@ -223,8 +223,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<tbody id="tableBodyRiwayatPrestasi">
 							<?php foreach($riwayat_prestasi as $row) : ?>
 								<tr>
-									<td><?php echo $row->NAMA_PRESTASI; ?></td>
 									<td><?php echo $row->ID_TINGKAT_PRESTASI; ?></td>
+									<td><?php echo $row->NAMA_PRESTASI; ?></td>
 									<td><?php echo $row->PENCAPAIAN_PRESTASI; ?></td>
 									<td><?php echo $row->LEMBAGA_PRESTASI; ?></td>
 									<td><?php echo $row->TAHUN_PRESTASI; ?></td>
