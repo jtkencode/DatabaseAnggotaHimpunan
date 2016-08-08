@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h1>Delete Riwayat Organisasi <a href="<?php echo site_url('anggota');?>" class="btn btn-sm btn-success">Kembali ke Dashboard</a></h1>
+			<h1>Delete Riwayat Pelatihan<a href="<?php echo site_url('anggota');?>" class="btn btn-sm btn-success">Kembali ke Dashboard</a></h1>
 		</div>
 		<!--Start Row -->
 		<div class="row">
@@ -19,17 +19,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<strong>Apakah anda yakin akan menghapus data berikut ?</strong>
 				<table class="table table-bordered">
 					<thead>
-						<th>Nama Organisasi</th>
-						<th>Jabatan</th>
-						<th>Tahun Mulai - Tahun Selesai</th>
-						<th>Organisasi Kemahasiswaan</th>
+						<th>Nama Pelatihan</th>
+						<th>Nama Penyelenggara</th>
+						<th>Tahun Pelatihan</th>
+						<th>Pelatihan Kemahasiswaan</th>
 					</thead>
 					<tbody>
 						<tr>
-							<td><?php echo $riwayat_org->NAMA_ORG; ?></td>
-							<td><?php echo $riwayat_org->JABATAN_ORG; ?></td>
-							<td><?php echo $riwayat_org->TAHUN_MULAI_ORG." - ".$riwayat_org->TAHUN_SELESAI_ORG; ?></td>
-							<td><?php echo $riwayat_org->ORG_KEMAHASISWAAN; ?></td>
+							<td><?php echo $riwayat_pelatihan->NAMA_PELATIHAN; ?></td>
+							<td><?php echo $riwayat_pelatihan->NAMA_PENYELENGGARA_PELATIHAN; ?></td>
+							<td><?php echo $riwayat_pelatihan->TAHUN_PELATIHAN; ?></td>
+							<td><?php echo $riwayat_pelatihan->PELATIHAN_KEMAHASISWAAN; ?></td>
 						</tr>
 					</tbody>
 				</table>

@@ -422,6 +422,21 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function delete_riwayat_pelatihan($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_pelatihan']= $this->get_riwayat_pelatihan($id);
+			$this->load->view('anggota/delete_riwayat_pelatihan',$data);
+		} else {
+			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($id);
+			if ($delete){
+				 redirect('anggota/success');
+			} else echo "Delete Gagal";
+		}	
+	}
+
 
 	public function success()
 	{

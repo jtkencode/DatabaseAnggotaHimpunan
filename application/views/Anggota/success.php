@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-sm-offset-3 col-sm-6">
 					<div class="alert alert-success" role="alert">
-						<h2 align="center"><strong>Data berhasil dimasukkan!</strong></h2>
+						<h2 align="center"><strong>Data berhasil disimpan!</strong></h2>
 						<h4 align="center">Terima kasih telah berkontribusi untuk Himakom:)</h4>
 						Silahkan memeriksa data yang sudah masuk pada <a href="<?php echo site_url('anggota');?>">dashboard anda</a> untuk memastikan data yang kamu masukkan sesuai. Mohon maaf atas ketidaknyamanan sistem kami yang masih belum sempurna :). <br><br>
 						<div class="text-center"> 
