@@ -215,6 +215,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Lembaga Prestasi</th>
 									<th>Tahun Prestasi</th>
 									<th>Jenis Prestasi</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -227,6 +229,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->LEMBAGA_PRESTASI; ?></td>
 									<td><?php echo $row->TAHUN_PRESTASI; ?></td>
 									<td><?php echo $row->JENIS_PRESTASI; ?></td>
+									<td><a href="<?php echo site_url('anggota/update_riwayat_prestasi'.'/'.$row->NO_URUT_PRESTASI); ?>" class="btn btn-sm btn-info">edit</a></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_prestasi'.'/'.$row->NO_URUT_PRESTASI); ?>" class="btn btn-sm btn-danger">delete</a></td>
 								</tr>
 							<?php endforeach; ?>
 							</tbody>
