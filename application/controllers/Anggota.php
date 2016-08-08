@@ -443,7 +443,4 @@ class Anggota extends CI_Controller {
 		$this->load->view('anggota/success');
 	}
 
-
-
-
 }
