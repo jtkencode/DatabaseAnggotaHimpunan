@@ -70,6 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<input id="radioJenisPrestasiK"name="jenis_prestasi" required="" type="radio" value="K">Kelompok
 								</label>
 							</div>
+							<br>
 						</div>
 
 					<div class="form-group">
