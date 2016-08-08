@@ -128,6 +128,7 @@ class Anggota extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 			$this->load->view('anggota/add_riwayat_prestasi',$data);
 		} else {
 			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($data['nim']);
