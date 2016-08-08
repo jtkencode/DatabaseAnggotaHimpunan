@@ -335,6 +335,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Nama Penyelenggara</th>
 									<th>Tahun PKM</th>
 									<th>PKM Kemahasiswaan</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -345,6 +347,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->NAMA_PENYELENGGARA_PKM; ?></td>
 									<td><?php echo $row->TAHUN_PKM; ?></td>
 									<td><?php echo $row->PKM_KEMAHASISWAAN; ?></td>
+									<td><a href="<?php echo site_url('anggota/update_riwayat_pkm'.'/'.$row->NO_URUT_PKM); ?>" class="btn btn-sm btn-info">edit</a></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_pkm'.'/'.$row->NO_URUT_PKM); ?>" class="btn btn-sm btn-danger">delete</a></td>
 								</tr>
 							<?php endforeach; ?>
 							</tbody>
