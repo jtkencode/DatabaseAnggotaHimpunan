@@ -32,7 +32,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_nim($nim);
-		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($nim);
+		$data['riwayat_org'] = $this->Riwayat_Org_model->get_nim($nim);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($nim);
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
@@ -109,16 +109,16 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
-	public function add_riwayat_organisasi()
+	public function add_riwayat_org()
 	{ 
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_riwayat_organisasi',$data);
+			$this->load->view('anggota/add_riwayat_org',$data);
 		} else {
-			$insert = $this->Riwayat_Org_model->add_riwayat_organisasi($data['nim']);
+			$insert = $this->Riwayat_Org_model->add_riwayat_org($data['nim']);
 			if ($insert){
-				 echo json_encode(array("status" => TRUE));
+				  redirect('anggota/success');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -203,6 +203,18 @@ class Anggota extends CI_Controller {
 		return $data;
 	}
 
+	public function get_riwayat_org($id = null)
+	{
+		if ($id != null) {
+			$data = $this->Riwayat_Org_model->get_id($id);
+		} else {
+			$nim = $this->session->userdata('user');
+			$data = $this->Riwayat_Org_model->get_nim($nim);
+		}
+		
+		return $data;
+	}
+
 
 	public function update_riwayat_pendidikan($id)
 	{ 
@@ -235,6 +247,21 @@ class Anggota extends CI_Controller {
 		}	
 	}
 
+	public function update_riwayat_org($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_org']= $this->get_riwayat_org($id);
+			$this->load->view('anggota/update_riwayat_org',$data);
+		} else {
+			$update = $this->Riwayat_Org_model->update_riwayat_org($id);
+			if ($update){
+				  redirect('anggota/success');
+			} else echo "Update Gagal";
+		}	
+	}
+
 	public function delete_riwayat_pendidikan($id)
 	{ 
 		$data['nim'] = $this->session->userdata('user');
@@ -259,6 +286,21 @@ class Anggota extends CI_Controller {
 			$this->load->view('anggota/delete_riwayat_kepanitiaan',$data);
 		} else {
 			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
+			if ($delete){
+				 redirect('anggota/success');
+			} else echo "Delete Gagal";
+		}	
+	}
+
+	public function delete_riwayat_org($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_org']= $this->get_riwayat_org($id);
+			$this->load->view('anggota/delete_riwayat_org',$data);
+		} else {
+			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id);
 			if ($delete){
 				 redirect('anggota/success');
 			} else echo "Delete Gagal";

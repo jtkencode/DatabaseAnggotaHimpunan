@@ -171,6 +171,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<th>Jabatan</th>
 									<th>Tahun Mulai - Tahun Selesai</th>
 									<th>Organisasi Kemahasiswaan</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -181,13 +183,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td><?php echo $row->JABATAN_ORG; ?></td>
 									<td><?php echo $row->TAHUN_MULAI_ORG." - ".$row->TAHUN_SELESAI_ORG; ?></td>
 									<td><?php echo $row->ORG_KEMAHASISWAAN; ?></td>
+									<td><a href="<?php echo site_url('anggota/update_riwayat_org'.'/'.$row->NO_URUT_ORG); ?>" class="btn btn-sm btn-info">edit</a></td>
+									<td><a href="<?php echo site_url('anggota/delete_riwayat_org'.'/'.$row->NO_URUT_ORG); ?>" class="btn btn-sm btn-danger">delete</a></td>
 								</tr>
 							<?php endforeach ; ?>
 							</tbody>
 						</table>
 					</div>
 					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btnAddRiwayatOrganisasi">Tambah Riwayat</button>
+						<a href="<?php echo site_url('anggota/add_riwayat_org');?>" class="button btn btn-default">Tambah Riwayat</a>
 					</div>
 				</div>
 			</div>
@@ -354,8 +358,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div> <!-- end row of riwayat kepanitiaan-->
 		
 	</div>
-
-	<?php $this->load->view('Anggota/modals.html'); ?>
 	
 </body>
 </html>
