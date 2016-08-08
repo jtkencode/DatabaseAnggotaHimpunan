@@ -240,6 +240,18 @@ class Anggota extends CI_Controller {
 		return $data;
 	}
 
+	public function get_riwayat_pelatihan($id = null)
+	{
+		if ($id != null) {
+			$data = $this->Riwayat_Pelatihan_model->get_id($id);
+		} else {
+			$nim = $this->session->userdata('user');
+			$data = $this->Riwayat_Pelatihan_model->get_nim($nim);
+		}
+		
+		return $data;
+	}
+
 
 	public function update_riwayat_pendidikan($id)
 	{ 
@@ -317,6 +329,22 @@ class Anggota extends CI_Controller {
 			} else echo "Update Gagal";
 		}	
 	}
+
+	public function update_riwayat_pelatihan($id)
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data['riwayat_pelatihan']= $this->get_riwayat_pelatihan($id);
+			$this->load->view('anggota/update_riwayat_pelatihan',$data);
+		} else {
+			$update = $this->Riwayat_Pelatihan_model->update_riwayat_pelatihan($id);
+			if ($update){
+				  redirect('anggota/success');
+			} else echo "Update Gagal";
+		}	
+	}
+
 
 	public function delete_riwayat_pendidikan($id)
 	{ 
