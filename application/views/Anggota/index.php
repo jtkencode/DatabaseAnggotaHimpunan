@@ -17,9 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 
 		<div class="btn-group">
-			<a href="<?php echo site_url('anggota/edit_profile');?>" class="button btn btn-default">Ubah Data Pribadi</a>
 			<a href="<?php echo site_url('anggota/change_password');?>" class="button btn btn-default">Ganti Password</a>
-			<a href="#" class="button btn btn-default">Tambah Riwayat Pendidikan</a>
 			<a href="#" class="button btn btn-default">Lihat Kegiatan</a>
 			<a href="<?php echo site_url('anggota/logout') ;?>" class="button btn btn-default">Logout</a>
 		</div>
@@ -79,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</table>
 					</div>
 					<div class="panel-footer">
-						<button class="btn btn-default">Ubah Data Pribadi</button>
+						<a href="<?php echo site_url('anggota/edit_profile');?>" class="btn btn-default">Ubah Data Pribadi</a>
 					</div>
 				</div> <!--End Panel data pribadi -->
 			</div> <!-- End Col Data Pribadi -->
