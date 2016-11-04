@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<p><?php echo $row->NAMA_PRESTASI;?> <small><?php echo $row->PENCAPAIAN_PRESTASI;?></small></p>
-											<p><?php echo $row->LEMBAGA_PRESTASI;?></p>
+											<p><small><?php echo $row->LEMBAGA_PRESTASI;?></small></p>
 											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->TAHUN_PRESTASI;?></small></p>
 										</div>
 									</div>
