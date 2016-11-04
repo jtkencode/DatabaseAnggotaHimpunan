@@ -110,7 +110,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/edit_profile',$data);
+			$this->load->view('anggota/update/edit_profile',$data);
 
 		} else {
 			$update = $this->Anggota_Model->update_profile($nim);
