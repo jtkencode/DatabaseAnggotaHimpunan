@@ -37,16 +37,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="row">
 							<div class="col-md-12">
 								<h3><small>Pengabdian Kepada Masyarakat yang pernah diikuti</small></h3>
-							</div>
-
-							<?php if (count($riwayat_pkm == 0)) :?>
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<p>Belum Pernah Mengikuti PKM.......</p>
+								<?php if (count($riwayat_pkm)==0) :?>
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<p>Belum Pernah Mengikuti PKM.......</p>
+										</div>
 									</div>
-								</div>
-							<?php endif;?>
+								<?php endif;?>
+							</div>
 						</div>
+
 						<div class="row">
 							<?php foreach ($riwayat_pkm as $row) :?>
 								<div class="col-md-6">
