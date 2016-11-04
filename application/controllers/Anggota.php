@@ -78,6 +78,15 @@ class Anggota extends CI_Controller {
 		$this->load->view('anggota/riwayat_kepanitiaan',$data);
 	}
 
+	public function riwayat_pelatihan()
+	{
+		$nim = $this->session->userdata('user');
+		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$data['kontak'] = $this->Kontak_model->get_id($nim);
+		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_nim($nim);
+		$this->load->view('anggota/riwayat_pelatihan',$data);
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('user');
