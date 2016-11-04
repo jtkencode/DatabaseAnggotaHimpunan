@@ -3,7 +3,7 @@
 					<div class="col-md-3">
 						<!-- Profile Picture -->
 						<div class="">
-							<img class="img-responsive img-rounded" src="assets/img/profile-picture.jpg">
+							<img class="img-responsive img-rounded" src="<?php echo base_url('assets/img/profile_picture/'.$anggota->NIM.'.jpg'); ?>">
 						</div>
 
 						<div>
