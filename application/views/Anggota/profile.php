@@ -23,4 +23,6 @@
 							<?php endforeach ;?>		
 							<hr>
 						</div>
+
+						<a href="<?php echo site_url('anggota/logout');?>" class="btn btn-default btn-block">Logout</a>
 					</div>
