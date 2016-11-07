@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Riwayat_Org extends CI_Controller {
+class Riwayat_Organisasi extends CI_Controller {
 
 	public function __construct()
 	{
