@@ -10,7 +10,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		if(empty($this->session->userdata('user'))) {
             redirect('login');
         }
-
+        $this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pelatihan_model');
@@ -37,7 +37,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_riwayat_pelatihan',$data);
+			$this->load->view('anggota/riwayat/pelatihan/add_riwayat_pelatihan',$data);
 		} else {
 			$insert = $this->Riwayat_Pelatihan_model->add_riwayat_pelatihan($data['nim']);
 			if ($insert){
@@ -64,7 +64,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pelatihan']= $this->get_riwayat_pelatihan($id);
-			$this->load->view('anggota/update_riwayat_pelatihan',$data);
+			$this->load->view('anggota/riwayat/pelatihan/update_riwayat_pelatihan',$data);
 		} else {
 			$update = $this->Riwayat_Pelatihan_model->update_riwayat_pelatihan($id);
 			if ($update){
@@ -79,7 +79,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pelatihan']= $this->get_riwayat_pelatihan($id);
-			$this->load->view('anggota/delete_riwayat_pelatihan',$data);
+			$this->load->view('anggota/riwayat/pelatihan/delete_riwayat_pelatihan',$data);
 		} else {
 			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($id);
 			if ($delete){
