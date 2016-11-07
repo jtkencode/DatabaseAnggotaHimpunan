@@ -37,6 +37,8 @@ class Riwayat_Pendidikan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Tambah Riwayat Pendidikan';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pendidikan/add_riwayat_pendidikan',$data);
 		} else {
 			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($data['nim']);
@@ -64,6 +66,8 @@ class Riwayat_Pendidikan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pendidikan']= $this->get($id);
+			$ui['page'] = 'Ubah Riwayat Pendidikan';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pendidikan/update_riwayat_pendidikan',$data);
 		} else {
 			//$id = $this->input->post('no_urut_pendidikan');
@@ -80,6 +84,8 @@ class Riwayat_Pendidikan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pendidikan']= $this->get($id);
+			$ui['page'] = 'Hapus Riwayat Pendidikan';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pendidikan/delete_riwayat_pendidikan',$data);
 		} else {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
