@@ -37,6 +37,8 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Tambah Riwayat Kepanitiaan';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/add_riwayat_kepanitiaan',$data);
 		} else {
 			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($data['nim']);
@@ -65,6 +67,8 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_kepanitiaan']= $this->get($id);
+			$ui['page'] = 'Ubah Riwayat Kepanitiaan';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/update_riwayat_kepanitiaan',$data);
 		} else {
 			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($id);
@@ -80,6 +84,8 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_kepanitiaan']= $this->get($id);
+			$ui['page'] = 'Hapus Riwayat Kepanitiaan';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/delete_riwayat_kepanitiaan',$data);
 		} else {
 			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
