@@ -10,7 +10,7 @@ class Riwayat_PKM extends CI_Controller {
 		if(empty($this->session->userdata('user'))) {
             redirect('login');
         }
-
+        $this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_PKM_model');
@@ -36,7 +36,7 @@ class Riwayat_PKM extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_riwayat_pkm',$data);
+			$this->load->view('anggota/riwayat/pkm/add_riwayat_pkm',$data);
 		} else {
 			$insert = $this->Riwayat_PKM_model->add_riwayat_pkm($data['nim']);
 			if ($insert){
@@ -63,7 +63,7 @@ class Riwayat_PKM extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pkm']= $this->get_riwayat_pkm($id);
-			$this->load->view('anggota/update_riwayat_pkm',$data);
+			$this->load->view('anggota/riwayat/pkm/update_riwayat_pkm',$data);
 		} else {
 			$update = $this->Riwayat_PKM_model->update_riwayat_pkm($id);
 			if ($update){
@@ -78,7 +78,7 @@ class Riwayat_PKM extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pkm']= $this->get_riwayat_pkm($id);
-			$this->load->view('anggota/delete_riwayat_pkm',$data);
+			$this->load->view('anggota/riwayat/pkm/delete_riwayat_pkm',$data);
 		} else {
 			$delete = $this->Riwayat_PKM_model->delete_riwayat_pkm($id);
 			if ($delete){
