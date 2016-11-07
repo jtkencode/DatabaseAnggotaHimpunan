@@ -55,6 +55,8 @@ class Profile extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Edit Profile';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/edit_profile',$data);
 
 		} else {
@@ -72,6 +74,8 @@ class Profile extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Ganti Password';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/change_password',$data);
 		} else {
 			$update = $this->Anggota_Model->change_password($nim);
