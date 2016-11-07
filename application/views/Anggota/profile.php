@@ -11,7 +11,7 @@
 							<h4><?php echo $anggota->NAMA_BAGUS ;?></h4>
 							<p>Departemen Pendidikan dan Teknologi Informasi</p>
 							<p>Sarjana Terapan Teknik Informatika 2014</p>
-							<a href="<?php echo site_url('anggota/edit_profile');?>" class="btn btn-default btn-block">Edit Profile</a>
+							<a href="<?php echo site_url('anggota/profile/edit_profile');?>" class="btn btn-default btn-block">Edit Profile</a>
 							<hr>
 						</div>
 
@@ -24,5 +24,5 @@
 							<hr>
 						</div>
 
-						<a href="<?php echo site_url('anggota/logout');?>" class="btn btn-default btn-block">Logout</a>
+						<a href="<?php echo site_url('anggota/profile/logout');?>" class="btn btn-default btn-block">Logout</a>
 					</div>
