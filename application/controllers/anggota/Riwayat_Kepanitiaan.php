@@ -46,7 +46,7 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		}	
 	}
 
-	public function get_riwayat_kepanitiaan($id = null)
+	public function get($id = null)
 	{
 		if ($id != null) {
 			$data = $this->Riwayat_Kepanitiaan_model->get_id($id);
@@ -64,7 +64,7 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_kepanitiaan']= $this->get_riwayat_kepanitiaan($id);
+			$data['riwayat_kepanitiaan']= $this->get($id);
 			$this->load->view('anggota/riwayat/kepanitiaan/update_riwayat_kepanitiaan',$data);
 		} else {
 			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($id);
@@ -79,7 +79,7 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_kepanitiaan']= $this->get_riwayat_kepanitiaan($id);
+			$data['riwayat_kepanitiaan']= $this->get($id);
 			$this->load->view('anggota/riwayat/kepanitiaan/delete_riwayat_kepanitiaan',$data);
 		} else {
 			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
