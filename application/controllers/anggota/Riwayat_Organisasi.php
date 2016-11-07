@@ -46,7 +46,7 @@ class Riwayat_Organisasi extends CI_Controller {
 	}
 
 
-	public function get_riwayat_org($id = null)
+	public function get($id = null)
 	{
 		if ($id != null) {
 			$data = $this->Riwayat_Org_model->get_id($id);
@@ -64,7 +64,7 @@ class Riwayat_Organisasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_org']= $this->get_riwayat_org($id);
+			$data['riwayat_org']= $this->get($id);
 			$this->load->view('anggota/riwayat/organisasi/update_riwayat_org',$data);
 		} else {
 			$update = $this->Riwayat_Org_model->update_riwayat_org($id);
@@ -80,7 +80,7 @@ class Riwayat_Organisasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_org']= $this->get_riwayat_org($id);
+			$data['riwayat_org']= $this->get($id);
 			$this->load->view('anggota/riwayat/organisasi/delete_riwayat_org',$data);
 		} else {
 			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id);

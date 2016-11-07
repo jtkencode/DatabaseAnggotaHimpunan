@@ -50,7 +50,7 @@ class Riwayat_Prestasi extends CI_Controller {
 	}
 
 	
-	public function get_riwayat_prestasi($id = null)
+	public function get($id = null)
 	{
 		if ($id != null) {
 			$data = $this->Riwayat_Prestasi_model->get_id($id);
@@ -69,7 +69,7 @@ class Riwayat_Prestasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-			$data['riwayat_prestasi']= $this->get_riwayat_prestasi($id);
+			$data['riwayat_prestasi']= $this->get($id);
 			$this->load->view('anggota/riwayat/prestasi/update_riwayat_prestasi',$data);
 		} else {
 			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($id);
@@ -85,7 +85,7 @@ class Riwayat_Prestasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_prestasi']= $this->get_riwayat_prestasi($id);
+			$data['riwayat_prestasi']= $this->get($id);
 			$this->load->view('anggota/riwayat/prestasi/delete_riwayat_prestasi',$data);
 		} else {
 			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($id);

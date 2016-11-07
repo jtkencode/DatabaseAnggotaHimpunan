@@ -46,7 +46,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		}	
 	}
 
-	public function get_riwayat_pelatihan($id = null)
+	public function get($id = null)
 	{
 		if ($id != null) {
 			$data = $this->Riwayat_Pelatihan_model->get_id($id);
@@ -63,7 +63,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_pelatihan']= $this->get_riwayat_pelatihan($id);
+			$data['riwayat_pelatihan']= $this->get($id);
 			$this->load->view('anggota/riwayat/pelatihan/update_riwayat_pelatihan',$data);
 		} else {
 			$update = $this->Riwayat_Pelatihan_model->update_riwayat_pelatihan($id);
@@ -78,7 +78,7 @@ class Riwayat_Pelatihan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_pelatihan']= $this->get_riwayat_pelatihan($id);
+			$data['riwayat_pelatihan']= $this->get($id);
 			$this->load->view('anggota/riwayat/pelatihan/delete_riwayat_pelatihan',$data);
 		} else {
 			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($id);
