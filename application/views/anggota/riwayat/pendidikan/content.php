@@ -2,16 +2,11 @@
 
 $icon = ['D' => "bg-secondary", 'P' => "bg-info", 'A' => "bg-primary", 'T' => "bg-deafult"];
 $left = false;
-?>
-
+?>					
 					<!-- Riwayat Pendidikan -->
 					<div class="col-md-9">
 						<div class="row">
 							<div class="col-md-12">
-								
-								<br>
-								<a href="<?php echo site_url('anggota/riwayat_pendidikan/add');?>" class="btn btn-default">Tambah Riwayat Pendidikan</a>
-								<button class="btn btn-default" id="editRiwayat">Edit Riwayat</button>
 								<!--Timeline-->
 								<h3><small>Riwayat Pendidikan</small></h3>
 								<div class="timeline-centered">
