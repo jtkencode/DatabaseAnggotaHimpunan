@@ -10,7 +10,7 @@ class Riwayat_Prestasi extends CI_Controller {
 		if(empty($this->session->userdata('user'))) {
             redirect('login');
         }
-	
+		$this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');	
 		$this->load->model('Tingkat_Prestasi_model');
@@ -40,7 +40,7 @@ class Riwayat_Prestasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-			$this->load->view('anggota/add_riwayat_prestasi',$data);
+			$this->load->view('anggota/riwayat/prestasi/add_riwayat_prestasi',$data);
 		} else {
 			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($data['nim']);
 			if ($insert){
@@ -70,7 +70,7 @@ class Riwayat_Prestasi extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 			$data['riwayat_prestasi']= $this->get_riwayat_prestasi($id);
-			$this->load->view('anggota/update_riwayat_prestasi',$data);
+			$this->load->view('anggota/riwayat/prestasi/update_riwayat_prestasi',$data);
 		} else {
 			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($id);
 			if ($update){
@@ -86,7 +86,7 @@ class Riwayat_Prestasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_prestasi']= $this->get_riwayat_prestasi($id);
-			$this->load->view('anggota/delete_riwayat_prestasi',$data);
+			$this->load->view('anggota/riwayat/prestasi/delete_riwayat_prestasi',$data);
 		} else {
 			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($id);
 			if ($delete){
