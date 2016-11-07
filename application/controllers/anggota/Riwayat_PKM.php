@@ -36,6 +36,8 @@ class Riwayat_PKM extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Tambah Riwayat PKM';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/add_riwayat_pkm',$data);
 		} else {
 			$insert = $this->Riwayat_PKM_model->add_riwayat_pkm($data['nim']);
@@ -63,6 +65,8 @@ class Riwayat_PKM extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pkm']= $this->get($id);
+			$ui['page'] = 'Ubah Riwayat PKM';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/update_riwayat_pkm',$data);
 		} else {
 			$update = $this->Riwayat_PKM_model->update_riwayat_pkm($id);
@@ -78,6 +82,8 @@ class Riwayat_PKM extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pkm']= $this->get($id);
+			$ui['page'] = 'Hapus Riwayat PKM';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/delete_riwayat_pkm',$data);
 		} else {
 			$delete = $this->Riwayat_PKM_model->delete_riwayat_pkm($id);
