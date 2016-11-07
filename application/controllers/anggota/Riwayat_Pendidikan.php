@@ -13,6 +13,7 @@ class Riwayat_Pendidikan extends CI_Controller {
         $this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pendidikan_model');
+		$this->load->helper('form');
 
 	}
 
@@ -63,7 +64,7 @@ class Riwayat_Pendidikan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pendidikan']= $this->get_riwayat_pendidikan($id);
-			$this->load->view('anggota/update_riwayat_pendidikan',$data);
+			$this->load->view('anggota/riwayat/pendidikan/update_riwayat_pendidikan',$data);
 		} else {
 			//$id = $this->input->post('no_urut_pendidikan');
 			$update = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($id);
@@ -79,7 +80,7 @@ class Riwayat_Pendidikan extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pendidikan']= $this->get_riwayat_pendidikan($id);
-			$this->load->view('anggota/delete_riwayat_pendidikan',$data);
+			$this->load->view('anggota/riwayat/pendidikan/delete_riwayat_pendidikan',$data);
 		} else {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
 			if ($delete){

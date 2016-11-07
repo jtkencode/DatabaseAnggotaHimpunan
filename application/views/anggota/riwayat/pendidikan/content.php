@@ -8,6 +8,10 @@ $left = false;
 					<div class="col-md-9">
 						<div class="row">
 							<div class="col-md-12">
+								
+								<br>
+								<a href="<?php echo site_url('anggota/riwayat_pendidikan/add');?>" class="btn btn-default">Tambah Riwayat Pendidikan</a>
+								<button class="btn btn-default" id="editRiwayat">Edit Riwayat</button>
 								<!--Timeline-->
 								<h3><small>Riwayat Pendidikan</small></h3>
 								<div class="timeline-centered">
@@ -23,6 +27,11 @@ $left = false;
 												<div class="timeline-label">
 													<h2><?php echo $row->NAMA_INSTITUSI_PENDIDIKAN ;?></h2>
 													<p><?php echo $row->BIDANG_PENDIDIKAN ;?></p>
+													<!-- Button for edit riwayat-->
+													<div class="hiddenButton" hidden>
+														<a href="<?php echo site_url('anggota/riwayat_pendidikan/update'),'/',$row->NO_URUT_PENDIDIKAN;?>" class="btn btn-default btn-sm" title="ubah data"><span class="glyphicon glyphicon-pencil"></span></a>
+														<a href="<?php echo site_url('anggota/riwayat_pendidikan/delete'),'/',$row->NO_URUT_PENDIDIKAN;?>" class="btn btn-default btn-sm" title="hapus data"><span class="glyphicon glyphicon-trash"></span></a>
+													</div>
 												</div>
 											</div>
 										</article>
@@ -39,3 +48,9 @@ $left = false;
 							</div>
 						</div>
 					</div>
+					<!-- Show Hidden button -->
+					<script type="text/javascript">
+						$('#editRiwayat').click(function(){
+							$('.hiddenButton').toggle();
+						});
+					</script>
