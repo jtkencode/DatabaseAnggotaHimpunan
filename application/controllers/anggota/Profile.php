@@ -37,7 +37,12 @@ class Profile extends CI_Controller {
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
 		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_nim($nim);
 		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($nim);
-		$this->load->view('anggota/index',$data);
+		
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/profile',$data);
+		$this->load->view('anggota/nav_riwayat');
+		$this->load->view('anggota/overview',$data);
+		$this->load->view('anggota/footer');
 	}
 
 	public function riwayat_pendidikan()
