@@ -43,9 +43,4 @@ $left = false;
 							</div>
 						</div>
 					</div>
-					<!-- Show Hidden button -->
-					<script type="text/javascript">
-						$('#editRiwayat').click(function(){
-							$('.hiddenButton').toggle();
-						});
-					</script>
+					

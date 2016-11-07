@@ -18,6 +18,13 @@
 								<a href="<?php echo site_url('anggota/riwayat_'),$page,'/add';?>" class="btn btn-default">Tambah Riwayat</a>
 								<button class="btn btn-default" id="editRiwayat">Edit Riwayat</button>
 							</div>
+
+							<!-- Show Hidden button -->
+							<script type="text/javascript">
+								$('#editRiwayat').click(function(){
+									$('.hiddenButton').toggle();
+								});
+							</script>
 						</div>
 						<?php endif;?>
 					</div>
