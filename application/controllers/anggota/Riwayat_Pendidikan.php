@@ -22,7 +22,13 @@ class Riwayat_Pendidikan extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_nim($nim);
-		$this->load->view('anggota/riwayat/pendidikan/riwayat_pendidikan',$data);
+		$ui['navtab']['page'] = 'pendidikan';
+		
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/profile',$data);
+		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
+		$this->load->view('anggota/riwayat/pendidikan/content',$data);
+		$this->load->view('anggota/footer');
 	}
 
 	public function add()
