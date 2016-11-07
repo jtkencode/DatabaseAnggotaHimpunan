@@ -24,7 +24,13 @@ class Riwayat_Prestasi extends CI_Controller {
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_nim($nim);
-		$this->load->view('anggota/riwayat/prestasi/riwayat_prestasi',$data);
+		$ui['navtab']['page'] = 'prestasi';
+		
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/profile',$data);
+		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
+		$this->load->view('anggota/riwayat/prestasi/content',$data);
+		$this->load->view('anggota/footer');
 	}
 
 	
