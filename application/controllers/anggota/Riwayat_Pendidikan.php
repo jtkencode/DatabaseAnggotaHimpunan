@@ -36,7 +36,7 @@ class Riwayat_Pendidikan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_riwayat_pendidikan',$data);
+			$this->load->view('anggota/riwayat/pendidikan/add_riwayat_pendidikan',$data);
 		} else {
 			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($data['nim']);
 			if ($insert){
