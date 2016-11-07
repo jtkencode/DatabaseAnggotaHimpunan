@@ -1,11 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Anggota extends CI_Controller {
+class Profile extends CI_Controller {
 
 	public function __construct()
 	{
-
 		parent::__construct();		
 		
 		if(empty($this->session->userdata('user'))) {
@@ -101,7 +100,7 @@ class Anggota extends CI_Controller {
 	{
 		$this->session->unset_userdata('user');
 		session_destroy();
-		redirect('login');
+		redirect('anggota');
 	}
 
 	public function edit_profile()
