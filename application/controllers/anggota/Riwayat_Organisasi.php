@@ -36,6 +36,8 @@ class Riwayat_Organisasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Tambah Riwayat Organisasi';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/organisasi/add_riwayat_org',$data);
 		} else {
 			$insert = $this->Riwayat_Org_model->add_riwayat_org($data['nim']);
@@ -65,6 +67,8 @@ class Riwayat_Organisasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_org']= $this->get($id);
+			$ui['page'] = 'Ubah Riwayat Organisasi';
+			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/organisasi/update_riwayat_org',$data);
 		} else {
 			$update = $this->Riwayat_Org_model->update_riwayat_org($id);
@@ -80,6 +84,8 @@ class Riwayat_Organisasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Hapus Riwayat Organisasi';
+			$this->load->view('anggota/crud_header',$ui);
 			$data['riwayat_org']= $this->get($id);
 			$this->load->view('anggota/riwayat/organisasi/delete_riwayat_org',$data);
 		} else {
