@@ -16,7 +16,7 @@ class Riwayat_PKM extends CI_Controller {
 		$this->load->model('Riwayat_PKM_model');
 	}
 
-	public function riwayat_pkm()
+	public function index()
 	{
 		$nim = $this->session->userdata('user');
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
