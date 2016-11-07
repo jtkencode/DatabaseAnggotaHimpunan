@@ -13,7 +13,7 @@
 						</div>
 						<?php if ($page != 'overview') : ?>
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-12 text-right">
 								<br>
 								<a href="<?php echo site_url('anggota/riwayat_'),$page,'/add';?>" class="btn btn-default">Tambah Riwayat</a>
 								<button class="btn btn-default" id="editRiwayat">Edit Riwayat</button>
