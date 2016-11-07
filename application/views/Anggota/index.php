@@ -22,10 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row">
 					<?php $this->view('anggota/profile'); ?> <!-- Profile Page on Left Col-->
+
+					<!--Tabs Riwayat -->
 					<div class="col-md-9">
 						<div class="row">
 							<ul class="nav nav-tabs">
-							  <li class="active"><a href="<?php echo site_url('anggota/index') ;?>">Overview</a></li>
+							  <li class="active"><a href="<?php echo site_url('anggota/profile') ;?>">Overview</a></li>
 							  <li><a href="<?php echo site_url('anggota/riwayat_pendidikan') ;?>">Pendidikan</a></li>
 							  <li ><a href="<?php echo site_url('anggota/riwayat_organisasi') ;?>">Organisasi</a></li>
 							  <li ><a href="<?php echo site_url('anggota/riwayat_prestasi') ;?>">Prestasi</a></li>
@@ -34,6 +36,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							   <li ><a href="<?php echo site_url('anggota/riwayat_pkm') ;?>">PKM</a></li>
 							</ul>
 						</div>
+					</div>
+					<div class="col-md-9">
+						
 						<div class="row">
 							<div class="col-md-12">
 								<h3><small>Recent Activity</small></h3>
