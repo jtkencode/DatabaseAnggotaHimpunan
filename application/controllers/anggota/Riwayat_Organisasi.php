@@ -10,7 +10,7 @@ class Riwayat_Organisasi extends CI_Controller {
 		if(empty($this->session->userdata('user'))) {
             redirect('login');
         }
-		
+		$this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Org_model');
@@ -36,7 +36,7 @@ class Riwayat_Organisasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_riwayat_org',$data);
+			$this->load->view('anggota/riwayat/organisasi/add_riwayat_org',$data);
 		} else {
 			$insert = $this->Riwayat_Org_model->add_riwayat_org($data['nim']);
 			if ($insert){
@@ -65,7 +65,7 @@ class Riwayat_Organisasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_org']= $this->get_riwayat_org($id);
-			$this->load->view('anggota/update_riwayat_org',$data);
+			$this->load->view('anggota/riwayat/organisasi/update_riwayat_org',$data);
 		} else {
 			$update = $this->Riwayat_Org_model->update_riwayat_org($id);
 			if ($update){
@@ -81,7 +81,7 @@ class Riwayat_Organisasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_org']= $this->get_riwayat_org($id);
-			$this->load->view('anggota/delete_riwayat_org',$data);
+			$this->load->view('anggota/riwayat/organisasi/delete_riwayat_org',$data);
 		} else {
 			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id);
 			if ($delete){
