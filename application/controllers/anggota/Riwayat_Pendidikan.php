@@ -21,6 +21,8 @@ class Riwayat_Pendidikan extends CI_Controller {
 	{
 		$nim = $this->session->userdata('user');
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
+		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_nim($nim);
 		$ui['navtab']['page'] = 'pendidikan';
