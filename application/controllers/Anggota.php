@@ -47,7 +47,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_nim($nim);
-		$this->load->view('anggota/riwayat_pendidikan',$data);
+		$this->load->view('anggota/riwayat/pendidikan/riwayat_pendidikan',$data);
 	}
 
 	public function riwayat_organisasi()
@@ -56,7 +56,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_org'] = $this->Riwayat_Org_model->get_nim($nim);
-		$this->load->view('anggota/riwayat_organisasi',$data);
+		$this->load->view('anggota/riwayat/organisasi/riwayat_organisasi',$data);
 	}
 
 	public function riwayat_prestasi()
@@ -66,7 +66,7 @@ class Anggota extends CI_Controller {
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_nim($nim);
-		$this->load->view('anggota/riwayat_prestasi',$data);
+		$this->load->view('anggota/riwayat/prestasi/riwayat_prestasi',$data);
 	}
 
 	public function riwayat_kepanitiaan()
@@ -75,7 +75,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
-		$this->load->view('anggota/riwayat_kepanitiaan',$data);
+		$this->load->view('anggota/riwayat/kepanitiaan/riwayat_kepanitiaan',$data);
 	}
 
 	public function riwayat_pelatihan()
@@ -84,7 +84,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_nim($nim);
-		$this->load->view('anggota/riwayat_pelatihan',$data);
+		$this->load->view('anggota/riwayat/pelatihan/riwayat_pelatihan',$data);
 	}
 
 	public function riwayat_pkm()
@@ -93,7 +93,7 @@ class Anggota extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($nim);
-		$this->load->view('anggota/riwayat_pkm',$data);
+		$this->load->view('anggota/riwayat/pkm/riwayat_pkm',$data);
 	}
 
 
