@@ -46,7 +46,7 @@ class Profile extends CI_Controller {
 	{
 		$this->session->unset_userdata('user');
 		session_destroy();
-		redirect('anggota');
+		redirect('');
 	}
 
 	public function edit_profile()
