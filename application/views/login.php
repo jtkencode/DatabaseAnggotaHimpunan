@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-4 col-sm-8">
-										<button type="submit" class="btn btn-primary">Login</button>
+										<button type="submit" class="btn btn-primary btn-block">Login</button>
 									</div>
 								</div>
 							</form>
