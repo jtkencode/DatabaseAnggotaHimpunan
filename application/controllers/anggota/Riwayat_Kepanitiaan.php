@@ -23,7 +23,14 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
-		$this->load->view('anggota/riwayat/kepanitiaan/riwayat_kepanitiaan',$data);
+		$ui['navtab']['page'] = 'kepanitiaan';
+		//$this->load->view('anggota/riwayat/kepanitiaan/riwayat_kepanitiaan',$data);
+		
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/profile',$data);
+		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
+		$this->load->view('anggota/riwayat/kepanitiaan/content',$data);
+		$this->load->view('anggota/footer');
 	}
 	
 	public function add_riwayat_kepanitiaan()
