@@ -37,7 +37,7 @@ class Login extends CI_Controller {
 		} else if ($this->Login_Model->validate($username,$password)){
 			$sess_data['user'] = $username;
 			$this->session->set_userdata($sess_data);
-			redirect('anggota');
+			redirect('anggota/anggota.php');
 		} else {
 			$this->session->set_flashdata('error', 'username / password salah');
 			redirect('login');
