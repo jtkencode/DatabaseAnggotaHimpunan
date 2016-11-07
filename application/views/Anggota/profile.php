@@ -10,7 +10,7 @@
 							<h3><strong><?php echo $anggota->NAMA_LENGKAP;?></strong></h3>
 							<h4><?php echo $anggota->NAMA_BAGUS ;?></h4>
 							<p>Nama Departemen</p>
-							<p>Nama Kelas + Nama Prodi + Angkatan</p>
+							<p><?php echo $prodi[$anggota->ID_PS]," ",$anggota->NAMA_KELAS," ",$anggota->ANGKATAN_KELAS ;?></p>
 							<a href="<?php echo site_url('anggota/profile/edit_profile');?>" class="btn btn-default btn-block">Edit Profile</a>
 							<a href="<?php echo site_url('anggota/profile/change_password');?>" class="btn btn-default btn-block">Ubah Password</a>
 							<hr>
