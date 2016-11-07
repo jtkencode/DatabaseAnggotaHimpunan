@@ -10,7 +10,8 @@ class Riwayat_Pendidikan extends CI_Controller {
 		if(empty($this->session->userdata('user'))) {
             redirect('login');
         }
-
+        $this->load->model('Anggota_Model');
+		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pendidikan_model');
 
 	}
