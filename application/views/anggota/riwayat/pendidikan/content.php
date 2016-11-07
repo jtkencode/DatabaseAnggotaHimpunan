@@ -24,8 +24,8 @@ $left = false;
 													<p><?php echo $row->BIDANG_PENDIDIKAN ;?></p>
 													<!-- Button for edit riwayat-->
 													<div class="hiddenButton" hidden>
-														<a href="<?php echo site_url('anggota/riwayat_pendidikan/update'),'/',$row->NO_URUT_PENDIDIKAN;?>" class="btn btn-default btn-sm" title="ubah data"><span class="glyphicon glyphicon-pencil"></span></a>
-														<a href="<?php echo site_url('anggota/riwayat_pendidikan/delete'),'/',$row->NO_URUT_PENDIDIKAN;?>" class="btn btn-default btn-sm" title="hapus data"><span class="glyphicon glyphicon-trash"></span></a>
+														<a href="<?php echo site_url('anggota/riwayat_pendidikan/update'),'/',$row->NO_URUT_PENDIDIKAN;?>" class="btn btn-success btn-sm" title="ubah data"><span class="glyphicon glyphicon-pencil"></span></a>
+														<a href="<?php echo site_url('anggota/riwayat_pendidikan/delete'),'/',$row->NO_URUT_PENDIDIKAN;?>" class="btn btn-danger btn-sm" title="hapus data"><span class="glyphicon glyphicon-trash"></span></a>
 													</div>
 												</div>
 											</div>
