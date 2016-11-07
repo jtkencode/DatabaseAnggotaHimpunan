@@ -30,11 +30,11 @@ class Profile extends CI_Controller {
 		$nim = $this->session->userdata('user');
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
-		$data['navtab']['page'] = 'overview';
+		$ui['navtab']['page'] = 'overview';
 		
 		$this->load->view('anggota/header');
 		$this->load->view('anggota/profile',$data);
-		$this->load->view('anggota/nav_riwayat',$data['navtab']);
+		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/overview');
 		$this->load->view('anggota/footer');
 	}
