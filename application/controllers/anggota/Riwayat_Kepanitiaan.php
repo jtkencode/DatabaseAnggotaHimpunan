@@ -10,7 +10,7 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		if(empty($this->session->userdata('user'))) {
             redirect('login');
         }
-
+        $this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');		
 		$this->load->model('Riwayat_Kepanitiaan_model');
