@@ -23,7 +23,13 @@ class Riwayat_Pelatihan extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pelatihan'] = $this->Riwayat_Pelatihan_model->get_nim($nim);
-		$this->load->view('anggota/riwayat/pelatihan/riwayat_pelatihan',$data);
+		$ui['navtab']['page'] = 'pelatihan';
+		
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/profile',$data);
+		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
+		$this->load->view('anggota/riwayat/pelatihan/content',$data);
+		$this->load->view('anggota/footer');
 	}
 	
 	public function add()
