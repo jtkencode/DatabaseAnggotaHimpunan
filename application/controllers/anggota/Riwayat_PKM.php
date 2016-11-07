@@ -22,7 +22,13 @@ class Riwayat_PKM extends CI_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['kontak'] = $this->Kontak_model->get_id($nim);
 		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($nim);
-		$this->load->view('anggota/riwayat/pkm/riwayat_pkm',$data);
+		$ui['navtab']['page'] = 'pkm';
+		
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/profile',$data);
+		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
+		$this->load->view('anggota/riwayat/pkm/content',$data);
+		$this->load->view('anggota/footer');
 	}
 
 	public function add()
