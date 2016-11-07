@@ -45,7 +45,7 @@ class Riwayat_PKM extends CI_Controller {
 		}	
 	}
 
-	public function get($id = null)
+	public function get_riwayat_pkm($id = null)
 	{
 		if ($id != null) {
 			$data = $this->Riwayat_PKM_model->get_id($id);
