@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<a href="#" class="button btn btn-default">Lihat Data Anggota</a>
 			<a href="#" class="button btn btn-default">Atur Kegiatan</a>
 			<a href="#" class="button btn btn-default">Atur Periode</a>
-			<a href="<?php echo site_url('admin/logout'); ?>" class="button btn btn-default">Logout</a>
+			<a href="<?php echo site_url('site/logout'); ?>" class="button btn btn-default">Logout</a>
 		</div>
 		<hr>
 

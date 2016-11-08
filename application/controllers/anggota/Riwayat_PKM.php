@@ -1,15 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Riwayat_PKM extends CI_Controller {
+class Riwayat_PKM extends Anggota_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();		
 		
-		if(empty($this->session->userdata('user'))) {
-            redirect('login');
-        }
         $this->load->helper('form');
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');

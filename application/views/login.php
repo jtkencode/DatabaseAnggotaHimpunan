@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 						<div class="panel-body">
 							<?php if (isset($error)) echo $error ;?>
-							<form class="form-horizontal" action="<?php echo site_url('login/authentication')?>" method="POST">
+							<form class="form-horizontal" action="<?php echo site_url('site/login')?>" method="POST">
 								<div class="form-group">
 									<label for="inputUsername" class="col-sm-4 control-label">Username</label>
 									<div class="col-sm-8">

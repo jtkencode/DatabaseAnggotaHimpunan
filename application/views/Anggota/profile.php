@@ -25,5 +25,5 @@
 							<hr>
 						</div>
 
-						<a href="<?php echo site_url('anggota/profile/logout');?>" class="btn btn-default btn-block">Logout</a>
+						<a href="<?php echo site_url('site/logout');?>" class="btn btn-default btn-block">Logout</a>
 					</div>

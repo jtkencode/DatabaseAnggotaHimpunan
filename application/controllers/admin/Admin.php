@@ -1,16 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends Admin_Controller {
 
 	public function __construct()
 	{
 
 		parent::__construct();
-		
-		if(empty($this->session->userdata('user'))) {
-            redirect('login');
-        }
 
 		$this->load->helper('html');
 		$this->load->helper('url');
@@ -27,10 +23,4 @@ class Admin extends CI_Controller {
 		$this->load->view('Admin/index',$data);
 	}
 
-	public function logout()
-	{
-		$this->session->unset_userdata('user');
-		session_destroy();
-		redirect('admin');
-	}
 }

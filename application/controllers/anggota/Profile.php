@@ -1,16 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profile extends CI_Controller {
+class Profile extends Anggota_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();		
 		
-		if(empty($this->session->userdata('user'))) {
-            redirect('login');
-        }
-
 		$this->load->helper('html');
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -40,13 +36,6 @@ class Profile extends CI_Controller {
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/overview');
 		$this->load->view('anggota/footer');
-	}
-
-	public function logout()
-	{
-		$this->session->unset_userdata('user');
-		session_destroy();
-		redirect('');
 	}
 
 	public function edit_profile()

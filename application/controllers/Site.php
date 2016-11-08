@@ -12,17 +12,41 @@ class Site extends CI_Controller {
 	
 	public function index()
 	{
-		redirect('site/login');
+		if ($this->identity->is_admin()){
+			redirect('admin/admin');
+		} else if ($this->identity->is_anggota()){
+			redirect('anggota/profile');
+		} else 
+			redirect('site/login');
+
 	}
 
 	public function login()
 	{
-		if ( !empty($this->session->flashdata('error')) ) {
-			$data['error'] = $this->session->flashdata('error');
-			$this->load->view('login',$data);
-		} else {
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$this->load->view('login');
+		} else {
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			
+			if ($this->identity->login($username,$password)){
+				if ($this->identity->is_admin()){
+					redirect('admin/admin');
+				} else {
+					redirect('anggota/profile');
+				}
+			} else {
+				$data['error'] = $this->session->flashdata('error');
+				$this->load->view('login',$data);
+			}
 		}
+		
+	}
+
+	public function logout()
+	{
+		$this->identity->logout();
+		redirect('site/login');
 	}
 
 }
