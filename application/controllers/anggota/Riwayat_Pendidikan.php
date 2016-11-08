@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Riwayat_Pendidikan extends Anggota_Controller {
-
+	private $path;
 	public function __construct()
 	{
 		parent::__construct();		
@@ -11,7 +11,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pendidikan_model');
 		$this->load->helper('form');
-
+		$this->path = "anggota/riwayat_pendidikan";
 	}
 
 	public function index()
@@ -42,6 +42,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($data['nim']);
 			if ($insert){
+				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
@@ -53,7 +54,6 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		if ($id != null) {
 			$data = $this->Riwayat_Pendidikan_model->get_id($nim,$id);
 		} else {
-			
 			$data = $this->Riwayat_Pendidikan_model->get_nim($nim);
 		}
 		
@@ -72,6 +72,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($nim,$id);
 			if ($update){
+				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
@@ -79,7 +80,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 
 	public function delete($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($id);
@@ -91,6 +92,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($nim,$id);
 			if ($delete){
+				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	

@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Riwayat_Pelatihan extends Anggota_Controller {
-
+	private $path;
 	public function __construct()
 	{
 		parent::__construct();		
@@ -11,6 +11,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Pelatihan_model');
+		$this->path = "anggota/riwayat_pelatihan";
 
 	}
 
@@ -42,6 +43,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Pelatihan_model->add_riwayat_pelatihan($data['nim']);
 			if ($insert){
+				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
@@ -71,6 +73,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Pelatihan_model->update_riwayat_pelatihan($nim,$id);
 			if ($update){
+				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
@@ -90,6 +93,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($nim,$id);
 			if ($delete){
+				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	

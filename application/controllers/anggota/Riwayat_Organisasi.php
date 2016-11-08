@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Riwayat_Organisasi extends Anggota_Controller {
 
+	private $path;
 	public function __construct()
 	{
 		parent::__construct();		
@@ -11,6 +12,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 		$this->load->model('Riwayat_Org_model');
+		$this->path = "anggota/riwayat_organisasi";
 	}
 
 	public function index()
@@ -41,6 +43,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Org_model->add_riwayat_org($data['nim']);
 			if ($insert){
+				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
@@ -72,7 +75,9 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Org_model->update_riwayat_org($nim,$id);
 			if ($update){
-				  redirect('site/success');
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
+
 			} else echo "Update Gagal";
 		}	
 	}
@@ -92,6 +97,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Org_model->delete_riwayat_org($nim,$id);
 			if ($delete){
+				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
