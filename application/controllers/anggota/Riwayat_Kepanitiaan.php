@@ -23,8 +23,6 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
 		$ui['navtab']['page'] = 'kepanitiaan';
-
-		var_dump($data['riwayat_kepanitiaan']);
 		
 		$this->load->view('anggota/header');
 		$this->load->view('anggota/profile',$data);
