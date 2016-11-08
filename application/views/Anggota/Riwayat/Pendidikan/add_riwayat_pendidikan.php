@@ -63,7 +63,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputBidang">Bidang</label>
 						<div class="col-md-9">
-							<input name="bidang" class="form-control" id="inputBidang" type="text" placeholder="Bidang" value="" autocomplete="off">
+							<input name="bidang" class="form-control" id="inputBidang" type="text" placeholder="Bidang" value="" autocomplete="off" disabled="true">
 						</div>
 					</div>
 
@@ -76,6 +76,25 @@
 				</form>
 			</div>
 		</div> <!-- End Row -->
+		
+		<!-- Disable Input Bidang if jenjang SD and SMP -->
+		<script type="text/javascript">
+			$('#radioJenjangPendidikanD').click(function(){
+				$('#inputBidang').prop( "disabled", true );
+				$('#inputBidang').val('');
+			});
+			$('#radioJenjangPendidikanP').click(function(){
+				$('#inputBidang').prop( "disabled", true );
+				$('#inputBidang').val('');
+			});
+			$('#radioJenjangPendidikanA').click(function(){
+				$('#inputBidang').prop( "disabled", false );
+			});
+			$('#radioJenjangPendidikanT').click(function(){
+				$('#inputBidang').prop( "disabled", false );
+			});
+		</script>
+
 		
 	</div>
 
