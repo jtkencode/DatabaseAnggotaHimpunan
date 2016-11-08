@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profile extends Anggota_Controller {
-
+	private $path;
 	public function __construct()
 	{
 		parent::__construct();		
@@ -19,6 +19,7 @@ class Profile extends Anggota_Controller {
 		$this->load->model('Riwayat_Kepanitiaan_model');
 		$this->load->model('Riwayat_Pelatihan_model');
 		$this->load->model('Riwayat_PKM_model');
+		$this->path = "anggota/profile";
 	}
 
 	public function index()
@@ -52,7 +53,8 @@ class Profile extends Anggota_Controller {
 			$update = $this->Anggota_Model->update_profile($nim);
 
 			if ($update){
-				redirect('anggota/success');
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
 			} else echo "Update Gagal";
 		}
 	}
@@ -70,7 +72,8 @@ class Profile extends Anggota_Controller {
 			$update = $this->Anggota_Model->change_password($nim);
 
 			if ($update){
-				redirect('anggota/success');
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}
