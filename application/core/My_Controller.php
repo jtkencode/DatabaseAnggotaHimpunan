@@ -9,10 +9,13 @@ class My_Controller extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('Login_Model');
 	}		
-	
+}
+
+class Admin_Controller extends My_Controller {
 
 }
 
-
-
+class Anggota_Controller extends My_Controller {
+	
+}
 ?>
