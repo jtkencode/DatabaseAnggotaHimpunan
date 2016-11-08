@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h4 align="center">Terima kasih telah berkontribusi untuk Himakom:)</h4>
 						Silahkan memeriksa data yang sudah masuk pada <a href="<?php echo site_url('anggota');?>">dashboard anda</a> untuk memastikan data yang kamu masukkan sesuai. Mohon maaf atas ketidaknyamanan sistem kami yang masih belum sempurna :). <br><br>
 						<div class="text-center"> 
-							<a href="<?php echo site_url('anggota/profile');?>" class="btn btn-success" align="center">Kembali ke Dashboard </a>
+							<a href="<?php echo site_url($path);?>" class="btn btn-success" align="center">Kembali ke Dashboard </a>
 						</div>
 					</div>
 				</div>
