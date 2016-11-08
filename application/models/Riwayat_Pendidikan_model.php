@@ -2,14 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Riwayat_Pendidikan_model extends CI_Model{
-
-	public $nim;
-	public $no_urut_pendidikan;
-	public $jenjang_pendidikan;
-	public $nama_institusi_pendidikan;
-	public $tahun_masuk_pendidikan;
-	public $tahun_lulus_pendidikan;
-	public $bidang_pendidikan;
 	
 	public function __construct()
 	{
