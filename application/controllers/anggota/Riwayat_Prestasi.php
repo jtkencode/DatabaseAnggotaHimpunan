@@ -53,10 +53,10 @@ class Riwayat_Prestasi extends Anggota_Controller {
 	
 	public function get($id = null)
 	{
+		$nim = $this->session->userdata('user');
 		if ($id != null) {
-			$data = $this->Riwayat_Prestasi_model->get_id($id);
-		} else {
-			$nim = $this->session->userdata('user');
+			$data = $this->Riwayat_Prestasi_model->get_id($nim,$id);
+		} else {	
 			$data = $this->Riwayat_Prestasi_model->get_nim($nim);
 		}
 		
@@ -66,7 +66,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 	
 	public function update($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
@@ -75,7 +75,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/prestasi/update_riwayat_prestasi',$data);
 		} else {
-			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($id);
+			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($nim,$id);
 			if ($update){
 				  redirect('site/success');
 			} else echo "Update Gagal";
@@ -85,7 +85,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 	
 	public function delete($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($id);
@@ -95,7 +95,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($id);
+			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($nim,$id);
 			if ($delete){
 				 redirect('site/success');
 			} else echo "Delete Gagal";

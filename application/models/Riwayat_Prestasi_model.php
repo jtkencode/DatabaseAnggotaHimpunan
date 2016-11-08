@@ -16,9 +16,11 @@ class Riwayat_Prestasi_model extends CI_Model{
 		return $result;
 	}
 
-	public function get_id($id)
+	public function get_id($nim,$id)
 	{
-		$query = $this->db->where('no_urut_prestasi', $id)->get('riwayat_prestasi');
+		$this->db->where('nim',$nim);
+		$this->db->where('no_urut_prestasi', $id);
+		$query = $this->db->get('riwayat_prestasi');
 		$result = $query->result();
 
 		return $result[0];
@@ -57,7 +59,7 @@ class Riwayat_Prestasi_model extends CI_Model{
 		return $query;
 	}
 
-	public function update_riwayat_prestasi($id)
+	public function update_riwayat_prestasi($nim,$id)
 	{	
 		$data = array(
 				'ID_TINGKAT_PRESTASI' => $this->input->post('tingkat_prestasi'),
@@ -68,13 +70,15 @@ class Riwayat_Prestasi_model extends CI_Model{
 				'JENIS_PRESTASI' => $this->input->post('jenis_prestasi')
 			);
 
+		$this->db->where('nim',$nim);
 		$this->db->where('NO_URUT_PRESTASI',$id);
 		$query = $this->db->update('riwayat_prestasi',$data);
 		return $query;
 	}
 
-	public function delete_riwayat_prestasi($id)
+	public function delete_riwayat_prestasi($nim,$id)
 	{
+		$this->db->where('nim',$nim);
 		$this->db->where('NO_URUT_PRESTASI',$id);
 		$query = $this->db->delete('riwayat_prestasi');
 		return $query;
