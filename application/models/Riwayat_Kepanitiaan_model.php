@@ -76,8 +76,9 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 	}
 
 
-	public function delete_riwayat_kepanitiaan($id)
+	public function delete_riwayat_kepanitiaan($nim,$id)
 	{
+		$this->db->where('NIM',$id);
 		$this->db->where('no_urut_kepanitiaan', $id);
 		$query = $this->db->delete('riwayat_kepanitiaan');
 		return $query;

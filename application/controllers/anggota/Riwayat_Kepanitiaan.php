@@ -73,7 +73,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/update_riwayat_kepanitiaan',$data);
 		} else {
-			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($id);
+			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($nim,$id);
 			if ($update){
 				  redirect('site/success');
 			} else echo "Update Gagal";
@@ -92,7 +92,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
+			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($nim,$id);
 			if ($delete){
 				 redirect('site/success');
 			} else echo "Delete Gagal";
