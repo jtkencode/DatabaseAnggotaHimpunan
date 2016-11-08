@@ -16,9 +16,11 @@ class Riwayat_Org_model extends CI_Model{
 		return $result;
 	}
 
-	public function get_id($id)
+	public function get_id($nim,$id)
 	{
-		$query = $this->db->where('no_urut_org', $id)->get('riwayat_org');
+		$this->db->where('no_urut_org', $id);
+		$this->db->where('nim', $nim);
+		$query = $this->db->get('riwayat_org');
 		$result = $query->result();
 
 		return $result[0];
@@ -57,7 +59,7 @@ class Riwayat_Org_model extends CI_Model{
 		return $query;
 	}
 
-	public function update_riwayat_org($id)
+	public function update_riwayat_org($nim,$id)
 	{	
 		$data = array(
 				'NAMA_ORG' => $this->input->post('nama_org'),
@@ -66,14 +68,15 @@ class Riwayat_Org_model extends CI_Model{
 				'TAHUN_SELESAI_ORG' => $this->input->post('tahun_selesai_org'),
 				'ORG_KEMAHASISWAAN' => $this->input->post('org_kemahasiswaan')
 			);
-
+		$this->db->where('NIM',$nim);
 		$this->db->where('NO_URUT_ORG',$id);
 		$query = $this->db->update('riwayat_org',$data);
 		return $query;
 	}
 
-	public function delete_riwayat_org($id)
+	public function delete_riwayat_org($nim,$id)
 	{
+		$this->db->where('NIM',$nim);
 		$this->db->where('NO_URUT_ORG',$id);
 		$query = $this->db->delete('riwayat_org');
 		return $query;

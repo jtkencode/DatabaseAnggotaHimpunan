@@ -49,10 +49,10 @@ class Riwayat_Organisasi extends Anggota_Controller {
 
 	public function get($id = null)
 	{
+		$nim= $this->session->userdata('user');
 		if ($id != null) {
-			$data = $this->Riwayat_Org_model->get_id($id);
+			$data = $this->Riwayat_Org_model->get_id($nim,$id);
 		} else {
-			$nim = $this->session->userdata('user');
 			$data = $this->Riwayat_Org_model->get_nim($nim);
 		}
 		
@@ -62,7 +62,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 
 	public function update($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim= $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_org']= $this->get($id);
@@ -70,7 +70,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/organisasi/update_riwayat_org',$data);
 		} else {
-			$update = $this->Riwayat_Org_model->update_riwayat_org($id);
+			$update = $this->Riwayat_Org_model->update_riwayat_org($nim,$id);
 			if ($update){
 				  redirect('site/success');
 			} else echo "Update Gagal";
@@ -80,7 +80,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 	
 	public function delete($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim= $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Hapus Riwayat Organisasi';
@@ -90,7 +90,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id);
+			$delete = $this->Riwayat_Org_model->delete_riwayat_org($nim,$id);
 			if ($delete){
 				 redirect('site/success');
 			} else echo "Delete Gagal";
