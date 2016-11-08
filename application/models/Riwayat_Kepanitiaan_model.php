@@ -70,7 +70,7 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 			);
 
 		$this->db->where('NO_URUT_KEPANITIAAN',$id);
-		$this->db->where('NIM',$id);
+		$this->db->where('NIM',$nim);
 		$query = $this->db->update('riwayat_kepanitiaan',$data);
 		return $query;
 	}
@@ -78,7 +78,7 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 
 	public function delete_riwayat_kepanitiaan($nim,$id)
 	{
-		$this->db->where('NIM',$id);
+		$this->db->where('NIM',$nim);
 		$this->db->where('no_urut_kepanitiaan', $id);
 		$query = $this->db->delete('riwayat_kepanitiaan');
 		return $query;
