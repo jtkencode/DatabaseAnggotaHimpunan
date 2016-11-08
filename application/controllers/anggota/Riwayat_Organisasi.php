@@ -87,9 +87,11 @@ class Riwayat_Organisasi extends CI_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Hapus Riwayat Organisasi';
+			$data['table']['header'] = ["Nama Organisasi","Jabatan","Tahun Mulai","Tahun Selesai","Organisasi Kemahasiswaan"];
+			$data['attribute'] = ["NAMA_ORG","JABATAN_ORG","TAHUN_MULAI_ORG","TAHUN_SELESAI_ORG","ORG_KEMAHASISWAAN"];
+			$data['riwayat']= (array) $this->get($id);
 			$this->load->view('anggota/crud_header',$ui);
-			$data['riwayat_org']= $this->get($id);
-			$this->load->view('anggota/riwayat/organisasi/delete_riwayat_org',$data);
+			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
 			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id);
 			if ($delete){

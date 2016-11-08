@@ -85,10 +85,12 @@ class Riwayat_Pendidikan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_pendidikan']= $this->get($id);
+			$data['riwayat']= (array) $this->get($id);
 			$ui['page'] = 'Hapus Riwayat Pendidikan';
+			$data['table']['header'] = ["Jenjang Pendidikan", "Nama Institusi", "Tahun Masuk", "Tahun Lulus","Bidang Pendidikan"];
+			$data['attribute'] = ["JENJANG_PENDIDIKAN","NAMA_INSTITUSI_PENDIDIKAN","TAHUN_MASUK_PENDIDIKAN","TAHUN_LULUS_PENDIDIKAN","BIDANG_PENDIDIKAN"];
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/pendidikan/delete_riwayat_pendidikan',$data);
+			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
 			if ($delete){

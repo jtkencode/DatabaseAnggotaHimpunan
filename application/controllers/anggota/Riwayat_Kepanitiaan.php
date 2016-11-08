@@ -85,10 +85,12 @@ class Riwayat_Kepanitiaan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_kepanitiaan']= $this->get($id);
+			$data['riwayat']= (array) $this->get($id);
 			$ui['page'] = 'Hapus Riwayat Kepanitiaan';
+			$data['table']['header'] = ["Nama Kegiatan"	,"Nama Organisasi",	"Jabatan","Tahun Kepanitiaan","Kepanitiaan Kemahasiswaan"];
+			$data['attribute'] = ["NAMA_KEGIATAN_KEPANITIAAN","NAMA_ORG_KEPANITIAAN","JABATAN_KEPANITIAAN","TAHUN_KEPANITIAAN","KEPANITIAAN_KEMAHASISWAAN"];
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/kepanitiaan/delete_riwayat_kepanitiaan',$data);
+			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
 			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
 			if ($delete){

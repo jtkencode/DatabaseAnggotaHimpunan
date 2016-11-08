@@ -84,10 +84,12 @@ class Riwayat_Pelatihan extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_pelatihan']= $this->get($id);
+			$data['riwayat']= (array) $this->get($id);
 			$ui['page'] = 'Hapus Riwayat Pelatihan';
+			$data['table']['header'] = ["Nama Pelatihan","Nama Penyelenggara","Tahun Pelatihan","Pelatihan Kemahasiswaan"];
+			$data['attribute'] = ["NAMA_PELATIHAN","NAMA_PENYELENGGARA_PELATIHAN","TAHUN_PELATIHAN","PELATIHAN_KEMAHASISWAAN"];
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/pelatihan/delete_riwayat_pelatihan',$data);
+			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
 			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($id);
 			if ($delete){

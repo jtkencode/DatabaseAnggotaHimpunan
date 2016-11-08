@@ -83,10 +83,12 @@ class Riwayat_PKM extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_pkm']= $this->get($id);
+			$data['riwayat']= (array) $this->get($id);
 			$ui['page'] = 'Hapus Riwayat PKM';
+			$data['table']['header'] = ["Nama PKM","Nama Penyelenggara","Tahun PKM","PKM Kemahasiswaan"];
+			$data['attribute'] = ["NAMA_PKM","NAMA_PENYELENGGARA_PKM","TAHUN_PKM","PKM_KEMAHASISWAAN"];
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/pkm/delete_riwayat_pkm',$data);
+			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
 			$delete = $this->Riwayat_PKM_model->delete_riwayat_pkm($id);
 			if ($delete){

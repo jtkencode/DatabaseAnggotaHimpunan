@@ -91,10 +91,12 @@ class Riwayat_Prestasi extends CI_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_prestasi']= $this->get($id);
+			$data['riwayat']= (array) $this->get($id);
 			$ui['page'] = 'Hapus Riwayat Prestasi';
+			$data['table']['header'] = ["Tingkat Prestasi","Nama Prestasi","Pencapaian Prestasi","Lembaga Prestasi","Tahun Prestasi","Jenis Prestasi"];
+			$data['attribute'] = ["ID_TINGKAT_PRESTASI","NAMA_PRESTASI","PENCAPAIAN_PRESTASI","LEMBAGA_PRESTASI","TAHUN_PRESTASI","JENIS_PRESTASI"];
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/prestasi/delete_riwayat_prestasi',$data);
+			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
 			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($id);
 			if ($delete){
