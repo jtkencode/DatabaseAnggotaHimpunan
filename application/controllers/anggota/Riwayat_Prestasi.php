@@ -45,7 +45,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($data['nim']);
 			if ($insert){
-				redirect('anggota/success');
+				redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -77,7 +77,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($id);
 			if ($update){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -97,7 +97,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($id);
 			if ($delete){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
 	}

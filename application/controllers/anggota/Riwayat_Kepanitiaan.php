@@ -23,6 +23,8 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
 		$ui['navtab']['page'] = 'kepanitiaan';
+
+		var_dump($data['riwayat_kepanitiaan']);
 		
 		$this->load->view('anggota/header');
 		$this->load->view('anggota/profile',$data);
@@ -42,15 +44,16 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($data['nim']);
 			if ($insert){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
 	}
 
 	public function get($id = null)
 	{
+		$nim = $this->session->userdata('user');
 		if ($id != null) {
-			$data = $this->Riwayat_Kepanitiaan_model->get_id($id);
+			$data = $this->Riwayat_Kepanitiaan_model->get_id($nim,$id);
 		} else {
 			$nim = $this->session->userdata('user');
 			$data = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
@@ -72,7 +75,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($id);
 			if ($update){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}	
@@ -91,7 +94,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id);
 			if ($delete){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
 	}

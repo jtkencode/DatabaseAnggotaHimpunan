@@ -41,7 +41,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Org_model->add_riwayat_org($data['nim']);
 			if ($insert){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -72,7 +72,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Org_model->update_riwayat_org($id);
 			if ($update){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -92,7 +92,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id);
 			if ($delete){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
 	}

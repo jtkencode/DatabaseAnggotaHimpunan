@@ -31,7 +31,7 @@ class Site extends CI_Controller {
 			
 			if ($this->identity->login($username,$password)){
 				if ($this->identity->is_admin()){
-					redirect('admin/admin');
+					redirect('admin/dashboard');
 				} else {
 					redirect('anggota/profile');
 				}
@@ -48,6 +48,12 @@ class Site extends CI_Controller {
 		$this->identity->logout();
 		redirect('site/login');
 	}
+
+	public function success()
+	{
+		$this->load->view('anggota/success');
+	}
+
 
 }
 

@@ -88,10 +88,4 @@ class Profile extends Anggota_Controller {
 			} else echo "Update Gagal";
 		}	
 	}
-
-	public function success()
-	{
-		$this->load->view('anggota/success');
-	}
-
 }

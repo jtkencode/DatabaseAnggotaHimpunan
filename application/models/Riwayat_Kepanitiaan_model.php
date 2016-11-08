@@ -8,9 +8,11 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function get_id($id)
-	{
-		$query = $this->db->where('NO_URUT_KEPANITIAAN', $id)->get('riwayat_kepanitiaan');
+	public function get_id($nim,$id)
+	{	
+		$this->db->where('NIM',$nim);
+		$this->db->where('NO_URUT_KEPANITIAAN', $id);
+		$query = $this->db->get('riwayat_kepanitiaan');
 		$result = $query->result();
 
 		return $result[0];
@@ -57,7 +59,7 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 	}
 
 
-	public function update_riwayat_kepanitiaan($id)
+	public function update_riwayat_kepanitiaan($nim,$id)
 	{	
 		$data = array(
 				'NAMA_KEGIATAN_KEPANITIAAN' => $this->input->post('nama_kegiatan_kepanitiaan'),
@@ -68,6 +70,7 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 			);
 
 		$this->db->where('NO_URUT_KEPANITIAAN',$id);
+		$this->db->where('NIM',$id);
 		$query = $this->db->update('riwayat_kepanitiaan',$data);
 		return $query;
 	}
