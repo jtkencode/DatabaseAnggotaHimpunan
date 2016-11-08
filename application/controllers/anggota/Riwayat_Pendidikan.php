@@ -42,17 +42,18 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($data['nim']);
 			if ($insert){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
 	}
 
 	public function get($id = null)
 	{
+		$nim = $this->session->userdata('user');
 		if ($id != null) {
-			$data = $this->Riwayat_Pendidikan_model->get_id($id);
+			$data = $this->Riwayat_Pendidikan_model->get_id($nim,$id);
 		} else {
-			$nim = $this->session->userdata('user');
+			
 			$data = $this->Riwayat_Pendidikan_model->get_nim($nim);
 		}
 		
@@ -61,7 +62,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 
 	public function update($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pendidikan']= $this->get($id);
@@ -69,10 +70,9 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pendidikan/update_riwayat_pendidikan',$data);
 		} else {
-			//$id = $this->input->post('no_urut_pendidikan');
-			$update = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($id);
+			$update = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($nim,$id);
 			if ($update){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -89,9 +89,9 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id);
+			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($nim,$id);
 			if ($delete){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
 	}
