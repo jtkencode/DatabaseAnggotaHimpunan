@@ -25,15 +25,10 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		if ($username == "admin"){
-			if ($password == "birukandunia"){
-				$sess_data['user'] = "admin";
-				$this->session->set_userdata($sess_data);
-				redirect('admin');
-			} else {
-				$this->session->set_flashdata('error', 'username / password salah');
-				redirect('login');
-			}
+		if ($username == "admin" && $password == "birukandunia"){
+			$sess_data['user'] = $username;
+			$this->session->set_userdata($sess_data);
+			redirect('admin');
 		} else if ($this->Login_Model->validate($username,$password)){
 			$sess_data['user'] = $username;
 			$this->session->set_userdata($sess_data);
