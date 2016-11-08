@@ -42,17 +42,17 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Pelatihan_model->add_riwayat_pelatihan($data['nim']);
 			if ($insert){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Insert Gagal";
 		}	
 	}
 
 	public function get($id = null)
 	{
+		$nim = $this->session->userdata('user');
 		if ($id != null) {
-			$data = $this->Riwayat_Pelatihan_model->get_id($id);
+			$data = $this->Riwayat_Pelatihan_model->get_id($nim,$id);
 		} else {
-			$nim = $this->session->userdata('user');
 			$data = $this->Riwayat_Pelatihan_model->get_nim($nim);
 		}
 		
@@ -61,7 +61,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 
 	public function update($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pelatihan']= $this->get($id);
@@ -69,16 +69,16 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pelatihan/update_riwayat_pelatihan',$data);
 		} else {
-			$update = $this->Riwayat_Pelatihan_model->update_riwayat_pelatihan($id);
+			$update = $this->Riwayat_Pelatihan_model->update_riwayat_pelatihan($nim,$id);
 			if ($update){
-				  redirect('anggota/success');
+				  redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}
 	
 	public function delete($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($id);
@@ -88,9 +88,9 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($id);
+			$delete = $this->Riwayat_Pelatihan_model->delete_riwayat_pelatihan($nim,$id);
 			if ($delete){
-				 redirect('anggota/success');
+				 redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
 	}

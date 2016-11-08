@@ -16,9 +16,11 @@ class Riwayat_Pelatihan_model extends CI_Model{
 		return $result;
 	}
 
-	public function get_id($id)
+	public function get_id($nim,$id)
 	{
-		$query = $this->db->where('no_urut_pelatihan', $id)->get('riwayat_pelatihan');
+		$this->db->where('nim',$nim);
+		$this->db->where('no_urut_pelatihan', $id);
+		$query = $this->db->get('riwayat_pelatihan');
 		$result = $query->result();
 
 		return $result[0];
@@ -55,7 +57,7 @@ class Riwayat_Pelatihan_model extends CI_Model{
 		return $query;
 	}
 
-	public function update_riwayat_pelatihan($id)
+	public function update_riwayat_pelatihan($nim,$id)
 	{		
 		$data = array(
 				'NAMA_PELATIHAN' => $this->input->post('nama_pelatihan'),
@@ -64,13 +66,15 @@ class Riwayat_Pelatihan_model extends CI_Model{
 				'PELATIHAN_KEMAHASISWAAN' => $this->input->post('pelatihan_kemahasiswaan')
 			);
 
+		$this->db->where('nim',$nim);
 		$this->db->where('NO_URUT_PELATIHAN',$id);
 		$query = $this->db->update('riwayat_pelatihan',$data);
 		return $query;
 	}
 
-	public function delete_riwayat_pelatihan($id)
+	public function delete_riwayat_pelatihan($nim,$id)
 	{
+		$this->db->where('nim',$nim);
 		$this->db->where('NO_URUT_PELATIHAN',$id);
 		$query = $this->db->delete('riwayat_pelatihan');
 		return $query;
