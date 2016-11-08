@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Riwayat_Kepanitiaan extends Anggota_Controller {
-
+	private $path;
 	public function __construct()
 	{
 		parent::__construct();		
@@ -11,7 +11,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');		
 		$this->load->model('Riwayat_Kepanitiaan_model');
-
+		$this->path = "anggota/riwayat_kepanitiaan";
 	}
 
 	public function index()
@@ -42,7 +42,8 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		} else {
 			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($data['nim']);
 			if ($insert){
-				 redirect('site/success');
+				$this->session->set_flashdata('success_path', $this->path);
+				 redirect('site/success/');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -63,7 +64,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 	
 	public function update($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_kepanitiaan']= $this->get($id);
@@ -73,14 +74,15 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		} else {
 			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($nim,$id);
 			if ($update){
-				  redirect('site/success');
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}	
 
 	public function delete($id)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$nim = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($id);
@@ -92,7 +94,8 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		} else {
 			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($nim,$id);
 			if ($delete){
-				 redirect('site/success');
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
 			} else echo "Delete Gagal";
 		}	
 	}
