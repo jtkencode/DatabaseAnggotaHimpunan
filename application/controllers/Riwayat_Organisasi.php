@@ -11,6 +11,11 @@ class Riwayat_Organisasi extends My_Controller {
 		$this->load->model('Riwayat_Org_model');
 	}
 
+	public function index()
+	{
+		redirect('riwayat_organisasi/view');
+	}
+
 	public function view($nim = null)
 	{
 		if ($nim == null){
