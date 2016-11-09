@@ -56,7 +56,26 @@ class Anggota_Model extends CI_Model{
 		$this->db->where('NIM', $nim);
 		$query = $this->db->update('anggota',$data);
 		return $query;
-	}	
+	}
+
+	public function update_password($nim)
+	{
+		$pass = $this->input->post('password_baru');
+		$pass_verify = $this->input->post('password_baru2');
+
+		if ($pass != $pass_verify)
+			return FALSE;
+
+		$pass = password_hash($pass, PASSWORD_DEFAULT);
+		$data = array(
+				'PASSWORD' => $pass
+		);
+
+		/*Update to DB*/
+		$this->db->where('NIM', $nim);
+		$query = $this->db->update('anggota',$data);
+		return $query;
+	}
 
 }
 

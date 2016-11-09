@@ -69,7 +69,7 @@ class Profile extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/change_password',$data);
 		} else {
-			$update = $this->Anggota_Model->change_password($nim);
+			$update = $this->Anggota_Model->update_password($nim);
 
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
