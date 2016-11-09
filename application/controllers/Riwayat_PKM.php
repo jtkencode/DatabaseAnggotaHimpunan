@@ -14,7 +14,7 @@ class Riwayat_PKM extends My_Controller {
 
 	public function index()
 	{
-		redirect('profile/view');
+		redirect('riwayat_pkm/view');
 	}
 
 	public function view($nim = null)
