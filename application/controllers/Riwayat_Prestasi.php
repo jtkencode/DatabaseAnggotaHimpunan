@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Riwayat_Prestasi extends Anggota_Controller {
-	private $path;
+class Riwayat_Prestasi extends My_Controller {
+	
 	public function __construct()
 	{
 		parent::__construct();		
@@ -17,93 +17,30 @@ class Riwayat_Prestasi extends Anggota_Controller {
 
 	public function index()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
-		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
-		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
-		$data['kontak'] = $this->Kontak_model->get_id($nim);
-		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_nim($nim);
-		$ui['navtab']['page'] = 'prestasi';
-		
-		$this->load->view('anggota/header');
-		$this->load->view('anggota/profile',$data);
-		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
-		$this->load->view('anggota/riwayat/prestasi/content',$data);
-		$this->load->view('anggota/footer');
+		redirect('riwayat_prestasi/view');
 	}
 
-	
-	public function add()
-	{ 
-		$data['nim'] = $this->session->userdata('user');
-		
-		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-			$ui['page'] = 'Tambah Riwayat Prestasi';
-			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/prestasi/add_riwayat_prestasi',$data);
-		} else {
-			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($data['nim']);
-			if ($insert){
-				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
-			} else echo "Insert Gagal";
-		}	
-	}
-
-	
-	public function get($id = null)
+	public function view($nim = null)
 	{
-		$nim = $this->session->userdata('user');
-		if ($id != null) {
-			$data = $this->Riwayat_Prestasi_model->get_id($nim,$id);
-		} else {	
-			$data = $this->Riwayat_Prestasi_model->get_nim($nim);
+		if ($nim == null){
+			$this->load->view('errors');
+		}
+		else {
+			$data['anggota'] = $this->Anggota_Model->get_id($nim);
+			$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
+			$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
+			$data['kontak'] = $this->Kontak_model->get_id($nim);
+			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
+			$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_nim($nim);
+			$ui['navtab']['page'] = 'prestasi';
+			$ui['navtab']['nim'] = $nim;
+			
+			$this->load->view('guest/header');
+			$this->load->view('guest/profile',$data);
+			$this->load->view('guest/nav_riwayat',$ui['navtab']);
+			$this->load->view('guest/riwayat/riwayat_prestasi',$data);
+			$this->load->view('guest/footer');
 		}
 		
-		return $data;
 	}
-
-	
-	public function update($id)
-	{ 
-		$nim = $this->session->userdata('user');
-		
-		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-			$data['riwayat_prestasi']= $this->get($id);
-			$ui['page'] = 'Ubah Riwayat Prestasi';
-			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/prestasi/update_riwayat_prestasi',$data);
-		} else {
-			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($nim,$id);
-			if ($update){
-				$this->session->set_flashdata('success_path', $this->path);
-				  redirect('site/success');
-			} else echo "Update Gagal";
-		}	
-	}
-
-	
-	public function delete($id)
-	{ 
-		$nim = $this->session->userdata('user');
-		
-		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat']= (array) $this->get($id);
-			$ui['page'] = 'Hapus Riwayat Prestasi';
-			$data['table']['header'] = ["Tingkat Prestasi","Nama Prestasi","Pencapaian Prestasi","Lembaga Prestasi","Tahun Prestasi","Jenis Prestasi"];
-			$data['attribute'] = ["ID_TINGKAT_PRESTASI","NAMA_PRESTASI","PENCAPAIAN_PRESTASI","LEMBAGA_PRESTASI","TAHUN_PRESTASI","JENIS_PRESTASI"];
-			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/hapus_riwayat',$data);
-		} else {
-			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($nim,$id);
-			if ($delete){
-				$this->session->set_flashdata('success_path', $this->path);
-				 redirect('site/success');
-			} else echo "Delete Gagal";
-		}	
-	}
-
 }
