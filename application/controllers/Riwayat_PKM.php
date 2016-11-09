@@ -35,7 +35,7 @@ class Riwayat_PKM extends My_Controller {
 			$this->load->view('guest/header');
 			$this->load->view('guest/profile',$data);
 			$this->load->view('guest/nav_riwayat',$ui['navtab']);
-			$this->load->view('guest/riwayat_pkm',$data);
+			$this->load->view('guest/riwayat/riwayat_pkm',$data);
 			$this->load->view('guest/footer');
 		}
 		
