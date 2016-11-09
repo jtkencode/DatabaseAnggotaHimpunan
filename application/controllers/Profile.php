@@ -27,6 +27,7 @@ class Profile extends CI_Controller {
 
 			$data['kontak'] = $this->Kontak_model->get_id($nim);
 			$ui['navtab']['page'] = 'overview';
+			$ui['navtab']['nim'] = $nim;
 			
 			$this->load->view('guest/header');
 			$this->load->view('guest/profile',$data);
