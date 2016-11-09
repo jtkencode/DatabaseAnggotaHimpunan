@@ -82,7 +82,29 @@
 	<script>
 		var idRadio = "radioJenjangPendidikan" + "<?php echo $riwayat_pendidikan->JENJANG_PENDIDIKAN; ?>";
 		$("#" + idRadio).prop("checked", true);
+		<?php if ($riwayat_pendidikan->JENJANG_PENDIDIKAN == 'D' || $riwayat_pendidikan->JENJANG_PENDIDIKAN == 'P' ) : ?>
+			$('#inputBidang').prop( "disabled", true );
+		<?php endif ;?>
 	</script>
+
+	<!-- Disable Input Bidang if jenjang SD and SMP -->
+		<script type="text/javascript">
+			$('#radioJenjangPendidikanD').click(function(){
+				$('#inputBidang').prop( "disabled", true );
+				$('#inputBidang').val('');
+			});
+			$('#radioJenjangPendidikanP').click(function(){
+				$('#inputBidang').prop( "disabled", true );
+				$('#inputBidang').val('');
+			});
+			$('#radioJenjangPendidikanA').click(function(){
+				$('#inputBidang').prop( "disabled", false );
+			});
+			$('#radioJenjangPendidikanT').click(function(){
+				$('#inputBidang').prop( "disabled", false );
+			});
+
+		</script>
 
 </body>
 </html>
