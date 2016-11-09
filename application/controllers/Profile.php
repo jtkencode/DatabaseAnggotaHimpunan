@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profile extends CI_Controller {
+class Profile extends My_Controller {
 	public function __construct()
 	{	
 		parent::__construct();
@@ -28,7 +28,7 @@ class Profile extends CI_Controller {
 			$data['kontak'] = $this->Kontak_model->get_id($nim);
 			$ui['navtab']['page'] = 'overview';
 			$ui['navtab']['nim'] = $nim;
-			
+
 			$this->load->view('guest/header');
 			$this->load->view('guest/profile',$data);
 			$this->load->view('guest/nav_riwayat',$ui['navtab']);
