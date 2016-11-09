@@ -9,7 +9,7 @@ class Profile extends My_Controller {
 		$this->load->model('Kontak_model');
 	}
 
-	public function index($nim)
+	public function index()
 	{
 		redirect('profile/view');
 	}
