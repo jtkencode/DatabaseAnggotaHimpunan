@@ -7,13 +7,6 @@ class Profile extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
-		$this->load->model('Riwayat_Pendidikan_model');
-		$this->load->model('Riwayat_Org_model');
-		$this->load->model('Tingkat_Prestasi_model');
-		$this->load->model('Riwayat_Prestasi_model');
-		$this->load->model('Riwayat_Kepanitiaan_model');
-		$this->load->model('Riwayat_Pelatihan_model');
-		$this->load->model('Riwayat_PKM_model');
 	}
 
 	public function index($nim)
@@ -41,7 +34,6 @@ class Profile extends CI_Controller {
 			$this->load->view('anggota/overview');
 			$this->load->view('anggota/footer');
 		}
-
 		
 	}
 
