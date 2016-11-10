@@ -13,7 +13,8 @@ class Dashboard extends Anggota_Controller {
 	public function index()
 	{
 		$nim = $this->session->userdata('user');
-		
+		$data['birthday'] = $this->Anggota_Model->get_birthday_of_week();
+		var_dump($data['birthday']);
 		$this->load->view('dashboard.html');
 	}
 
