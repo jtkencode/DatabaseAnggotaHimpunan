@@ -15,6 +15,7 @@ class Dashboard extends Anggota_Controller {
 		$nim = $this->session->userdata('user');
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 		$data['birthday'] = $this->Anggota_Model->get_birthday_of_week();
+		var_dump($data['birthday']);
  		$data['waktu'] = $this->get_time_condition();
 		$this->load->view('dashboard.html',$data);
 	}

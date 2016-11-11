@@ -1,4 +1,4 @@
-<?php
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Anggota_Model extends CI_Model{
@@ -79,15 +79,15 @@ class Anggota_Model extends CI_Model{
 
 	public function get_birthday_of_week()
 	{
-		/*
-			SELECT *
-FROM ANGGOTA
-WHERE STR_TO_DATE(concat(DATE_FORMAT(TANGGAL_LAHIR,'%d/%m/'),DATE_FORMAT(now(),'%Y')),'%d/%m/%Y')
-	BETWEEN NOW()
-    AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY)
-		*/
+    	$query = $this->db->query("SELECT *
+									FROM ANGGOTA
+									WHERE STR_TO_DATE(concat(DATE_FORMAT(TANGGAL_LAHIR,'%d/%m/'),DATE_FORMAT(now(),'%Y')),'%d/%m/%Y')
+										BETWEEN NOW()
+									    AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY);");
+		return  $query->result();
+
 	}
 
 }
-
+	
 ?>
