@@ -25,6 +25,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		$ui['navtab']['page'] = 'kepanitiaan';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/kepanitiaan/content',$data);
@@ -37,6 +38,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat Kepanitiaan';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/add_riwayat_kepanitiaan',$data);
 		} else {
@@ -69,6 +71,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_kepanitiaan']= $this->get($id);
 			$ui['page'] = 'Ubah Riwayat Kepanitiaan';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/update_riwayat_kepanitiaan',$data);
 		} else {
@@ -89,6 +92,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$ui['page'] = 'Hapus Riwayat Kepanitiaan';
 			$data['table']['header'] = ["Nama Kegiatan"	,"Nama Organisasi",	"Jabatan","Tahun Kepanitiaan","Kepanitiaan Kemahasiswaan"];
 			$data['attribute'] = ["NAMA_KEGIATAN_KEPANITIAAN","NAMA_ORG_KEPANITIAAN","JABATAN_KEPANITIAAN","TAHUN_KEPANITIAAN","KEPANITIAAN_KEMAHASISWAAN"];
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {

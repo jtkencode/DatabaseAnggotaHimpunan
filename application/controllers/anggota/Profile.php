@@ -33,6 +33,7 @@ class Profile extends Anggota_Controller {
 		$ui['navtab']['page'] = 'overview';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/overview');
@@ -46,6 +47,7 @@ class Profile extends Anggota_Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Edit Profile';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/edit_profile',$data);
 
@@ -66,6 +68,7 @@ class Profile extends Anggota_Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Ganti Password';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/change_password',$data);
 		} else {

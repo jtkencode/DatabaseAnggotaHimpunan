@@ -26,6 +26,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		$ui['navtab']['page'] = 'organisasi';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/organisasi/content',$data);
@@ -38,6 +39,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat Organisasi';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/organisasi/add_riwayat_org',$data);
 		} else {
@@ -70,6 +72,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_org']= $this->get($id);
 			$ui['page'] = 'Ubah Riwayat Organisasi';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/organisasi/update_riwayat_org',$data);
 		} else {
@@ -92,6 +95,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$data['table']['header'] = ["Nama Organisasi","Jabatan","Tahun Mulai","Tahun Selesai","Organisasi Kemahasiswaan"];
 			$data['attribute'] = ["NAMA_ORG","JABATAN_ORG","TAHUN_MULAI_ORG","TAHUN_SELESAI_ORG","ORG_KEMAHASISWAAN"];
 			$data['riwayat']= (array) $this->get($id);
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {

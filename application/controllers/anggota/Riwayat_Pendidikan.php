@@ -25,6 +25,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		$ui['navtab']['page'] = 'pendidikan';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/pendidikan/content',$data);
@@ -37,6 +38,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat Pendidikan';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pendidikan/add_riwayat_pendidikan',$data);
 		} else {
@@ -67,6 +69,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pendidikan']= $this->get($id);
 			$ui['page'] = 'Ubah Riwayat Pendidikan';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pendidikan/update_riwayat_pendidikan',$data);
 		} else {
@@ -87,6 +90,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$ui['page'] = 'Hapus Riwayat Pendidikan';
 			$data['table']['header'] = ["Jenjang Pendidikan", "Nama Institusi", "Tahun Masuk", "Tahun Lulus","Bidang Pendidikan"];
 			$data['attribute'] = ["JENJANG_PENDIDIKAN","NAMA_INSTITUSI_PENDIDIKAN","TAHUN_MASUK_PENDIDIKAN","TAHUN_LULUS_PENDIDIKAN","BIDANG_PENDIDIKAN"];
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {

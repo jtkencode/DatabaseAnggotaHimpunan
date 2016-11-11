@@ -25,6 +25,7 @@ class Riwayat_PKM extends Anggota_Controller {
 		$ui['navtab']['page'] = 'pkm';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/pkm/content',$data);
@@ -37,6 +38,7 @@ class Riwayat_PKM extends Anggota_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat PKM';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/add_riwayat_pkm',$data);
 		} else {
@@ -67,6 +69,7 @@ class Riwayat_PKM extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pkm']= $this->get($id);
 			$ui['page'] = 'Ubah Riwayat PKM';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/update_riwayat_pkm',$data);
 		} else {
@@ -87,6 +90,7 @@ class Riwayat_PKM extends Anggota_Controller {
 			$ui['page'] = 'Hapus Riwayat PKM';
 			$data['table']['header'] = ["Nama PKM","Nama Penyelenggara","Tahun PKM","PKM Kemahasiswaan"];
 			$data['attribute'] = ["NAMA_PKM","NAMA_PENYELENGGARA_PKM","TAHUN_PKM","PKM_KEMAHASISWAAN"];
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {

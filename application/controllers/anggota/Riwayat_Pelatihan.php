@@ -26,6 +26,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		$ui['navtab']['page'] = 'pelatihan';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/pelatihan/content',$data);
@@ -38,6 +39,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat Pelatihan';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pelatihan/add_riwayat_pelatihan',$data);
 		} else {
@@ -68,6 +70,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat_pelatihan']= $this->get($id);
 			$ui['page'] = 'Ubah Riwayat Pelatihan';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pelatihan/update_riwayat_pelatihan',$data);
 		} else {
@@ -88,6 +91,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 			$ui['page'] = 'Hapus Riwayat Pelatihan';
 			$data['table']['header'] = ["Nama Pelatihan","Nama Penyelenggara","Tahun Pelatihan","Pelatihan Kemahasiswaan"];
 			$data['attribute'] = ["NAMA_PELATIHAN","NAMA_PENYELENGGARA_PELATIHAN","TAHUN_PELATIHAN","PELATIHAN_KEMAHASISWAAN"];
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {

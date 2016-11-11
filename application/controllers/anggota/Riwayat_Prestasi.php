@@ -27,6 +27,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 		$ui['navtab']['page'] = 'prestasi';
 		
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/body');
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/prestasi/content',$data);
@@ -41,6 +42,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 			$ui['page'] = 'Tambah Riwayat Prestasi';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/prestasi/add_riwayat_prestasi',$data);
 		} else {
@@ -74,6 +76,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
 			$data['riwayat_prestasi']= $this->get($id);
 			$ui['page'] = 'Ubah Riwayat Prestasi';
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/prestasi/update_riwayat_prestasi',$data);
 		} else {
@@ -95,6 +98,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$ui['page'] = 'Hapus Riwayat Prestasi';
 			$data['table']['header'] = ["Tingkat Prestasi","Nama Prestasi","Pencapaian Prestasi","Lembaga Prestasi","Tahun Prestasi","Jenis Prestasi"];
 			$data['attribute'] = ["ID_TINGKAT_PRESTASI","NAMA_PRESTASI","PENCAPAIAN_PRESTASI","LEMBAGA_PRESTASI","TAHUN_PRESTASI","JENIS_PRESTASI"];
+			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {

@@ -52,6 +52,7 @@ class Site extends CI_Controller {
 	public function success()
 	{
 		$data['path'] = $this->session->flashdata('success_path');
+		$this->load->view('anggota/header');
 		$this->load->view('anggota/success',$data);
 	}
 
