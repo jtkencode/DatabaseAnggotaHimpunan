@@ -64,6 +64,13 @@
 						</div>
 
 						<h4>Anggota yang berulang tahun pekan ini: </h4>
+						<?php if (count($birthday) == 0) : ?>
+							<p>Tidak ada yang sedang berulang tahun pekan ini</p>
+						<?php else : ?>
+							<?php foreach($birthday as $row): ?>
+								<p><?php echo $row->NAMA_LENGKAP ; ?></p>
+							<?php endforeach ; ?>
+						<?php endif; ?>
 					</div>
 
 					<div class="col-md-4">
