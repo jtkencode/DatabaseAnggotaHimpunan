@@ -7,7 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<head>
 		<title>Dashboard Login</title>
 		<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet"> 
-		<link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet"> 
+		<link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
+		<link href="<?php echo base_url('assets/js/bootstrap.min.js'); ?>" rel="stylesheet"> 
 		<script src="<?php echo base_url('assets/js/jquery-2.1.4.min.js'); ?>"></script>
 	</head>
 	<body>
@@ -23,7 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<img src="<?php echo base_url('assets/img/logo_himakom.png'); ?>" style="max-width: 75%;">
 						</div>
 						<div class="panel-body">
-							<?php if (isset($error)) echo $error ;?>
+							<?php if (isset($error)) :?>
+								<div class="alert alert-dismissible alert-danger">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+								 	<?php echo $error; ?>
+								</div>
+							<?php endif; ?>
 							<form class="form-horizontal" action="<?php echo site_url('site/login')?>" method="POST">
 								<div class="form-group">
 									<label for="inputUsername" class="col-sm-4 control-label">Username</label>
