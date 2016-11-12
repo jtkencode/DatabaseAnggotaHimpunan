@@ -25,12 +25,16 @@ class Anggota_Model extends CI_Model{
 		return $query->result();
 	}
 
-	public function get_all_not_complete()
+	public function get_all_not_complete($start = 1)
 	{
 		$this->db->where('tempat_lahir', '-');
 		$this->db->where('alamat_sekarang','-');
 		$this->db->where('angkatan_himpunan >','28');
+
+		$this->db->limit(10,$start);
+
 		$query = $this->db->get('anggota');
+		$this->session->set_flashdata('start_page', 10 + $start);
 		return  $query->result();
 
 	}

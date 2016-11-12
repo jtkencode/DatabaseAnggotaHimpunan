@@ -18,6 +18,8 @@ class Dashboard extends Admin_Controller {
 		$data['count_complete'] = $data['count_total_anggota'] - count($data['data_not_complete']);
 		$data['progress'] = (double) $data['count_complete'] / $data['count_total_anggota'];
 
+		$total_page = count($data['data_not_complete']) / 10;
+
 		$this->load->view('Admin/index',$data);
 	}
 

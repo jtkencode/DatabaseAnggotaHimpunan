@@ -100,11 +100,37 @@ class Profile extends Anggota_Controller {
 		$data['nim'] = $this->session->userdata('user');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('anggota/add_contact',$data);
+			$ui['page'] = 'Tambah Kontak';
+			$ui['error'] = $this->session->flashdata('error');
+			$this->load->view('anggota/header');
+			$this->load->view('anggota/crud_header',$ui);
+			$this->load->view('anggota/kontak/add_contact',$data);
+			//$this->load->view('anggota/add_contact',$data);
 		} else {
 			$insert = $this->Kontak_model->add_contact($data['nim']);
 			if ($insert){
-				 echo json_encode(array("status" => TRUE));
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
+			} else echo "Update Gagal";
+		}	
+	}
+
+
+	public function update_contact()
+	{ 
+		$data['nim'] = $this->session->userdata('user');
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Edit Kontak';
+			$ui['error'] = $this->session->flashdata('error');
+			$this->load->view('anggota/header');
+			$this->load->view('anggota/crud_header',$ui);
+			$this->load->view('anggota/kontak/update_contact',$data);
+		} else {
+			$insert = $this->Kontak_model->add_contact($data['nim']);
+			if ($insert){
+				$this->session->set_flashdata('success_path', $this->path);
+				redirect('site/success');
 			} else echo "Update Gagal";
 		}	
 	}

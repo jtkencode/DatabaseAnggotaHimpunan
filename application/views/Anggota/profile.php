@@ -21,9 +21,13 @@
 							<p><span class="glyphicon glyphicon-home"></span> <?php echo $anggota->ALAMAT_SEKARANG ;?> </p>						
 							<?php foreach ($kontak as $row) : ?>
 								<p><span class="<?php echo $glyphicon[$row->JENIS_KONTAK];?>" ></span> <?php echo $row->DETIL_KONTAK;?></p>
-							<?php endforeach ;?>		
-							<hr>
+							<?php endforeach ;?>
 						</div>
 
+						<div class="btn-group btn-group-justified">
+							<a href="<?php echo site_url('anggota/profile/add_contact');?>" class="btn btn-default">Tambah</a>
+							<a href="#" class="btn btn-default">Edit</a>
+						</div>
+						<hr>
 						<a href="<?php echo site_url('site/logout');?>" class="btn btn-default btn-block">Logout</a>
 					</div>
