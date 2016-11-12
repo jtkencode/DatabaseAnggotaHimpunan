@@ -67,6 +67,7 @@ class Profile extends Anggota_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($nim);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['error'] = $this->session->flashdata('error');
 			$ui['page'] = 'Ganti Password';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
@@ -77,7 +78,13 @@ class Profile extends Anggota_Controller {
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
-			} else echo "Update Gagal";
+			} else {
+				$not_match = $this->session->flashdata('error');
+				if ($not_match != null){
+					$this->session->set_flashdata('error', $not_match);
+					redirect('profile/change_password');
+				} else echo "update gagal";
+			}
 		}	
 	}
 

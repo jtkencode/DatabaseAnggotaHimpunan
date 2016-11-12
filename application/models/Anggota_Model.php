@@ -63,8 +63,10 @@ class Anggota_Model extends CI_Model{
 		$pass = $this->input->post('password_baru');
 		$pass_verify = $this->input->post('password_baru2');
 
-		if ($pass != $pass_verify)
+		if ($pass != $pass_verify){
+			$this->session->set_flashdata('error', 'Verifikasi Pasword Tidak Sesuai !');
 			return FALSE;
+		}
 
 		$pass = password_hash($pass, PASSWORD_DEFAULT);
 		$data = array(
