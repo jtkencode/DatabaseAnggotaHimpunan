@@ -79,11 +79,18 @@ class Profile extends Anggota_Controller {
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
 			} else {
-				$not_match = $this->session->flashdata('error');
-				if ($not_match != null){
-					$this->session->set_flashdata('error', $not_match);
-					redirect('profile/change_password');
-				} else echo "update gagal";
+				$wrong_password = $this->session->flashdata('wrong_password');
+				if ($wrong_password != null){
+					$this->session->set_flashdata('error', $wrong_password);
+					redirect('anggota/profile/change_password');
+				}
+				else {
+					$not_match = $this->session->flashdata('not_match');
+					if ($not_match != null){
+						$this->session->set_flashdata('error', $not_match);
+						redirect('anggota/profile/change_password');
+					} else echo "update gagal";
+				}
 			}
 		}	
 	}

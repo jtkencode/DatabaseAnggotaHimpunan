@@ -60,14 +60,29 @@ class Anggota_Model extends CI_Model{
 
 	public function update_password($nim)
 	{
+		/* Check old password */
+		$pass_lama = $this->input->post('password_lama');
+		$account = array('nim' => $nim);
+		$query = $this->db->where($account)->get('anggota');
+		$result = $query->result();
+		$result = reset($result);
+
+		if (! password_verify($pass_lama,$result->PASSWORD) ){
+			$this->session->set_flashdata('wrong_password', 'Password Lama yang dimasukkan Salah !');
+			return FALSE;
+		}
+
+
+		/*Check password verification */
 		$pass = $this->input->post('password_baru');
 		$pass_verify = $this->input->post('password_baru2');
 
 		if ($pass != $pass_verify){
-			$this->session->set_flashdata('error', 'Verifikasi Pasword Tidak Sesuai !');
+			$this->session->set_flashdata('not_match', 'Verifikasi Pasword Tidak Sesuai !');
 			return FALSE;
 		}
 
+		/*verification success */
 		$pass = password_hash($pass, PASSWORD_DEFAULT);
 		$data = array(
 				'PASSWORD' => $pass
