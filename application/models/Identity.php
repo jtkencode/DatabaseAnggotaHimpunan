@@ -11,12 +11,18 @@ class Identity extends CI_Model {
 				return FALSE;
 			}
 		} else {
-			$account = array('nim' => $username,'password'=>$password);
+			$account = array('nim' => $username);
 			$query = $this->db->where($account)->get('anggota');
 			$result = $query->result();
 			if (empty($result)){
-				$this->session->set_flashdata('error', 'username / password salah');
+				$this->session->set_flashdata('error', 'Username Tidak Ditemukan !');
 				return FALSE;
+			} else {
+				$result = reset($result);
+				if (! password_verify($password,$result->PASSWORD) ){
+					$this->session->set_flashdata('error', 'Password Salah !');
+					return FALSE;
+				}
 			}
 		}	
 
