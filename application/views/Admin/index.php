@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Admin Dashboard</title>
@@ -26,8 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="">
 			<label>Jumlah anggota yang sudah melengkapi data</label>
 			<div class="progress">
-  				<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $count_complete ;?>" aria-valuemin="0" aria-valuemax="<?php echo $count_total_anggota ;?>" style="width: <?php echo $count_complete/$count_total_anggota ;?>%"> <?php echo $count_complete ;?> Anggota
-  				</div>
+				<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $count_complete ;?>" aria-valuemin="0" aria-valuemax="<?php echo $count_total_anggota ;?>" style="width: <?php echo $count_complete/$count_total_anggota ;?>%"> <?php echo $count_complete ;?> Anggota
+				</div>
 			</div>
 		</div>
 
@@ -50,6 +51,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php endforeach ; ?>
 				</tbody>
 			</table>
+
+			<nav aria-label="Page navigation" class="text-center">
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 
 		</div>
 		
