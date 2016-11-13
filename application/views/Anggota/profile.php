@@ -28,6 +28,4 @@
 							<a href="<?php echo site_url('anggota/profile/add_contact');?>" class="btn btn-default">Tambah</a>
 							<a href="#" class="btn btn-default">Edit</a>
 						</div>
-						<hr>
-						<a href="<?php echo site_url('site/logout');?>" class="btn btn-default btn-block">Logout</a>
 					</div>
