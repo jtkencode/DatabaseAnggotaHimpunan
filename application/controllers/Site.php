@@ -13,7 +13,7 @@ class Site extends CI_Controller {
 	public function index()
 	{
 		if ($this->identity->is_admin()){
-			redirect('admin/admin');
+			redirect('admin/dashboard');
 		} else if ($this->identity->is_anggota()){
 			redirect('anggota/profile');
 		} else 
