@@ -33,7 +33,7 @@ class Site extends CI_Controller {
 				if ($this->identity->is_admin()){
 					redirect('admin/dashboard');
 				} else {
-					redirect('anggota/profile');
+					redirect('anggota/dashboard');
 				}
 			} else {
 				$data['error'] = $this->session->flashdata('error');
