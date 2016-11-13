@@ -116,7 +116,7 @@ class Profile extends Anggota_Controller {
 	}
 
 
-	public function update_contact()
+	public function update_contact($detil)
 	{ 
 		$data['nim'] = $this->session->userdata('user');
 		
@@ -127,7 +127,7 @@ class Profile extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/kontak/update_contact',$data);
 		} else {
-			$insert = $this->Kontak_model->add_contact($data['nim']);
+			$insert = $this->Kontak_model->update_contact($data['nim'],$detil);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');

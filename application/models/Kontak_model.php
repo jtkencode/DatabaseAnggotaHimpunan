@@ -32,6 +32,18 @@ class Kontak_model extends CI_Model{
 		return $query;
 
 	}
+
+	public function update_contact($nim,$detil)
+	{	
+		$data = array(
+				'DETIL_KONTAK' => $this->input->post('detil_kontak')
+			);
+		$this->db->where('NIM',$nim);
+		$this->db->where('DETIL_KONTAK',$detil);
+		
+		$query = $this->db->update('kontak',$data);
+		return $query;
+	}
 	
 
 }
