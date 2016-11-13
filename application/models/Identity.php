@@ -6,7 +6,7 @@ class Identity extends CI_Model {
 	public function login($username, $password)
 	{
 		if ($username == "admin"){
-			if ($password != "birukandunia"){
+			if (!password_verify($password,"$2y$10$1IjkPES8.GIPoKh5hWz1vOEWZRAyZ840zj11kfqnPviYeDqbsM9P.")){
 				$this->session->set_flashdata('error', 'username / password salah');
 				return FALSE;
 			}
