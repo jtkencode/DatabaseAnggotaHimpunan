@@ -13,6 +13,7 @@
 <body>
 	<div class="container">
 		<div class="page-header">
+			
 		</div>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
@@ -21,26 +22,30 @@
 					<div class="col-md-8">
 						<div class="alert alert-dismissible alert-warning">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<h4>Selamat <?php echo $waktu." ".$anggota->NAMA_LENGKAP."...."; ?></h4>
+							<h4>Selamat <?php echo $waktu;?> <strong><?php echo $anggota->NAMA_LENGKAP;?></strong></h4>
 							<p>Silahkan lengkapi data pribadi dan data riwayat anda <a href="#">disini</a>, Apabila mengalami kesulitan silahkan hubungi <a>Departemen Administrasi dan Kesekretariatan</a>.</p>
 						</div>
 
-						<h4>Anggota yang berulang tahun pekan ini: </h4>
-						<?php if (count($birthday) == 0) : ?>
-							<p>Tidak ada yang sedang berulang tahun pekan ini</p>
-						<?php else : ?>
-							<?php foreach($birthday as $row): ?>
-							<?php endforeach ; ?>
-						<?php endif; ?>
-
+						<div>
+							<h4>Kegiatan Mendatang Bulan ini: </h4>
+							<p>Sekolah Kemahasiswaan 2016</p>
+							<p>Pemilihan Ketua Himpunan Mahasiswa Komputer 2016-2017</p>
+							<p>Serah Terima Jabatan</p>
+							<p>Liga JTK 2016</p>
+						</div>
 						<hr>
-
-						<h4>Kegiatan Mendatang Bulan ini: </h4>
-						<p>Sekolah Kemahasiswaan 2016</p>
-						<p>Pemilihan Ketua Himpunan Mahasiswa Komputer 2016-2017</p>
-						<p>Serah Terima Jabatan</p>
-						<p>Liga JTK 2016</p>
-
+						<div>
+							<h4>Anggota yang berulang tahun pekan ini: </h4>
+							<?php if (count($birthday) == 0) : ?>
+								<p>Tidak ada yang sedang berulang tahun pekan ini</p>
+							<?php else : ?>
+								<?php date_default_timezone_set("Asia/Jakarta");$now = localtime(time(), true);?>
+								<?php foreach($birthday as $row): ?>
+									<?php $date = strtotime($row->TANGGAL); $count_down = (date('d',$date) - $now['tm_mday']); $date = $count_down == 0 ? "Hari ini" : $count_down." hari lagi"; ?>
+									<p><a href="<?php echo site_url('profile/view/'.$row->NIM);?>"><?php echo $row->NAMA_LENGKAP;?> </a><small><?php echo $date;?></small></p>
+								<?php endforeach ; ?>
+							<?php endif; ?>
+						</div>						
 					</div>
 
 					<div class="col-md-4">
