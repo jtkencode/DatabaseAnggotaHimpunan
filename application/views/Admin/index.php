@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 		<div>
-			<h2><small>Anggota yang belum melengkapi data</small></h2>
+			<label>Anggota yang belum melengkapi data</label>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -52,25 +52,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</tbody>
 			</table>
 
+			<!-- Pagination -->
 			<nav aria-label="Page navigation" class="text-center">
 				<ul class="pagination">
 					<li>
-						<a href="#" aria-label="Previous">
+						<a href="<?php echo site_url('admin/dashboard/view/'.($page_active-1));?>" aria-label="Previous">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
+
+					<?php for ($page = $page_start ; $page < ($page_end) ; $page++) :?>
+						<li class="<?php if($page == $page_active) echo "active" ;?>"><a href="<?php echo site_url('admin/dashboard/view/'.$page);?>"> <?php echo $page ; ?> </a></li>
+					<?php endfor; ?>
 					<li>
-						<a href="#" aria-label="Next">
+						<a href="<?php echo site_url('admin/dashboard/view/'.($page_active+1));?>" aria-label="Next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 					</li>
 				</ul>
 			</nav>
+			<!-- end pagination-->
 
 		</div>
 		
