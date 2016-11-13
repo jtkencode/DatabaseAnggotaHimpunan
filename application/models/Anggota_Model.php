@@ -106,11 +106,12 @@ class Anggota_Model extends CI_Model{
 
 	public function get_birthday_of_week()
 	{
-    	$query = $this->db->query("SELECT *
-									FROM ANGGOTA
-									WHERE STR_TO_DATE(concat(DATE_FORMAT(TANGGAL_LAHIR,'%d/%m/'),DATE_FORMAT(now(),'%Y')),'%d/%m/%Y')
-										BETWEEN NOW()
-									    AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY);");
+    	$query = $this->db->query("SELECT NIM, NAMA_LENGKAP, STR_TO_DATE(concat(DATE_FORMAT(TANGGAL_LAHIR,'%d/%m/'),DATE_FORMAT(now(),'%Y')),'%d/%m/%Y') AS TANGGAL
+FROM ANGGOTA
+HAVING TANGGAL
+BETWEEN NOW()
+AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY)
+ORDER BY TANGGAL");
 		return  $query->result();
 
 	}
