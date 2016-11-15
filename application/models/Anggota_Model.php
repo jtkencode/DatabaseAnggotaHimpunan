@@ -104,14 +104,18 @@ class Anggota_Model extends CI_Model{
 		return $query;
 	}
 
+
+	/* 	Author : IF
+		BETWEEN DATE(NOW() - INTERVAL (1) DAY) -> yang ulang tahun hari ini
+	*/
 	public function get_birthday_of_week()
 	{
     	$query = $this->db->query("SELECT NIM, NAMA_LENGKAP, STR_TO_DATE(concat(DATE_FORMAT(TANGGAL_LAHIR,'%d/%m/'),DATE_FORMAT(now(),'%Y')),'%d/%m/%Y') AS TANGGAL
-FROM ANGGOTA
-HAVING TANGGAL
-BETWEEN NOW()
-AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY)
-ORDER BY TANGGAL");
+		FROM ANGGOTA
+		HAVING DATE(TANGGAL)
+			BETWEEN DATE(NOW() - INTERVAL (1) DAY)
+				AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY)
+		ORDER BY TANGGAL");
 		return  $query->result();
 
 	}
