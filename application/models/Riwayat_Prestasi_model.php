@@ -30,7 +30,7 @@ class Riwayat_Prestasi_model extends CI_Model{
 	{
 		 
 		$this->db->where('nim', $id);
-		$this->db->order_by('no_urut_prestasi', 'DESC');
+		$this->db->order_by('no_urut_prestasi', 'desc');
 		$query = $this->db->limit(1)->get('riwayat_prestasi');;
 		$result = $query->result();
 		
@@ -38,21 +38,21 @@ class Riwayat_Prestasi_model extends CI_Model{
 			return 0;
 		}
 
-		return $result[0]->NO_URUT_PRESTASI;
+		return $result[0]->no_urut_prestasi;
 	}
 
 	public function add_riwayat_prestasi($nim)
 	{	
 		$no_urut = $this->get_last_no($nim) + 1; //append no
 		$data = array(
-				'NIM' => $nim,
-				'NO_URUT_PRESTASI' => $no_urut,
-				'ID_TINGKAT_PRESTASI' => $this->input->post('tingkat_prestasi'),
-				'NAMA_PRESTASI' => $this->input->post('nama_prestasi'),
-				'PENCAPAIAN_PRESTASI' => $this->input->post('pencapaian_prestasi'),
-				'LEMBAGA_PRESTASI' => $this->input->post('lembaga_prestasi'),
-				'TAHUN_PRESTASI' => $this->input->post('tahun_prestasi'),
-				'JENIS_PRESTASI' => $this->input->post('jenis_prestasi')
+				'nim' => $nim,
+				'no_urut_prestasi' => $no_urut,
+				'id_tingkat_prestasi' => $this->input->post('tingkat_prestasi'),
+				'nama_prestasi' => $this->input->post('nama_prestasi'),
+				'pencapaian_prestasi' => $this->input->post('pencapaian_prestasi'),
+				'lembaga_prestasi' => $this->input->post('lembaga_prestasi'),
+				'tahun_prestasi' => $this->input->post('tahun_prestasi'),
+				'jenis_prestasi' => $this->input->post('jenis_prestasi')
 			);
 
 		$query = $this->db->insert('riwayat_prestasi',$data);
@@ -62,16 +62,16 @@ class Riwayat_Prestasi_model extends CI_Model{
 	public function update_riwayat_prestasi($nim,$id)
 	{	
 		$data = array(
-				'ID_TINGKAT_PRESTASI' => $this->input->post('tingkat_prestasi'),
-				'NAMA_PRESTASI' => $this->input->post('nama_prestasi'),
-				'PENCAPAIAN_PRESTASI' => $this->input->post('pencapaian_prestasi'),
-				'LEMBAGA_PRESTASI' => $this->input->post('lembaga_prestasi'),
-				'TAHUN_PRESTASI' => $this->input->post('tahun_prestasi'),
-				'JENIS_PRESTASI' => $this->input->post('jenis_prestasi')
+				'id_tingkat_prestasi' => $this->input->post('tingkat_prestasi'),
+				'nama_prestasi' => $this->input->post('nama_prestasi'),
+				'pencapaian_prestasi' => $this->input->post('pencapaian_prestasi'),
+				'lembaga_prestasi' => $this->input->post('lembaga_prestasi'),
+				'tahun_prestasi' => $this->input->post('tahun_prestasi'),
+				'jenis_prestasi' => $this->input->post('jenis_prestasi')
 			);
 
 		$this->db->where('nim',$nim);
-		$this->db->where('NO_URUT_PRESTASI',$id);
+		$this->db->where('no_urut_prestasi',$id);
 		$query = $this->db->update('riwayat_prestasi',$data);
 		return $query;
 	}
@@ -79,7 +79,7 @@ class Riwayat_Prestasi_model extends CI_Model{
 	public function delete_riwayat_prestasi($nim,$id)
 	{
 		$this->db->where('nim',$nim);
-		$this->db->where('NO_URUT_PRESTASI',$id);
+		$this->db->where('no_urut_prestasi',$id);
 		$query = $this->db->delete('riwayat_prestasi');
 		return $query;
 	}

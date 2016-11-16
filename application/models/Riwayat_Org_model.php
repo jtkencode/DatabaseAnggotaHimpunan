@@ -30,7 +30,7 @@ class Riwayat_Org_model extends CI_Model{
 	{
 		 
 		$this->db->where('nim', $id);
-		$this->db->order_by('no_urut_org', 'DESC');
+		$this->db->order_by('no_urut_org', 'desc');
 		$query = $this->db->limit(1)->get('riwayat_org');;
 		$result = $query->result();
 		
@@ -38,7 +38,7 @@ class Riwayat_Org_model extends CI_Model{
 			return 0;
 		}
 
-		return $result[0]->NO_URUT_ORG;
+		return $result[0]->no_urut_org;
 	}
 
 	public function add_riwayat_org($nim)
@@ -46,13 +46,13 @@ class Riwayat_Org_model extends CI_Model{
 
 		$no_urut = $this->get_last_no($nim) + 1; //append no
 		$data = array(
-				'NIM' => $nim,
-				'NO_URUT_ORG' => $no_urut,
-				'NAMA_ORG' => $this->input->post('nama_org'),
-				'JABATAN_ORG' => $this->input->post('jabatan_org'),
-				'TAHUN_MULAI_ORG' => $this->input->post('tahun_mulai_org'),
-				'TAHUN_SELESAI_ORG' => $this->input->post('tahun_selesai_org'),
-				'ORG_KEMAHASISWAAN' => $this->input->post('org_kemahasiswaan')
+				'nim' => $nim,
+				'no_urut_org' => $no_urut,
+				'nama_org' => $this->input->post('nama_org'),
+				'jabatan_org' => $this->input->post('jabatan_org'),
+				'tahun_mulai_org' => $this->input->post('tahun_mulai_org'),
+				'tahun_selesai_org' => $this->input->post('tahun_selesai_org'),
+				'org_kemahasiswaan' => $this->input->post('org_kemahasiswaan')
 			);
 
 		$query = $this->db->insert('riwayat_org',$data);
@@ -62,22 +62,22 @@ class Riwayat_Org_model extends CI_Model{
 	public function update_riwayat_org($nim,$id)
 	{	
 		$data = array(
-				'NAMA_ORG' => $this->input->post('nama_org'),
-				'JABATAN_ORG' => $this->input->post('jabatan_org'),
-				'TAHUN_MULAI_ORG' => $this->input->post('tahun_mulai_org'),
-				'TAHUN_SELESAI_ORG' => $this->input->post('tahun_selesai_org'),
-				'ORG_KEMAHASISWAAN' => $this->input->post('org_kemahasiswaan')
+				'nama_org' => $this->input->post('nama_org'),
+				'jabatan_org' => $this->input->post('jabatan_org'),
+				'tahun_mulai_org' => $this->input->post('tahun_mulai_org'),
+				'tahun_selesai_org' => $this->input->post('tahun_selesai_org'),
+				'org_kemahasiswaan' => $this->input->post('org_kemahasiswaan')
 			);
-		$this->db->where('NIM',$nim);
-		$this->db->where('NO_URUT_ORG',$id);
+		$this->db->where('nim',$nim);
+		$this->db->where('no_urut_org',$id);
 		$query = $this->db->update('riwayat_org',$data);
 		return $query;
 	}
 
 	public function delete_riwayat_org($nim,$id)
 	{
-		$this->db->where('NIM',$nim);
-		$this->db->where('NO_URUT_ORG',$id);
+		$this->db->where('nim',$nim);
+		$this->db->where('no_urut_org',$id);
 		$query = $this->db->delete('riwayat_org');
 		return $query;
 	}
