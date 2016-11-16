@@ -3,7 +3,7 @@
 					<div class="col-md-8">
 						<div class="alert alert-dismissible alert-warning">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<h4>Selamat <?php echo $waktu;?> <strong><?php echo $anggota->NAMA_LENGKAP;?></strong></h4>
+							<h4>Selamat <?php echo $waktu;?> <strong><?php echo $anggota->nama_lengkap;?></strong></h4>
 							<p>Silahkan lengkapi data pribadi dan data riwayat anda <a href="#">disini</a>, Apabila mengalami kesulitan silahkan hubungi <a>Departemen Administrasi dan Kesekretariatan</a>.</p>
 						</div>
 
@@ -22,8 +22,8 @@
 							<?php else : ?>
 								<?php date_default_timezone_set("Asia/Jakarta");$now = localtime(time(), true);?>
 								<?php foreach($birthday as $row): ?>
-									<?php $date = strtotime($row->TANGGAL); $count_down = (date('d',$date) - $now['tm_mday']); $date = $count_down == 0 ? "Hari ini <span class='glyphicon glyphicon-gift'></span>" : $count_down." hari lagi"; ?>
-									<p><a href="<?php echo site_url('profile/view/'.$row->NIM);?>"><?php echo $row->NAMA_LENGKAP;?> </a><small><?php echo $date;?></small></p>
+									<?php $date = strtotime($row->tanggal); $count_down = (date('d',$date) - $now['tm_mday']); $date = $count_down == 0 ? "Hari ini <span class='glyphicon glyphicon-gift'></span>" : $count_down." hari lagi"; ?>
+									<p><a href="<?php echo site_url('profile/view/'.$row->NIM);?>"><?php echo $row->nama_lengkap;?> </a><small><?php echo $date;?></small></p>
 								<?php endforeach ; ?>
 							<?php endif; ?>
 						</div>						
