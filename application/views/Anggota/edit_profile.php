@@ -19,7 +19,7 @@
 					<div class="col-md-10">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputNamaLengkap',
-								'value' => $anggota->NAMA_LENGKAP,
+								'value' => $anggota->nama_lengkap,
 								'name' => 'nama_lengkap',
 								'placeholder' => 'Nama lengkap',
 								'autofocus' => ''
@@ -32,7 +32,7 @@
 					<div class="col-md-10">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputNamaPanggilan',
-								'value' =>  $anggota->NAMA_PANGGILAN,
+								'value' =>  $anggota->nama_panggilan,
 								'name' => 'nama_panggilan',
 								'placeholder' => 'Nama panggilan'
 							))); ?>
@@ -44,7 +44,7 @@
 					<div class="col-md-10">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputTempatLahir',
-								'value' =>  $anggota->TEMPAT_LAHIR,
+								'value' =>  $anggota->tempat_lahir,
 								'name' => 'tempat_lahir',
 								'placeholder' => 'Tempat Lahir'
 							))); ?>
@@ -56,7 +56,7 @@
 					<div class="col-md-10">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputAlamatSekarang',
-								'value' =>  $anggota->ALAMAT_SEKARANG,
+								'value' =>  $anggota->alamat_sekarang,
 								'name' => 'alamat_sekarang',
 								'placeholder' => 'Alamat Sekarang',
 							))); ?>
@@ -68,7 +68,7 @@
 					<div class="col-md-10">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputAlamatAsal',
-								'value' =>  $anggota->ALAMAT_ASAL,
+								'value' =>  $anggota->alamat_asal,
 								'name' => 'alamat_asal',
 								'placeholder' => 'Alamat Asal'
 							))); ?>
