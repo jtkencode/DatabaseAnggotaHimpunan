@@ -7,20 +7,20 @@
 						</div>
 
 						<div>
-							<h3><strong><?php echo $anggota->NAMA_LENGKAP;?></strong></h3>
-							<h4><?php echo $anggota->NAMA_BAGUS ;?></h4>
+							<h3><strong><?php echo $anggota->nama_lengkap;?></strong></h3>
+							<h4><?php echo $anggota->nama_bagus ;?></h4>
 							<p>Nama Departemen</p>
-							<p><?php echo $prodi[$anggota->ID_PS]," ",$anggota->NAMA_KELAS," ",$anggota->ANGKATAN_KELAS ;?></p>
+							<p><?php echo $prodi[$anggota->id_ps]," ",$anggota->nama_kelas," ",$anggota->angkatan_kelas ;?></p>
 							<a href="<?php echo site_url('anggota/profile/edit_profile');?>" class="btn btn-default btn-block">Edit Profile</a>
 							<a href="<?php echo site_url('anggota/profile/change_password');?>" class="btn btn-default btn-block">Ubah Password</a>
 							<hr>
 						</div>
 
 						<div>
-							<p><span class="glyphicon glyphicon-gift"></span> <?php echo $anggota->TEMPAT_LAHIR.", ".date_format(date_create($anggota->TANGGAL_LAHIR), 'd F Y') ;?></p>
-							<p><span class="glyphicon glyphicon-home"></span> <?php echo $anggota->ALAMAT_SEKARANG ;?> </p>						
+							<p><span class="glyphicon glyphicon-gift"></span> <?php echo $anggota->tempat_lahir.", ".date_format(date_create($anggota->tanggal_lahir), 'd F Y') ;?></p>
+							<p><span class="glyphicon glyphicon-home"></span> <?php echo $anggota->alamat_sekarang ;?> </p>						
 							<?php foreach ($kontak as $row) : ?>
-								<p><span class="<?php echo $glyphicon[$row->JENIS_KONTAK];?>" ></span> <?php echo $row->DETIL_KONTAK;?></p>
+								<p><span class="<?php echo $glyphicon[$row->jenis_kontak];?>" ></span> <?php echo $row->detil_kontak;?></p>
 							<?php endforeach ;?>
 						</div>
 
