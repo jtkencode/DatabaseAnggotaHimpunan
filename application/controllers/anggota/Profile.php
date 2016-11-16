@@ -24,12 +24,12 @@ class Profile extends Anggota_Controller {
 
 	public function index()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 
-		$data['kontak'] = $this->Kontak_model->get_id($nim);
+		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$ui['navtab']['page'] = 'overview';
 		
 		$this->load->view('anggota/header');
@@ -42,8 +42,8 @@ class Profile extends Anggota_Controller {
 
 	public function edit_profile()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Edit Profile';
@@ -52,7 +52,7 @@ class Profile extends Anggota_Controller {
 			$this->load->view('anggota/edit_profile',$data);
 
 		} else {
-			$update = $this->Anggota_Model->update_profile($nim);
+			$update = $this->Anggota_Model->update_profile($id);
 
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
@@ -63,8 +63,8 @@ class Profile extends Anggota_Controller {
 
 	public function change_password()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['error'] = $this->session->flashdata('error');
@@ -73,7 +73,7 @@ class Profile extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/change_password',$data);
 		} else {
-			$update = $this->Anggota_Model->update_password($nim);
+			$update = $this->Anggota_Model->update_password($id);
 
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
@@ -97,7 +97,7 @@ class Profile extends Anggota_Controller {
 
 	public function add_contact()
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Kontak';
@@ -107,7 +107,7 @@ class Profile extends Anggota_Controller {
 			$this->load->view('anggota/kontak/add_contact',$data);
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
-			$insert = $this->Kontak_model->add_contact($data['nim']);
+			$insert = $this->Kontak_model->add_contact($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
@@ -118,7 +118,7 @@ class Profile extends Anggota_Controller {
 
 	public function update_contact($detil)
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Edit Kontak';
@@ -127,7 +127,7 @@ class Profile extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/kontak/update_contact',$data);
 		} else {
-			$insert = $this->Kontak_model->update_contact($data['nim'],$detil);
+			$insert = $this->Kontak_model->update_contact($id,$detil);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
