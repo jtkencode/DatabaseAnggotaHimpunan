@@ -45,8 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<tbody>
 					<?php foreach ($data_not_complete as $anggota) :?>
 						<tr>
-							<td><?php echo $anggota->NIM ;?></td>
-							<td><?php echo $anggota->NAMA_LENGKAP ;?></td>
+							<td><?php echo $anggota->nim ;?></td>
+							<td><?php echo $anggota->nama_lengkap ;?></td>
 						</tr>
 					<?php endforeach ; ?>
 				</tbody>
