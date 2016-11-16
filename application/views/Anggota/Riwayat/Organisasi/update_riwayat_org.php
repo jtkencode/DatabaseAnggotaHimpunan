@@ -5,28 +5,28 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaOrganisasi">Nama Organisasi</label>
 						<div class="col-md-9">
-							<input name="nama_org" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="<?php echo $riwayat_org->NAMA_ORG; ?>" autocomplete="off">
+							<input name="nama_org" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="<?php echo $riwayat_org->nama_org; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputJabatanOrganisasi">Jabatan Organisasi</label>
 						<div class="col-md-9">
-							<input name="jabatan_org" class="form-control" id="inputJabatanOrganisasi" required="" type="text" placeholder="Jabatan Organisasi" value="<?php echo $riwayat_org->JABATAN_ORG; ?>" autocomplete="off">
+							<input name="jabatan_org" class="form-control" id="inputJabatanOrganisasi" required="" type="text" placeholder="Jabatan Organisasi" value="<?php echo $riwayat_org->jabatan_org; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunMulaiOrganisasi">Tahun Mulai</label>
 						<div class="col-md-9">
-							<input name="tahun_mulai_org" class="form-control" id="inputTahunMulaiOrganisasi" required="" type="text" placeholder="Tahun Mulai" value="<?php echo $riwayat_org->TAHUN_MULAI_ORG; ?>" autocomplete="off">
+							<input name="tahun_mulai_org" class="form-control" id="inputTahunMulaiOrganisasi" required="" type="text" placeholder="Tahun Mulai" value="<?php echo $riwayat_org->tahun_mulai_org; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunSelesaiOrganisasi">Tahun Selesai</label>
 						<div class="col-md-9">
-							<input name="tahun_selesai_org" class="form-control" id="inputTahunSelesaiOrganisasi" required="" type="text" placeholder="Tahun Selesai" value="<?php echo $riwayat_org->TAHUN_SELESAI_ORG; ?>" autocomplete="off">
+							<input name="tahun_selesai_org" class="form-control" id="inputTahunSelesaiOrganisasi" required="" type="text" placeholder="Tahun Selesai" value="<?php echo $riwayat_org->tahun_selesai_org; ?>" autocomplete="off">
 						</div>
 					</div>
 
@@ -63,7 +63,7 @@
 	</div>
 
 	<script>
-		var idRadio = "radioOrgKemahasiswaan" + "<?php echo $riwayat_org->ORG_KEMAHASISWAAN; ?>";
+		var idRadio = "radioOrgKemahasiswaan" + "<?php echo $riwayat_org->org_kemahasiswaan; ?>";
 		$("#" + idRadio).prop("checked", true);
 	</script>
 

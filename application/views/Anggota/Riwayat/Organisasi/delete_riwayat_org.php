@@ -16,10 +16,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php echo $riwayat_org->NAMA_ORG; ?></td>
-									<td><?php echo $riwayat_org->JABATAN_ORG; ?></td>
-									<td><?php echo $riwayat_org->TAHUN_MULAI_ORG." - ".$riwayat_org->TAHUN_SELESAI_ORG; ?></td>
-									<td><?php echo $riwayat_org->ORG_KEMAHASISWAAN; ?></td>
+									<td><?php echo $riwayat_org->nama_org; ?></td>
+									<td><?php echo $riwayat_org->jabatan_org; ?></td>
+									<td><?php echo $riwayat_org->tahun_mulai_org." - ".$riwayat_org->tahun_selesai_org; ?></td>
+									<td><?php echo $riwayat_org->org_kemahasiswaan; ?></td>
 								</tr>
 							</tbody>
 						</table>
