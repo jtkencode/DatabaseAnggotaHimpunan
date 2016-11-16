@@ -6,8 +6,8 @@ class Site extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('identity');
 		$this->load->library('session');
-		$this->load->model('Login_Model');
 	}		
 	
 	public function index()
