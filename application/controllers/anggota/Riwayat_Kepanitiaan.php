@@ -16,12 +16,12 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 
 	public function index()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
-		$data['kontak'] = $this->Kontak_model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
+		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
-		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
+		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_id($id);
 		$ui['navtab']['page'] = 'kepanitiaan';
 		
 		$this->load->view('anggota/header');
@@ -34,7 +34,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 	
 	public function add()
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat Kepanitiaan';
@@ -42,7 +42,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/add_riwayat_kepanitiaan',$data);
 		} else {
-			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($data['nim']);
+			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success/');
@@ -50,32 +50,32 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		}	
 	}
 
-	public function get($id = null)
+	public function get($no_urut = null)
 	{
-		$nim = $this->session->userdata('user');
-		if ($id != null) {
-			$data = $this->Riwayat_Kepanitiaan_model->get_id($nim,$id);
+		$id = $this->session->userdata('user_id');
+		if ($no_urut != null) {
+			$data = $this->Riwayat_Kepanitiaan_model->get_no_urut($id,$no_urut);
 		} else {
-			$nim = $this->session->userdata('user');
-			$data = $this->Riwayat_Kepanitiaan_model->get_nim($nim);
+			$id = $this->session->userdata('user_id');
+			$data = $this->Riwayat_Kepanitiaan_model->get_id($id);
 		}
 		
 		return $data;
 	}
 
 	
-	public function update($id)
+	public function update($no_urut)
 	{ 
-		$nim = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_kepanitiaan']= $this->get($id);
+			$data['riwayat_kepanitiaan']= $this->get($no_urut);
 			$ui['page'] = 'Ubah Riwayat Kepanitiaan';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/kepanitiaan/update_riwayat_kepanitiaan',$data);
 		} else {
-			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($nim,$id);
+			$update = $this->Riwayat_Kepanitiaan_model->update_riwayat_kepanitiaan($id,$no_urut);
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
@@ -83,12 +83,12 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		}	
 	}	
 
-	public function delete($id)
+	public function delete($no_urut)
 	{ 
-		$nim = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat']= (array) $this->get($id);
+			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Kepanitiaan';
 			$data['table']['header'] = ["Nama Kegiatan"	,"Nama Organisasi",	"Jabatan","Tahun Kepanitiaan","Kepanitiaan Kemahasiswaan"];
 			$data['attribute'] = ["NAMA_KEGIATAN_KEPANITIAAN","NAMA_ORG_KEPANITIAAN","JABATAN_KEPANITIAAN","TAHUN_KEPANITIAAN","KEPANITIAAN_KEMAHASISWAAN"];
@@ -96,7 +96,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($nim,$id);
+			$delete = $this->Riwayat_Kepanitiaan_model->delete_riwayat_kepanitiaan($id,$no_urut);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
