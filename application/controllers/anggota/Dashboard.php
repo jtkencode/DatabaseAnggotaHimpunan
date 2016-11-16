@@ -12,8 +12,8 @@ class Dashboard extends Anggota_Controller {
 
 	public function index()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$data['birthday'] = $this->Anggota_Model->get_birthday_of_week();
  		$data['waktu'] = $this->get_time_condition();
  		$this->load->view('anggota/header');
