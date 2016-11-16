@@ -21,7 +21,7 @@ class Riwayat_PKM extends Anggota_Controller {
 		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 		$data['kontak'] = $this->Kontak_model->get_id($id);
-		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($id);
+		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_id($id);
 		$ui['navtab']['page'] = 'pkm';
 		
 		$this->load->view('anggota/header');

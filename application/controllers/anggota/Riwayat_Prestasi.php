@@ -17,13 +17,13 @@ class Riwayat_Prestasi extends Anggota_Controller {
 
 	public function index()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
-		$data['kontak'] = $this->Kontak_model->get_id($nim);
+		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_nim($nim);
+		$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($id);
 		$ui['navtab']['page'] = 'prestasi';
 		
 		$this->load->view('anggota/header');
@@ -37,7 +37,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 	
 	public function add()
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
@@ -46,7 +46,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/prestasi/add_riwayat_prestasi',$data);
 		} else {
-			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($data['nim']);
+			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
@@ -55,32 +55,32 @@ class Riwayat_Prestasi extends Anggota_Controller {
 	}
 
 	
-	public function get($id = null)
+	public function get($no_urut = null)
 	{
-		$nim = $this->session->userdata('user');
-		if ($id != null) {
-			$data = $this->Riwayat_Prestasi_model->get_id($nim,$id);
+		$id = $this->session->userdata('user_id');
+		if ($no_urut != null) {
+			$data = $this->Riwayat_Prestasi_model->get_no_urut($id,$no_urut);
 		} else {	
-			$data = $this->Riwayat_Prestasi_model->get_nim($nim);
+			$data = $this->Riwayat_Prestasi_model->get_id($id);
 		}
 		
 		return $data;
 	}
 
 	
-	public function update($id)
+	public function update($no_urut)
 	{ 
-		$nim = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();
-			$data['riwayat_prestasi']= $this->get($id);
+			$data['riwayat_prestasi']= $this->get($no_urut);
 			$ui['page'] = 'Ubah Riwayat Prestasi';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/prestasi/update_riwayat_prestasi',$data);
 		} else {
-			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($nim,$id);
+			$update = $this->Riwayat_Prestasi_model->update_riwayat_prestasi($id,$no_urut);
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
@@ -89,12 +89,12 @@ class Riwayat_Prestasi extends Anggota_Controller {
 	}
 
 	
-	public function delete($id)
+	public function delete($no_urut)
 	{ 
-		$nim = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat']= (array) $this->get($id);
+			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Prestasi';
 			$data['table']['header'] = ["Tingkat Prestasi","Nama Prestasi","Pencapaian Prestasi","Lembaga Prestasi","Tahun Prestasi","Jenis Prestasi"];
 			$data['attribute'] = ["ID_TINGKAT_PRESTASI","NAMA_PRESTASI","PENCAPAIAN_PRESTASI","LEMBAGA_PRESTASI","TAHUN_PRESTASI","JENIS_PRESTASI"];
@@ -102,7 +102,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($nim,$id);
+			$delete = $this->Riwayat_Prestasi_model->delete_riwayat_prestasi($id,$no_urut);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
