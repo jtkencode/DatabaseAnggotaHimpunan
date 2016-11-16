@@ -40,7 +40,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$ui['page'] = 'Tambah Riwayat Pendidikan';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/pendidikan/add_riwayat_pendidikan',$data);
+			$this->load->view('anggota/riwayat/pendidikan/add_riwayat_pendidikan');
 		} else {
 			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($id);
 			if ($insert){

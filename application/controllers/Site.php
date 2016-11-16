@@ -15,7 +15,7 @@ class Site extends CI_Controller {
 		if ($this->identity->is_admin()){
 			redirect('admin/dashboard');
 		} else if ($this->identity->is_anggota()){
-			redirect('anggota/profile');
+			redirect('anggota/dashboard');
 		} else 
 			redirect('site/login');
 

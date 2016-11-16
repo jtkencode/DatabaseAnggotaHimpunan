@@ -26,8 +26,6 @@ class Profile extends Anggota_Controller {
 	{
 		$id = $this->session->userdata('user_id');
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
-		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
-		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 
 		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$ui['navtab']['page'] = 'overview';

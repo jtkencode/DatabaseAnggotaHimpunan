@@ -40,7 +40,7 @@ class Riwayat_PKM extends Anggota_Controller {
 			$ui['page'] = 'Tambah Riwayat PKM';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/pkm/add_riwayat_pkm',$data);
+			$this->load->view('anggota/riwayat/pkm/add_riwayat_pkm');
 		} else {
 			$insert = $this->Riwayat_PKM_model->add_riwayat_pkm($id);
 			if ($insert){

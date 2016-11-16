@@ -40,7 +40,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$ui['page'] = 'Tambah Riwayat Kepanitiaan';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/kepanitiaan/add_riwayat_kepanitiaan',$data);
+			$this->load->view('anggota/riwayat/kepanitiaan/add_riwayat_kepanitiaan');
 		} else {
 			$insert = $this->Riwayat_Kepanitiaan_model->add_riwayat_kepanitiaan($id);
 			if ($insert){

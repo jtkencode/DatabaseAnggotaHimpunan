@@ -41,7 +41,7 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 			$ui['page'] = 'Tambah Riwayat Pelatihan';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/pelatihan/add_riwayat_pelatihan',$data);
+			$this->load->view('anggota/riwayat/pelatihan/add_riwayat_pelatihan');
 		} else {
 			$insert = $this->Riwayat_Pelatihan_model->add_riwayat_pelatihan($id);
 			if ($insert){

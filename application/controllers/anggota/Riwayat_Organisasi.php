@@ -41,9 +41,9 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$ui['page'] = 'Tambah Riwayat Organisasi';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/organisasi/add_riwayat_org',$data);
+			$this->load->view('anggota/riwayat/organisasi/add_riwayat_org');
 		} else {
-			$insert = $this->Riwayat_Org_model->add_riwayat_org($id]);
+			$insert = $this->Riwayat_Org_model->add_riwayat_org($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
