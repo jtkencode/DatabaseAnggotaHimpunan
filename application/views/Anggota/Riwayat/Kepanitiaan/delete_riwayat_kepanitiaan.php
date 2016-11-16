@@ -16,11 +16,11 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php echo $riwayat_kepanitiaan->NAMA_KEGIATAN_KEPANITIAAN; ?></td>
-									<td><?php echo $riwayat_kepanitiaan->NAMA_ORG_KEPANITIAAN; ?></td>
-									<td><?php echo $riwayat_kepanitiaan->JABATAN_KEPANITIAAN; ?></td>
-									<td><?php echo $riwayat_kepanitiaan->TAHUN_KEPANITIAAN; ?></td>
-									<td><?php echo $riwayat_kepanitiaan->JABATAN_KEPANITIAAN; ?></td>
+									<td><?php echo $riwayat_kepanitiaan->nama_kegiatan_kepanitiaan; ?></td>
+									<td><?php echo $riwayat_kepanitiaan->nama_org_kepanitiaan; ?></td>
+									<td><?php echo $riwayat_kepanitiaan->jabatan_kepanitiaan; ?></td>
+									<td><?php echo $riwayat_kepanitiaan->tahun_kepanitiaan; ?></td>
+									<td><?php echo $riwayat_kepanitiaan->jabatan_kepanitiaan; ?></td>
 								</tr>
 							</tbody>
 						</table>

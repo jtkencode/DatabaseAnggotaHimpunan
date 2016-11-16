@@ -5,28 +5,28 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaKegiatan">Nama Kegiatan</label>
 						<div class="col-md-9">
-							<input name="nama_kegiatan_kepanitiaan" class="form-control" id="inputNamaKegiatan" required="" type="text" placeholder="Nama Kegiatan" value="<?php echo $riwayat_kepanitiaan->NAMA_KEGIATAN_KEPANITIAAN; ?>" autocomplete="off">
+							<input name="nama_kegiatan_kepanitiaan" class="form-control" id="inputNamaKegiatan" required="" type="text" placeholder="Nama Kegiatan" value="<?php echo $riwayat_kepanitiaan->nama_kegiatan_kepanitiaan; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaOrganisasi">Nama Organisasi</label>
 						<div class="col-md-9">
-							<input name="nama_org_kepanitiaan" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="<?php echo $riwayat_kepanitiaan->NAMA_ORG_KEPANITIAAN; ?>" autocomplete="off">
+							<input name="nama_org_kepanitiaan" class="form-control" id="inputNamaOrganisasi" required="" type="text" placeholder="Nama Organisasi" value="<?php echo $riwayat_kepanitiaan->nama_org_kepanitiaan; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputJabatan">Jabatan</label>
 						<div class="col-md-9">
-							<input name="jabatan_kepanitiaan" class="form-control" id="inputJabatan" required="" type="text" placeholder="Jabatan Kepanitiaan" value="<?php echo $riwayat_kepanitiaan->JABATAN_KEPANITIAAN; ?>" autocomplete="off">
+							<input name="jabatan_kepanitiaan" class="form-control" id="inputJabatan" required="" type="text" placeholder="Jabatan Kepanitiaan" value="<?php echo $riwayat_kepanitiaan->jabatan_kepanitiaan; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunKepanitiaan">Tahun Kepanitiaan</label>
 						<div class="col-md-9">
-							<input name="tahun_kepanitiaan" class="form-control" id="inputTahunKepanitiaan" required="" type="text" placeholder="Tahun Kepanitiaan" value="<?php echo $riwayat_kepanitiaan->TAHUN_KEPANITIAAN; ?>" autocomplete="off">
+							<input name="tahun_kepanitiaan" class="form-control" id="inputTahunKepanitiaan" required="" type="text" placeholder="Tahun Kepanitiaan" value="<?php echo $riwayat_kepanitiaan->tahun_kepanitiaan; ?>" autocomplete="off">
 						</div>
 					</div>
 
@@ -62,7 +62,7 @@
 	</div>
 
 	<script>
-		var idRadio = "radioRiwayatKepanitiaan" + "<?php echo $riwayat_kepanitiaan->KEPANITIAAN_KEMAHASISWAAN; ?>";
+		var idRadio = "radioRiwayatKepanitiaan" + "<?php echo $riwayat_kepanitiaan->kepanitiaan_kemahasiswaan; ?>";
 		$("#" + idRadio).prop("checked", true);
 	</script>
 
