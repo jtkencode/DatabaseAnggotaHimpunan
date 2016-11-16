@@ -10,7 +10,7 @@ class Anggota_Model extends CI_Model{
 
 	public function get_id($id)
 	{
-		$query = $this->db->where('nim', $id)->get('anggota');
+		$query = $this->db->where('id_anggota', $id)->get('anggota');
 		$result = $query->result();
 
 		if (count($result))
@@ -52,7 +52,7 @@ class Anggota_Model extends CI_Model{
 		return $this->db->count_all_results();
 	}
 
-	public function update_profile($nim)
+	public function update_profile($id)
 	{
 		$data = array(
 				'nama_lengkap' => $this->input->post('nama_lengkap'),
@@ -63,21 +63,21 @@ class Anggota_Model extends CI_Model{
 		);
 
 		/*Update to DB*/
-		$this->db->where('nim', $nim);
+		$this->db->where('id_anggota', $id);
 		$query = $this->db->update('anggota',$data);
 		return $query;
 	}
 
-	public function update_password($nim)
+	public function update_password($id)
 	{
 		/* Check old password */
 		$pass_lama = $this->input->post('password_lama');
-		$account = array('nim' => $nim);
+		$account = array('id_anggota' => $id);
 		$query = $this->db->where($account)->get('anggota');
 		$result = $query->result();
 		$result = reset($result);
 
-		if (! password_verify($pass_lama,$result->PASSWORD) ){
+		if (! password_verify($pass_lama,$result->password) ){
 			$this->session->set_flashdata('wrong_password', 'Password Lama yang dimasukkan Salah !');
 			return FALSE;
 		}
@@ -99,7 +99,7 @@ class Anggota_Model extends CI_Model{
 		);
 
 		/*update to db*/
-		$this->db->where('nim', $nim);
+		$this->db->where('id_anggota', $id);
 		$query = $this->db->update('anggota',$data);
 		return $query;
 	}
