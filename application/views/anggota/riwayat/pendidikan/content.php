@@ -16,7 +16,7 @@ $left = false;
 										<?php endif ; $left = !$left ; ?>
 											<div class="timeline-entry-inner">
 												<time class="timeline-time" datetime="2014-01-10T03:45"><strong><?php echo $row->tahun_masuk_pendidikan;?></strong></time>
-												<div class="timeline-icon <?php echo $icon[$row->JENJANG_PENDIDIKAN];?>">
+												<div class="timeline-icon <?php echo $icon[$row->jenjang_pendidikan];?>">
 													<i class="entypo-feather"></i>
 												</div>
 												<div class="timeline-label">

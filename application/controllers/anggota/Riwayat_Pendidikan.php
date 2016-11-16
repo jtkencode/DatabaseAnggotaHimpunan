@@ -18,8 +18,6 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 	{
 		$id = $this->session->userdata('user_id');
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
-		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
-		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($id);
 		$ui['navtab']['page'] = 'pendidikan';
@@ -89,7 +87,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Pendidikan';
 			$data['table']['header'] = ["Jenjang Pendidikan", "Nama Institusi", "Tahun Masuk", "Tahun Lulus","Bidang Pendidikan"];
-			$data['attribute'] = ["JENJANG_PENDIDIKAN","NAMA_INSTITUSI_PENDIDIKAN","TAHUN_MASUK_PENDIDIKAN","TAHUN_LULUS_PENDIDIKAN","BIDANG_PENDIDIKAN"];
+			$data['attribute'] = ["jenjang_pendidikan","nama_institusi_pendidikan","tahun_masuk_pendidikan","tahun_lulus_pendidikan","bidang_pendidikan"];
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);

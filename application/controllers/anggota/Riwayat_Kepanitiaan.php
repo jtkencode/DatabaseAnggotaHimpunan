@@ -91,7 +91,7 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Kepanitiaan';
 			$data['table']['header'] = ["Nama Kegiatan"	,"Nama Organisasi",	"Jabatan","Tahun Kepanitiaan","Kepanitiaan Kemahasiswaan"];
-			$data['attribute'] = ["NAMA_KEGIATAN_KEPANITIAAN","NAMA_ORG_KEPANITIAAN","JABATAN_KEPANITIAAN","TAHUN_KEPANITIAAN","KEPANITIAAN_KEMAHASISWAAN"];
+			$data['attribute'] = ["nama_kegiatan_kepanitiaan","nama_org_kepanitiaan","jabatan_kepanitiaan","tahun_kepanitiaan","kepanitiaan_kemahasiswaan"];
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
