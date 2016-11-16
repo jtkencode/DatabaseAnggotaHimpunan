@@ -14,16 +14,16 @@ class Kontak_model extends CI_Model{
 
 	public function get_id($id)
 	{
-		$query = $this->db->where('nim', $id)->get('kontak');
+		$query = $this->db->where('id_anggota', $id)->get('kontak');
 		$result = $query->result();
 
 		return $result;
 	}
 
-	public function add_contact($nim)
+	public function add_contact($id)
 	{
 		$data = array(
-				'nim' => $nim,
+				'id_anggota' => $id,
 				'detil_kontak' => $this->input->post('detil_kontak'),
 				'jenis_kontak' => $this->input->post('jenis_kontak')
 			);
@@ -33,12 +33,12 @@ class Kontak_model extends CI_Model{
 
 	}
 
-	public function update_contact($nim,$detil)
+	public function update_contact($id,$detil)
 	{	
 		$data = array(
 				'detil_kontak' => $this->input->post('detil_kontak')
 			);
-		$this->db->where('nim',$nim);
+		$this->db->where('id_anggota',$id);
 		$this->db->where('detil_kontak',$detil);
 		
 		$query = $this->db->update('kontak',$data);
