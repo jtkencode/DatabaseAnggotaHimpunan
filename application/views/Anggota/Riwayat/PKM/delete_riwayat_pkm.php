@@ -15,10 +15,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php echo $riwayat_pkm->NAMA_PKM; ?></td>
-									<td><?php echo $riwayat_pkm->NAMA_PENYELENGGARA_PKM; ?></td>
-									<td><?php echo $riwayat_pkm->TAHUN_PKM; ?></td>
-									<td><?php echo $riwayat_pkm->PKM_KEMAHASISWAAN; ?></td>
+									<td><?php echo $riwayat_pkm->nama_pkm; ?></td>
+									<td><?php echo $riwayat_pkm->nama_penyelenggara_pkm; ?></td>
+									<td><?php echo $riwayat_pkm->tahun_pkm; ?></td>
+									<td><?php echo $riwayat_pkm->pkm_kemahasiswaan; ?></td>
 								</tr>
 							</tbody>
 						</table>

@@ -7,7 +7,7 @@
 						<div class="col-md-9">
 							<select name="tingkat_prestasi" class="form-control" id="inputTingkatPrestasi" required="">
 								<?php foreach ($tingkat_prestasi as $row) : ?>
-									<option value=<?php echo $row->ID_TINGKAT_PRESTASI; ?>> <?php echo $row->NAMA_TINGKAT_PRESTASI; ?> </option>
+									<option value=<?php echo $row->id_tingkat_prestasi; ?>> <?php echo $row->nama_tingkat_prestasi; ?> </option>
 								<?php endforeach; ?>
 							</select>
 						</div>
@@ -16,28 +16,28 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaPrestasi">Nama Prestasi</label>
 						<div class="col-md-9">
-							<input name="nama_prestasi" class="form-control" id="inputNamaPrestasi" required="" type="text" placeholder="Nama Prestasi" value="<?php echo $riwayat_prestasi->NAMA_PRESTASI; ?>" autocomplete="off">
+							<input name="nama_prestasi" class="form-control" id="inputNamaPrestasi" required="" type="text" placeholder="Nama Prestasi" value="<?php echo $riwayat_prestasi->nama_prestasi; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputPencapaianPrestasi">Pencapaian Prestasi</label>
 						<div class="col-md-9">
-							<input name="pencapaian_prestasi" class="form-control" id="inputPencapaianPrestasi" required="" type="text" placeholder="Pencapaian Prestasi" value="<?php echo $riwayat_prestasi->PENCAPAIAN_PRESTASI; ?>" autocomplete="off">
+							<input name="pencapaian_prestasi" class="form-control" id="inputPencapaianPrestasi" required="" type="text" placeholder="Pencapaian Prestasi" value="<?php echo $riwayat_prestasi->pencapaian_prestasi; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputLembagaPrestasi">Lembaga Prestasi</label>
 						<div class="col-md-9">
-							<input name="lembaga_prestasi" class="form-control" id="inputLembagaPrestasi" required="" type="text" placeholder="Lembaga Prestasi" value="<?php echo $riwayat_prestasi->LEMBAGA_PRESTASI; ?>" autocomplete="off">
+							<input name="lembaga_prestasi" class="form-control" id="inputLembagaPrestasi" required="" type="text" placeholder="Lembaga Prestasi" value="<?php echo $riwayat_prestasi->lembaga_prestasi; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunPrestasi">Tahun Prestasi</label>
 						<div class="col-md-9">
-							<input name="tahun_prestasi" class="form-control" id="inputTahunPrestasi" required="" type="text" placeholder="Tahun Prestasi" value="<?php echo $riwayat_prestasi->TAHUN_PRESTASI; ?>" autocomplete="off">
+							<input name="tahun_prestasi" class="form-control" id="inputTahunPrestasi" required="" type="text" placeholder="Tahun Prestasi" value="<?php echo $riwayat_prestasi->tahun_prestasi; ?>" autocomplete="off">
 						</div>
 					</div>
 
@@ -70,9 +70,9 @@
 	</div>
 
 	<script>
-		var idRadio = "radioJenisPrestasi" + "<?php echo $riwayat_prestasi->JENIS_PRESTASI; ?>";
+		var idRadio = "radioJenisPrestasi" + "<?php echo $riwayat_prestasi->jenis_prestasi; ?>";
 		$("#" + idRadio).prop("checked", true);
-		var tingkatPrestasi = "<?php echo $riwayat_prestasi->ID_TINGKAT_PRESTASI; ?>";
+		var tingkatPrestasi = "<?php echo $riwayat_prestasi->id_tingkat_prestasi; ?>";
 		$('#inputTingkatPrestasi').val(tingkatPrestasi);
 	</script>
 </body>

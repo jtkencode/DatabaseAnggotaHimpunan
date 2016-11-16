@@ -15,10 +15,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php echo $riwayat_pelatihan->NAMA_PELATIHAN; ?></td>
-									<td><?php echo $riwayat_pelatihan->NAMA_PENYELENGGARA_PELATIHAN; ?></td>
-									<td><?php echo $riwayat_pelatihan->TAHUN_PELATIHAN; ?></td>
-									<td><?php echo $riwayat_pelatihan->PELATIHAN_KEMAHASISWAAN; ?></td>
+									<td><?php echo $riwayat_pelatihan->nama_pelatihan; ?></td>
+									<td><?php echo $riwayat_pelatihan->nama_penyelenggara_pelatihan; ?></td>
+									<td><?php echo $riwayat_pelatihan->tahun_pelatihan; ?></td>
+									<td><?php echo $riwayat_pelatihan->pelatihan_kemahasiswaan; ?></td>
 								</tr>
 							</tbody>
 						</table>

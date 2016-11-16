@@ -5,21 +5,21 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaPKM">Nama PKM</label>
 						<div class="col-md-9">
-							<input name="nama_pkm" class="form-control" id="inputNamaPKM" required="" type="text" placeholder="Nama PKM" value="<?php echo $riwayat_pkm->NAMA_PKM; ?>" autocomplete="off">
+							<input name="nama_pkm" class="form-control" id="inputNamaPKM" required="" type="text" placeholder="Nama PKM" value="<?php echo $riwayat_pkm->nama_pkm; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaPenyelenggara">Nama Penyelenggara</label>
 						<div class="col-md-9">
-							<input name="nama_penyelenggara_pkm" class="form-control" id="inputNamaPeyelenggara" required="" type="text" placeholder="Nama Penyelenggara" value="<?php echo $riwayat_pkm->NAMA_PENYELENGGARA_PKM; ?>" autocomplete="off">
+							<input name="nama_penyelenggara_pkm" class="form-control" id="inputNamaPeyelenggara" required="" type="text" placeholder="Nama Penyelenggara" value="<?php echo $riwayat_pkm->nama_penyelenggara_pkm; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunPKM">Tahun PKM</label>
 						<div class="col-md-9">
-							<input name="tahun_pkm" class="form-control" id="inputPKM" required="" type="text" placeholder="Tahun PKM" value="<?php echo $riwayat_pkm->TAHUN_PKM; ?>" autocomplete="off">
+							<input name="tahun_pkm" class="form-control" id="inputPKM" required="" type="text" placeholder="Tahun PKM" value="<?php echo $riwayat_pkm->tahun_pkm; ?>" autocomplete="off">
 						</div>
 					</div>
 
@@ -57,7 +57,7 @@
 
 
 	<script>
-		var idRadio = "radioPKMKemahasiswaan" + "<?php echo $riwayat_pkm->PKM_KEMAHASISWAAN; ?>";
+		var idRadio = "radioPKMKemahasiswaan" + "<?php echo $riwayat_pkm->pkm_kemahasiswaan; ?>";
 		$("#" + idRadio).prop("checked", true);
 	</script>
 

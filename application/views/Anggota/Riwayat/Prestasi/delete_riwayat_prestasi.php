@@ -17,12 +17,12 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php echo $riwayat_prestasi->ID_TINGKAT_PRESTASI; ?></td>
-									<td><?php echo $riwayat_prestasi->NAMA_PRESTASI; ?></td>
-									<td><?php echo $riwayat_prestasi->PENCAPAIAN_PRESTASI; ?></td>
-									<td><?php echo $riwayat_prestasi->LEMBAGA_PRESTASI; ?></td>
-									<td><?php echo $riwayat_prestasi->TAHUN_PRESTASI; ?></td>
-									<td><?php echo $riwayat_prestasi->JENIS_PRESTASI; ?></td>
+									<td><?php echo $riwayat_prestasi->id_tingkat_prestasi; ?></td>
+									<td><?php echo $riwayat_prestasi->nama_prestasi; ?></td>
+									<td><?php echo $riwayat_prestasi->pencapaian_prestasi; ?></td>
+									<td><?php echo $riwayat_prestasi->lembaga_prestasi; ?></td>
+									<td><?php echo $riwayat_prestasi->tahun_prestasi; ?></td>
+									<td><?php echo $riwayat_prestasi->jenis_prestasi; ?></td>
 								</tr>
 							</tbody>
 						</table>

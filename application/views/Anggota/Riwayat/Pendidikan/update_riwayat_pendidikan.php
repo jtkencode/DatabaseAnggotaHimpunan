@@ -42,28 +42,28 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputNamaInstitusi">Nama Institusi</label>
 						<div class="col-md-9">
-							<input name="nama_institusi" class="form-control" id="inputNamaInstitusi" required="" type="text" placeholder="Nama Institusi" value="<?php echo $riwayat_pendidikan->NAMA_INSTITUSI_PENDIDIKAN; ?>" autocomplete="off">
+							<input name="nama_institusi" class="form-control" id="inputNamaInstitusi" required="" type="text" placeholder="Nama Institusi" value="<?php echo $riwayat_pendidikan->nama_institusi_pendidikan; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunMasuk">Tahun Masuk</label>
 						<div class="col-md-9">
-							<input name="tahun_masuk" class="form-control" id="inputTahunMasuk" required="" type="text" placeholder="Tahun masuk" value="<?php echo $riwayat_pendidikan->TAHUN_MASUK_PENDIDIKAN; ?>" autocomplete="off">
+							<input name="tahun_masuk" class="form-control" id="inputTahunMasuk" required="" type="text" placeholder="Tahun masuk" value="<?php echo $riwayat_pendidikan->tahun_masuk_pendidikan; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunLulus">Tahun Lulus</label>
 						<div class="col-md-9">
-							<input name="tahun_lulus" class="form-control" id="inputTahunLulus" required="" type="text" placeholder="Tahun lulus" value="<?php echo $riwayat_pendidikan->TAHUN_LULUS_PENDIDIKAN; ?>" autocomplete="off">
+							<input name="tahun_lulus" class="form-control" id="inputTahunLulus" required="" type="text" placeholder="Tahun lulus" value="<?php echo $riwayat_pendidikan->tahun_lulus_pendidikan; ?>" autocomplete="off">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputBidang">Bidang</label>
 						<div class="col-md-9">
-							<input name="bidang" class="form-control" id="inputBidang" type="text" placeholder="Bidang" value="<?php echo $riwayat_pendidikan->BIDANG_PENDIDIKAN; ?>" autocomplete="off">
+							<input name="bidang" class="form-control" id="inputBidang" type="text" placeholder="Bidang" value="<?php echo $riwayat_pendidikan->bidang_pendidikan; ?>" autocomplete="off">
 						</div>
 					</div>
 
@@ -80,9 +80,9 @@
 	</div>
 
 	<script>
-		var idRadio = "radioJenjangPendidikan" + "<?php echo $riwayat_pendidikan->JENJANG_PENDIDIKAN; ?>";
+		var idRadio = "radioJenjangPendidikan" + "<?php echo $riwayat_pendidikan->jenjang_pendidikan; ?>";
 		$("#" + idRadio).prop("checked", true);
-		<?php if ($riwayat_pendidikan->JENJANG_PENDIDIKAN == 'D' || $riwayat_pendidikan->JENJANG_PENDIDIKAN == 'P' ) : ?>
+		<?php if ($riwayat_pendidikan->jenjang_pendidikan == 'D' || $riwayat_pendidikan->jenjang_pendidikan == 'P' ) : ?>
 			$('#inputBidang').prop( "disabled", true );
 		<?php endif ;?>
 	</script>

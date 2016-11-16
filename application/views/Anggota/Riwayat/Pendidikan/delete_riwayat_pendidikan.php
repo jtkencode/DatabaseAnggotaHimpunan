@@ -15,10 +15,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php echo $riwayat_pendidikan->JENJANG_PENDIDIKAN; ?></td>
-									<td><?php echo $riwayat_pendidikan->NAMA_INSTITUSI_PENDIDIKAN; ?></td>
-									<td><?php echo $riwayat_pendidikan->TAHUN_MASUK_PENDIDIKAN." - ".$riwayat_pendidikan->TAHUN_LULUS_PENDIDIKAN; ?></td>
-									<td><?php echo $riwayat_pendidikan->BIDANG_PENDIDIKAN; ?></td>
+									<td><?php echo $riwayat_pendidikan->jenjang_pendidikan; ?></td>
+									<td><?php echo $riwayat_pendidikan->nama_institusi_pendidikan; ?></td>
+									<td><?php echo $riwayat_pendidikan->tahun_masuk_pendidikan." - ".$riwayat_pendidikan->tahun_lulus_pendidikan; ?></td>
+									<td><?php echo $riwayat_pendidikan->bidang_pendidikan; ?></td>
 								</tr>
 							</tbody>
 						</table>
