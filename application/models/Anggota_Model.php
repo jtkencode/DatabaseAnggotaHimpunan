@@ -55,15 +55,15 @@ class Anggota_Model extends CI_Model{
 	public function update_profile($nim)
 	{
 		$data = array(
-				'NAMA_LENGKAP' => $this->input->post('nama_lengkap'),
-				'NAMA_PANGGILAN' => $this->input->post('nama_panggilan'),
-				'TEMPAT_LAHIR' => $this->input->post('tempat_lahir'),
-				'ALAMAT_ASAL' => $this->input->post('alamat_asal'),
-				'ALAMAT_SEKARANG' => $this->input->post('alamat_sekarang')
+				'nama_lengkap' => $this->input->post('nama_lengkap'),
+				'nama_panggilan' => $this->input->post('nama_panggilan'),
+				'tempat_lahir' => $this->input->post('tempat_lahir'),
+				'alamat_asal' => $this->input->post('alamat_asal'),
+				'alamat_sekarang' => $this->input->post('alamat_sekarang')
 		);
 
 		/*Update to DB*/
-		$this->db->where('NIM', $nim);
+		$this->db->where('nim', $nim);
 		$query = $this->db->update('anggota',$data);
 		return $query;
 	}
@@ -93,29 +93,29 @@ class Anggota_Model extends CI_Model{
 		}
 
 		/*verification success */
-		$pass = password_hash($pass, PASSWORD_DEFAULT);
+		$pass = password_hash($pass, password_default);
 		$data = array(
-				'PASSWORD' => $pass
+				'password' => $pass
 		);
 
-		/*Update to DB*/
-		$this->db->where('NIM', $nim);
+		/*update to db*/
+		$this->db->where('nim', $nim);
 		$query = $this->db->update('anggota',$data);
 		return $query;
 	}
 
 
-	/* 	Author : IF
-		BETWEEN DATE(NOW() - INTERVAL (1) DAY) -> yang ulang tahun hari ini
+	/* 	author : if
+		between date(now() - interval (1) day) -> yang ulang tahun hari ini
 	*/
 	public function get_birthday_of_week()
 	{
-    	$query = $this->db->query("SELECT NIM, NAMA_LENGKAP, STR_TO_DATE(concat(DATE_FORMAT(TANGGAL_LAHIR,'%d/%m/'),DATE_FORMAT(now(),'%Y')),'%d/%m/%Y') AS TANGGAL
-		FROM ANGGOTA
-		HAVING DATE(TANGGAL)
-			BETWEEN DATE(NOW() - INTERVAL (1) DAY)
-				AND DATE(NOW() + INTERVAL (7 - DAYOFWEEK(NOW())) DAY)
-		ORDER BY TANGGAL");
+    	$query = $this->db->query("select nim, nama_lengkap, str_to_date(concat(date_format(tanggal_lahir,'%d/%m/'),date_format(now(),'%y')),'%d/%m/%y') as tanggal
+		from anggota
+		having date(tanggal)
+			between date(now() - interval (1) day)
+				and date(now() + interval (7 - dayofweek(now())) day)
+		order by tanggal");
 		return  $query->result();
 
 	}
