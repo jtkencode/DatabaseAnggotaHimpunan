@@ -23,9 +23,9 @@ class Kontak_model extends CI_Model{
 	public function add_contact($nim)
 	{
 		$data = array(
-				'NIM' => $nim,
-				'DETIL_KONTAK' => $this->input->post('detil_kontak'),
-				'JENIS_KONTAK' => $this->input->post('jenis_kontak')
+				'nim' => $nim,
+				'detil_kontak' => $this->input->post('detil_kontak'),
+				'jenis_kontak' => $this->input->post('jenis_kontak')
 			);
 
 		$query = $this->db->insert('kontak',$data);
@@ -36,10 +36,10 @@ class Kontak_model extends CI_Model{
 	public function update_contact($nim,$detil)
 	{	
 		$data = array(
-				'DETIL_KONTAK' => $this->input->post('detil_kontak')
+				'detil_kontak' => $this->input->post('detil_kontak')
 			);
-		$this->db->where('NIM',$nim);
-		$this->db->where('DETIL_KONTAK',$detil);
+		$this->db->where('nim',$nim);
+		$this->db->where('detil_kontak',$detil);
 		
 		$query = $this->db->update('kontak',$data);
 		return $query;
