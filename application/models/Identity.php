@@ -19,7 +19,7 @@ class Identity extends CI_Model {
 				return FALSE;
 			} else {
 				$result = reset($result);
-				if (! password_verify($password,$result->PASSWORD) ){
+				if (! password_verify($password,$result->password) ){
 					$this->session->set_flashdata('error', 'Password Salah !');
 					return FALSE;
 				}
