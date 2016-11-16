@@ -23,12 +23,14 @@ class Identity extends CI_Model {
 					$this->session->set_flashdata('error', 'Password Salah !');
 					return FALSE;
 				}
+
+				$username = $result->id_anggota; //store id anggota to session.. because its a primary key for anggota.
 			}
 		}	
 
-		$id = ($username == "admin" ? 1 : 2);
-		$this->set_session_data('id',$id);
-		$this->set_session_data('user',$username);
+		$user_type = ($username == "admin" ? 1 : 2);
+		$this->set_session_data('user_type',$user_type);
+		$this->set_session_data('user_id',$username);
 		return TRUE;
 	}
 
@@ -44,12 +46,12 @@ class Identity extends CI_Model {
 
 	public function is_admin()
 	{
-		return $this->get_session_data('id') == 1;
+		return $this->get_session_data('user_type') == 1;
 	}
 
 	public function is_anggota()
 	{
-		return $this->get_session_data('id') == 2;
+		return $this->get_session_data('user_type') == 2;
 	}
 
 	public function logout()
