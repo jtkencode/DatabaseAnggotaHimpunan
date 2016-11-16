@@ -16,12 +16,12 @@ class Riwayat_PKM extends Anggota_Controller {
 
 	public function index()
 	{
-		$nim = $this->session->userdata('user');
-		$data['anggota'] = $this->Anggota_Model->get_id($nim);
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
 		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
-		$data['kontak'] = $this->Kontak_model->get_id($nim);
-		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($nim);
+		$data['kontak'] = $this->Kontak_model->get_id($id);
+		$data['riwayat_pkm'] = $this->Riwayat_PKM_model->get_nim($id);
 		$ui['navtab']['page'] = 'pkm';
 		
 		$this->load->view('anggota/header');
@@ -34,7 +34,7 @@ class Riwayat_PKM extends Anggota_Controller {
 
 	public function add()
 	{ 
-		$data['nim'] = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Riwayat PKM';
@@ -42,7 +42,7 @@ class Riwayat_PKM extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/add_riwayat_pkm',$data);
 		} else {
-			$insert = $this->Riwayat_PKM_model->add_riwayat_pkm($data['nim']);
+			$insert = $this->Riwayat_PKM_model->add_riwayat_pkm($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
@@ -50,30 +50,30 @@ class Riwayat_PKM extends Anggota_Controller {
 		}	
 	}
 
-	public function get($id = null)
+	public function get($no_urut = null)
 	{
-		$nim = $this->session->userdata('user');
-		if ($id != null) {
-			$data = $this->Riwayat_PKM_model->get_id($nim,$id);
+		$id = $this->session->userdata('user_id');
+		if ($no_urut != null) {
+			$data = $this->Riwayat_PKM_model->get_no_urut($id,$no_urut);
 		} else {
-			$data = $this->Riwayat_PKM_model->get_nim($nim);
+			$data = $this->Riwayat_PKM_model->get_id($id);
 		}
 		
 		return $data;
 	}
 
-	public function update($id)
+	public function update($no_urut)
 	{ 
-		$nim = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat_pkm']= $this->get($id);
+			$data['riwayat_pkm']= $this->get($no_urut);
 			$ui['page'] = 'Ubah Riwayat PKM';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/riwayat/pkm/update_riwayat_pkm',$data);
 		} else {
-			$update = $this->Riwayat_PKM_model->update_riwayat_pkm($nim,$id);
+			$update = $this->Riwayat_PKM_model->update_riwayat_pkm($id,$no_urut);
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
 				  redirect('site/success');
@@ -81,12 +81,12 @@ class Riwayat_PKM extends Anggota_Controller {
 		}	
 	}
 
-	public function delete($id)
+	public function delete($no_urut)
 	{ 
-		$nim = $this->session->userdata('user');
+		$id = $this->session->userdata('user_id');
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['riwayat']= (array) $this->get($id);
+			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat PKM';
 			$data['table']['header'] = ["Nama PKM","Nama Penyelenggara","Tahun PKM","PKM Kemahasiswaan"];
 			$data['attribute'] = ["NAMA_PKM","NAMA_PENYELENGGARA_PKM","TAHUN_PKM","PKM_KEMAHASISWAAN"];
@@ -94,7 +94,7 @@ class Riwayat_PKM extends Anggota_Controller {
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
 		} else {
-			$delete = $this->Riwayat_PKM_model->delete_riwayat_pkm($nim,$id);
+			$delete = $this->Riwayat_PKM_model->delete_riwayat_pkm($id,$no_urut);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
 				 redirect('site/success');
