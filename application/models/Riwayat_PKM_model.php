@@ -8,18 +8,18 @@ class Riwayat_PKM_model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function get_nim($nim)
+	public function get_id($id)
 	{
-		$query = $this->db->where('nim', $nim)->get('riwayat_pkm');
+		$query = $this->db->where('id_anggota', $id)->get('riwayat_pkm');
 		$result = $query->result();
 
 		return $result;
 	}
 
-	public function get_id($nim,$id)
+	public function get_no_urut($id,$no_urut)
 	{
-		$this->db->where('nim', $nim);
-		$this->db->where('no_urut_pkm', $id);
+		$this->db->where('id_anggota', $id);
+		$this->db->where('no_urut_pkm', $no_urut);
 		$query = $this->db->get('riwayat_pkm');
 		$result = $query->result();
 
@@ -29,7 +29,7 @@ class Riwayat_PKM_model extends CI_Model{
 	public function get_last_no($id)
 	{
 		 
-		$this->db->where('nim', $id);
+		$this->db->where('id_anggota', $id);
 		$this->db->order_by('no_urut_pkm', 'desc');
 		$query = $this->db->limit(1)->get('riwayat_pkm');;
 		$result = $query->result();
@@ -41,11 +41,11 @@ class Riwayat_PKM_model extends CI_Model{
 		return $result[0]->no_urut_pkm;
 	}
 
-	public function add_riwayat_pkm($nim)
+	public function add_riwayat_pkm($id)
 	{	
-		$no_urut = $this->get_last_no($nim) + 1; //append no
+		$no_urut = $this->get_last_no($id) + 1; //append no
 		$data = array(
-				'nim' => $nim,
+				'id_anggota' => $id,
 				'no_urut_pkm' => $no_urut,
 				'nama_pkm' => $this->input->post('nama_pkm'),
 				'nama_penyelenggara_pkm' => $this->input->post('nama_penyelenggara_pkm'),
@@ -57,7 +57,7 @@ class Riwayat_PKM_model extends CI_Model{
 		return $query;
 	}
 
-	public function update_riwayat_pkm($nim,$id)
+	public function update_riwayat_pkm($id,$no_urut)
 	{
 		$data = array(
 				'nama_pkm' => $this->input->post('nama_pkm'),
@@ -66,16 +66,16 @@ class Riwayat_PKM_model extends CI_Model{
 				'pkm_kemahasiswaan' => $this->input->post('pkm_kemahasiswaan')
 			);
 
-		$this->db->where('nim', $nim);
-		$this->db->where('no_urut_pkm',$id);
+		$this->db->where('id_anggota', $id);
+		$this->db->where('no_urut_pkm',$no_urut);
 		$query = $this->db->update('riwayat_pkm',$data);
 		return $query;
 	}
 
-	public function delete_riwayat_pkm($nim,$id)
+	public function delete_riwayat_pkm($id,$no_urut)
 	{
-		$this->db->where('nim', $nim);
-		$this->db->where('no_urut_pkm',$id);
+		$this->db->where('id_anggota', $id);
+		$this->db->where('no_urut_pkm',$no_urut);
 		$query = $this->db->delete('riwayat_pkm');
 		return $query;
 	}
