@@ -8,6 +8,17 @@ class Anggota_Model extends CI_Model{
 		parent::__construct();
 	}
 
+	public function get_nim($nim)
+	{
+		$query = $this->db->where('nim', $nim)->get('anggota');
+		$result = $query->result();
+
+		if (count($result))
+			return $result[0];
+
+		return FALSE;
+	}
+
 	public function get_id($id)
 	{
 		$query = $this->db->where('id_anggota', $id)->get('anggota');
