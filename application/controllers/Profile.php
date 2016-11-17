@@ -21,11 +21,9 @@ class Profile extends My_Controller {
 		}
 
 		else {
-			$data['anggota'] = $this->Anggota_Model->get_id($nim);
-			$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
-			$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
-
-			$data['kontak'] = $this->Kontak_model->get_id($nim);
+			$data['anggota'] = $this->Anggota_Model->get_nim($nim);
+			$id = $data['anggota']->id_anggota;
+			$data['kontak'] = $this->Kontak_model->get_id($id);
 			$ui['navtab']['page'] = 'overview';
 			$ui['navtab']['nim'] = $nim;
 
