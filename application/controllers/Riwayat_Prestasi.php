@@ -26,7 +26,7 @@ class Riwayat_Prestasi extends My_Controller {
 			$this->load->view('errors');
 		}
 		else {
-			$data['anggota'] = $this->Anggota_Model->get_nim$nim);
+			$data['anggota'] = $this->Anggota_Model->get_nim($nim);
 			$id = $data['anggota']->id_anggota;
 			$data['kontak'] = $this->Kontak_model->get_id($id);
 			$data['tingkat_prestasi'] = $this->Tingkat_Prestasi_model->get_all();

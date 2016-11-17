@@ -26,7 +26,7 @@ class Riwayat_Pendidikan extends My_Controller {
 			$data['anggota'] = $this->Anggota_Model->get_nim($nim);
 			$id = $data['anggota']->id_anggota;			
 			$data['kontak'] = $this->Kontak_model->get_id($id);
-			$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_nim($id);
+			$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($id);
 			$ui['navtab']['page'] = 'pendidikan';
 			$ui['navtab']['nim'] = $nim;
 			
