@@ -10,9 +10,9 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<p><?php echo $row->NAMA_PELATIHAN;?></p>
-											<p><small><?php echo $row->NAMA_PENYELENGGARA_PELATIHAN;?></small></p>
-											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->TAHUN_PELATIHAN?></small></p>
+											<p><?php echo $row->nama_pelatihan;?></p>
+											<p><small><?php echo $row->nama_penyelenggara_pelatihan;?></small></p>
+											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_pelatihan?></small></p>
 										</div>
 									</div>
 								</div>

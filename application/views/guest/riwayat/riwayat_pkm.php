@@ -18,9 +18,9 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<p><?php echo $row->NAMA_PKM;?></p>
-											<p><small><?php echo $row->NAMA_PENYELENGGARA_PKM;?></small></p>
-											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->TAHUN_PKM?></small></p>
+											<p><?php echo $row->nama_pkm;?></p>
+											<p><small><?php echo $row->nama_penyelenggara_pkm;?></small></p>
+											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_pkm?></small></p>
 										</div>
 									</div>
 								</div>

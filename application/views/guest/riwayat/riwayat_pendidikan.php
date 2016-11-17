@@ -15,13 +15,13 @@ $left = false;
 										<?php else :?> <article class="timeline-entry">
 										<?php endif ; $left = !$left ; ?>
 											<div class="timeline-entry-inner">
-												<time class="timeline-time" datetime="2014-01-10T03:45"><strong><?php echo $row->TAHUN_MASUK_PENDIDIKAN;?></strong></time>
-												<div class="timeline-icon <?php echo $icon[$row->JENJANG_PENDIDIKAN];?>">
+												<time class="timeline-time" datetime="2014-01-10T03:45"><strong><?php echo $row->tahun_masuk_pendidikan;?></strong></time>
+												<div class="timeline-icon <?php echo $icon[$row->jenjang_pendidikan];?>">
 													<i class="entypo-feather"></i>
 												</div>
 												<div class="timeline-label">
-													<h2><?php echo $row->NAMA_INSTITUSI_PENDIDIKAN ;?></h2>
-													<p><?php echo $row->BIDANG_PENDIDIKAN ;?></p>
+													<h2><?php echo $row->nama_institusi_pendidikan ;?></h2>
+													<p><?php echo $row->bidang_pendidikan ;?></p>
 												</div>
 											</div>
 										</article>
