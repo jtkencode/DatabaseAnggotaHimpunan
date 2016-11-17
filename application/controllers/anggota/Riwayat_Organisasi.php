@@ -19,14 +19,13 @@ class Riwayat_Organisasi extends Anggota_Controller {
 	{
 		$id = $this->session->userdata('user_id');
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
-		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
-		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
 		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$data['riwayat_org'] = $this->Riwayat_Org_model->get_id($id);
 		$ui['navtab']['page'] = 'organisasi';
+		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
 		
 		$this->load->view('anggota/header');
-		$this->load->view('anggota/body');
+		$this->load->view('anggota/body',$ui);
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/organisasi/content',$data);

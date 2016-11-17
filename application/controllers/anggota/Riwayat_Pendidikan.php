@@ -21,9 +21,9 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 		$data['kontak'] = $this->Kontak_model->get_id($id);
 		$data['riwayat_pendidikan'] = $this->Riwayat_Pendidikan_model->get_id($id);
 		$ui['navtab']['page'] = 'pendidikan';
-		
+		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
 		$this->load->view('anggota/header');
-		$this->load->view('anggota/body');
+		$this->load->view('anggota/body',$ui);
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/pendidikan/content',$data);

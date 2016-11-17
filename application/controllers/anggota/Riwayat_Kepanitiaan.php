@@ -19,13 +19,13 @@ class Riwayat_Kepanitiaan extends Anggota_Controller {
 		$id = $this->session->userdata('user_id');
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$data['kontak'] = $this->Kontak_model->get_id($id);
-		$data['prodi']['D3-TI'] = "DIII-Teknik Informatika";
-		$data['prodi']['D4-TI'] = "Sarjana Terapan Teknik Informatika";
+		
 		$data['riwayat_kepanitiaan'] = $this->Riwayat_Kepanitiaan_model->get_id($id);
 		$ui['navtab']['page'] = 'kepanitiaan';
+		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
 		
 		$this->load->view('anggota/header');
-		$this->load->view('anggota/body');
+		$this->load->view('anggota/body',$ui);
 		$this->load->view('anggota/profile',$data);
 		$this->load->view('anggota/nav_riwayat',$ui['navtab']);
 		$this->load->view('anggota/riwayat/kepanitiaan/content',$data);
