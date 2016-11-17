@@ -10,9 +10,9 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<p><?php echo $row->NAMA_KEGIATAN_KEPANITIAAN;?> <small><?php echo $row->JABATAN_KEPANITIAAN;?></small></p>
-											<p><small><?php echo $row->NAMA_ORG_KEPANITIAAN;?></small></p>
-											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->TAHUN_KEPANITIAAN;?></small></p>
+											<p><?php echo $row->nama_kegiatan_kepanitiaan;?> <small><?php echo $row->jabatan_kepanitiaan;?></small></p>
+											<p><small><?php echo $row->nama_org_kepanitiaan;?></small></p>
+											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_kepanitiaan;?></small></p>
 										</div>
 									</div>
 								</div>
