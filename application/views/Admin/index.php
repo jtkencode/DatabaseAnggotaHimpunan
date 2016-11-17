@@ -24,6 +24,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		<hr>
 
+		<div class="row">
+			<div class="col-md-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">anggota yang sudah terdatar</h4>
+						<p class="list-group-item-text">90 Anggota angkatan 28</p>
+						<p class="list-group-item-text">80 Anggota angkatan 29</p>
+						<p class="list-group-item-text">60 Anggota angkatan 30</p>
+					</a>
+				</div>
+			</div>	
+
+			<div class="col-md-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">anggota belum melengkapi data</h4>
+						<p class="list-group-item-text">90 Anggota angkatan 28</p>
+						<p class="list-group-item-text">80 Anggota angkatan 29</p>
+						<p class="list-group-item-text">60 Anggota angkatan 30</p>
+					</a>
+				</div>
+			</div>	
+
+			<div class="col-md-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">anggota sudah melengkapi data</h4>
+						<p class="list-group-item-text">90 Anggota angkatan 28</p>
+						<p class="list-group-item-text">80 Anggota angkatan 29</p>
+						<p class="list-group-item-text">60 Anggota angkatan 30</p>
+					</a>
+				</div>
+			</div>	
+
+		</div>
+
 		<div class="">
 			<label>Jumlah anggota yang sudah melengkapi data</label>
 			<div class="progress">
