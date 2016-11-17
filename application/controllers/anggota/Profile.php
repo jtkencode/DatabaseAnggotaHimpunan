@@ -103,7 +103,7 @@ class Profile extends Anggota_Controller {
 			$ui['error'] = $this->session->flashdata('error');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/kontak/add_contact',$data);
+			$this->load->view('anggota/kontak/add_contact');
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
 			$insert = $this->Kontak_model->add_contact($id);
