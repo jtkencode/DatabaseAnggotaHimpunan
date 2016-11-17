@@ -16,7 +16,8 @@ class Dashboard extends Anggota_Controller {
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$data['birthday'] = $this->Anggota_Model->get_birthday_of_week();
  		$data['waktu'] = $this->get_time_condition();
- 		$this->load->view('anggota/header');
+ 		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
+ 		$this->load->view('anggota/header',$ui);
  		$this->load->view('anggota/body');
 		$this->load->view('anggota/dashboard',$data);
 		$this->load->view('anggota/footer');
