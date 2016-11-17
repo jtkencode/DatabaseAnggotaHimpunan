@@ -10,8 +10,8 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<p><?php echo $row->NAMA_ORG;?><br><small><?php echo $row->JABATAN_ORG;?></small></p>
-											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->TAHUN_MULAI_ORG.'-'.$row->TAHUN_SELESAI_ORG;?></small></p>
+											<p><?php echo $row->nama_org;?><br><small><?php echo $row->jabatan_org;?></small></p>
+											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_mulai_org.'-'.$row->tahun_selesai_org;?></small></p>
 										</div>
 									</div>
 								</div>
