@@ -43,8 +43,10 @@ class Dashboard extends Admin_Controller {
 
 	public function birthday()
 	{
+		$data['birthday'] = $this->Anggota_Model->get_birthday_of_week();
 		$this->load->view('Admin/header');
 		$this->load->view('Admin/body');
+		$this->load->view('Admin/birthday',$data);
 		$this->load->view('Admin/footer');
 	}
 
