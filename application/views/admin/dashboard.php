@@ -1,30 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Admin Dashboard</title>
-	<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet"> 
-	<script src="<?php echo base_url('assets/js/jquery-2.1.4.min.js'); ?>"></script>
-</head>
-<body>
-	<div class="container">
-		<div class="page-header">
-			<h1>Admin Dashboard <small>Data Anggota Himakom</small></h1>
-		</div>
-
-		<div class="btn-group">
-			<a href="#" class="button btn btn-default">Lihat Data Anggota</a>
-			<a href="#" class="button btn btn-default">Atur Kegiatan</a>
-			<a href="#" class="button btn btn-default">Atur Periode</a>
-			<a href="<?php echo site_url('site/logout'); ?>" class="button btn btn-default">Logout</a>
-		</div>
-		<hr>
-
-
 		<!-- Statistik Anggota-->
 		<div class="row">
 			<div class="col-md-4">
@@ -128,9 +101,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<!-- end pagination-->
 
 		</div>
-		
-	</div>
-
-	
-</body>
-</html>
