@@ -18,10 +18,11 @@ class Dashboard extends Admin_Controller {
 
 	public function view()
 	{		
-		$count_not_complete = $this->Anggota_Model->get_count_not_complete();
+		$total_not_complete = $this->Anggota_Model->get_total_not_complete();
+		$data['count_not_complete'] = $this->Anggota_Model->get_count_not_complete();
 		$data['count_anggota_angkatan'] =  $this->Anggota_Model->get_count_anggota_angkatan();
 		$data['count_total_anggota'] = $this->Anggota_Model->get_count_anggota();
-		$data['count_complete'] = $data['count_total_anggota'] - $count_not_complete;
+		$data['count_complete'] = $data['count_total_anggota'] - $total_not_complete;
 		$data['progress'] = (double) $data['count_complete'] / $data['count_total_anggota'];
 
 		$data['count_birthday'] = count($this->Anggota_Model->get_birthday_of_week());

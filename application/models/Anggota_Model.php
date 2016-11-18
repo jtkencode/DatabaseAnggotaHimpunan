@@ -38,12 +38,23 @@ class Anggota_Model extends CI_Model{
 
 	public function get_count_not_complete()
 	{
+		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
 		$this->db->where('tempat_lahir', '-');
 		$this->db->where('alamat_sekarang','-');
-		$this->db->where('angkatan_himpunan >','28');
+		$this->db->group_by('angkatan_himpunan');
 		$query = $this->db->get('anggota');
-		return count($query->result());
+		return $query->result();
+	}
 
+	public function get_total_not_complete()
+	{
+		$count_not_complete = $this->get_count_not_complete();
+		$result = 0;
+		foreach ($count_not_complete as $row) {
+			$result += $row->jumlah_anggota;
+		}
+
+		return $result;
 	}
 
 	public function get_not_complete($start)
