@@ -20,7 +20,7 @@ class Kontak extends Anggota_Controller {
  		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
  		$this->load->view('anggota/header');
  		$this->load->view('anggota/body',$ui);
-		$this->load->view('anggota/kontak',$data);
+		$this->load->view('anggota/kontak/kontak',$data);
 		$this->load->view('anggota/footer');
 
 	}

@@ -5,8 +5,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<h2><small>Kontak Anggota</small></h2>
-								<a href="<?php echo site_url('anggota/kontak/add_contact'); ?>" class="btn btn-default">Tambah Riwayat</a>
-								<button class="btn btn-default" id="editKontak">Edit Riwayat</button>
+								<a href="<?php echo site_url('anggota/kontak/add_contact'); ?>" class="btn btn-default">Tambah Kontak</a>
+								<button class="btn btn-default" id="editKontak">Edit Kontak</button>
 							</div>
 						</div>
 						<hr>
