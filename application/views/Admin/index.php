@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php if ($count_birthday== 0):?>
 						<h4 class="list-group-item-heading">Tidak ada anggota yang ulang tahun pekan ini.</h4>
 					<?php else :?>
-						<h4 class="list-group-item-heading"><?php echo $count_birthday; ?> Anggota berulang tahun pekan ini</h4>
+						<h4 class="list-group-item-heading"><?php echo $count_birthday; ?> Anggota berulang tahun pekan ini <span class="glyphicon glyphicon-gift"></span></h4>
 						<p class="list-group-item-text">Lihat anggota yang berulang tahun</p>
 					<?php endif;?>
 					</a>
