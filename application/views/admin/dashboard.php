@@ -10,9 +10,9 @@
 				<div class="list-group">
 					<a href="#" class="list-group-item">
 						<h4 class="list-group-item-heading">anggota yang sudah terdatar</h4>
-						<p class="list-group-item-text">90 Anggota angkatan 28</p>
-						<p class="list-group-item-text">80 Anggota angkatan 29</p>
-						<p class="list-group-item-text">60 Anggota angkatan 30</p>
+						<?php foreach ($count_anggota_angkatan as $row) : ?>
+							<p class="list-group-item-text"><?php echo $row->jumlah_anggota." Anggota angkatan ".$row->angkatan_himpunan;?></p>
+						<?php endforeach; ?>
 					</a>
 				</div>
 			</div>	

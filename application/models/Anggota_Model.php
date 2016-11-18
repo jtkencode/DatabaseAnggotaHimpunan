@@ -131,6 +131,14 @@ class Anggota_Model extends CI_Model{
 
 	}
 
+	public function get_count_anggota_angkatan()
+	{	
+		$this->db->select('angkatan_himpunan,count(*) as jumlah_anggota');
+		$this->db->group_by("angkatan_himpunan");
+		$query = $this->db->get('anggota');
+		return $query->result();
+	}
+
 }
 	
 ?>
