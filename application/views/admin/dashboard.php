@@ -1,5 +1,6 @@
 		<!-- Statistik Anggota-->
 		<!-- progress bar anggota melengkapi data -->
+		<h4>Info Anggota</h4>
 		<div class="progress">
 			<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $count_complete ;?>" aria-valuemin="0" aria-valuemax="<?php echo $count_total_anggota ;?>" style="width: <?php echo $count_complete/$count_total_anggota ;?>%"> <?php echo $count_complete ;?> Anggota
 			</div>
@@ -77,9 +78,11 @@
 		</div>
 
 		<hr>
+
+
 		<!-- Tentang Kegiatn -->
-		<div class="row">
-			
+		<h4>Info Kegiatan</h4>
+		<div class="row">	
 			<div class="col-md-4">
 				<div class="list-group">
 					<a href="#" class="list-group-item">
