@@ -125,7 +125,7 @@ class Anggota_Model extends CI_Model{
 		}
 
 		/*verification success */
-		$pass = password_hash($pass, password_default);
+		$pass = password_hash($pass, PASSWORD_DEFAULT);
 		$data = array(
 				'password' => $pass
 		);
