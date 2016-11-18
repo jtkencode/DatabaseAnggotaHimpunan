@@ -6,6 +6,7 @@
 		</div>
 
 		<div class="row">
+			<!-- Anggota yang sudah terdaftar -->
 			<div class="col-md-4">
 				<div class="list-group">
 					<a href="#" class="list-group-item">
@@ -17,6 +18,7 @@
 				</div>
 			</div>	
 
+			<!-- anggota yang belum melengkapi data-->
 			<div class="col-md-4">
 				<div class="list-group">
 					<a href="<?php echo site_url('admin/dashboard/not_complete/');?>" class="list-group-item">
@@ -28,6 +30,7 @@
 				</div>
 			</div>	
 
+			<!-- anggota yang sudah melengkapi data-->
 			<div class="col-md-4">
 				<div class="list-group">
 					<a href="#" class="list-group-item">
