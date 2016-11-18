@@ -27,6 +27,7 @@ class Dashboard extends Admin_Controller {
 		$data['progress'] = (double) $data['count_complete'] / $data['count_total_anggota'];
 
 		$data['count_birthday'] = count($this->Anggota_Model->get_birthday_of_week());
+		$data['count_pkm'] = 0;
 		$this->load->view('Admin/header');
 		$this->load->view('Admin/body');
 		$this->load->view('Admin/dashboard',$data);
@@ -45,7 +46,7 @@ class Dashboard extends Admin_Controller {
 	public function not_complete($page = 1)
 	{
 		//for pagination
-		$count_not_complete = $this->Anggota_Model->get_count_not_complete();
+		$count_not_complete = $this->Anggota_Model->get_total_not_complete();
 		$data['page_size'] = 10;
 		$start = 1 + ($page - 1)*$data['page_size'];
 		$data['data_not_complete'] = $this->Anggota_Model->get_not_complete($start);

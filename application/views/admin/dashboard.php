@@ -58,7 +58,49 @@
 					<?php endif;?>
 					</a>
 				</div>
+			</div>
+			<!-- anggota yang mengikuti pkm tahun ini-->
+			<div class="col-md-4">
+				<div class="list-group">
+					<?php if ($count_pkm == 0):?>
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">Tidak ada anggota yang mengikuti pkm tahun ini.</h4>
+						<p class="list-group-item-text">Coming Soon ;)</p>
+					<?php else :?>
+						<a href="<?php echo site_url('admin/dashboard/pkm'); ?>" class="list-group-item">
+						<h4 class="list-group-item-heading"><?php echo $count_pkm; ?> Anggota yang mengikuti pkm tahun ini</h4>
+						<p class="list-group-item-text">Lihat anggota yang mengikuti pkm tahun ini</p>
+					<?php endif;?>
+					</a>
+				</div>
 			</div>	
 		</div>
+
+		<hr>
+		<!-- Tentang Kegiatn -->
+		<div class="row">
+			
+			<div class="col-md-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">6 Kegiatan wajib pekan ini</h4>
+						<p class="list-group-item-text">Lihat kegiatan</p>
+						<p class="list-group-item-text">coming soon;)</p>
+					</a>
+				</div>
+			</div>
+
+			
+			<div class="col-md-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">2 Kegiatan departemen pekan ini</h4>
+						<p class="list-group-item-text">Lihat kegiatan</p>
+						<p class="list-group-item-text">coming soon;)</p>
+					</a>
+				</div>
+			</div>
+		</div>
+
 
 		
