@@ -7,6 +7,7 @@ class Site extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('identity');
+		$this->load->model('Anggota_Model');
 		$this->load->library('session');
 	}		
 	
@@ -33,6 +34,10 @@ class Site extends CI_Controller {
 				if ($this->identity->is_admin()){
 					redirect('admin/dashboard');
 				} else {
+					$id = $this->session->userdata('user_id');
+					if ($this->Anggota_Model->is_not_complete($id)){
+						redirect('anggota/first_time');
+					}
 					redirect('anggota/dashboard');
 				}
 			} else {

@@ -7,6 +7,7 @@ class My_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
+		$this->load->model('Anggota_Model');
 
 	}		
 }
@@ -25,7 +26,7 @@ class Anggota_Controller extends My_Controller {
 	{
 		parent::__construct();
 		if (!$this->identity->is_anggota())
-				redirect('site/login');
+			redirect('site/login');
 	}
 }
 ?>

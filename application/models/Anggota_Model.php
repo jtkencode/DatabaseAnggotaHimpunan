@@ -8,6 +8,18 @@ class Anggota_Model extends CI_Model{
 		parent::__construct();
 	}
 
+	public function is_not_complete($id)
+	{
+		$this->db->where('id_anggota',$id);
+		$this->db->where('nama_panggilan','-');
+		$this->db->where('tempat_lahir', '-');
+		$this->db->where('alamat_sekarang','-');
+		$query = $this->db->get('anggota');
+		$result = $query->result();
+
+		return (count($result) == 0);
+	}
+
 	public function get_nim($nim)
 	{
 		$query = $this->db->where('nim', $nim)->get('anggota');
