@@ -35,7 +35,15 @@ class Dashboard extends Admin_Controller {
 
 		$data['count_birthday'] = count($this->Anggota_Model->get_birthday_of_week());
 		
-		$this->load->view('Admin/index',$data);
+		$this->load->view('Admin/header');
+		$this->load->view('Admin/body');
+		$this->load->view('Admin/dashboard',$data);
+		$this->load->view('Admin/footer');
+	}
+
+	public function birthday()
+	{
+
 	}
 
 }
