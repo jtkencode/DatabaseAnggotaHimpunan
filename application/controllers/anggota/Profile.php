@@ -94,43 +94,4 @@ class Profile extends Anggota_Controller {
 		}	
 	}
 
-	public function add_contact()
-	{ 
-		$id = $this->session->userdata('user_id');
-		
-		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$ui['page'] = 'Tambah Kontak';
-			$ui['error'] = $this->session->flashdata('error');
-			$this->load->view('anggota/header');
-			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/kontak/add_contact');
-			//$this->load->view('anggota/add_contact',$data);
-		} else {
-			$insert = $this->Kontak_model->add_contact($id);
-			if ($insert){
-				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
-			} else echo "Update Gagal";
-		}	
-	}
-
-
-	public function update_contact($detil)
-	{ 
-		$id = $this->session->userdata('user_id');
-		
-		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$ui['page'] = 'Edit Kontak';
-			$ui['error'] = $this->session->flashdata('error');
-			$this->load->view('anggota/header');
-			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/kontak/update_contact',$data);
-		} else {
-			$insert = $this->Kontak_model->update_contact($id,$detil);
-			if ($insert){
-				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
-			} else echo "Update Gagal";
-		}	
-	}
 }

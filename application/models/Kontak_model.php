@@ -20,6 +20,15 @@ class Kontak_model extends CI_Model{
 		return $result;
 	}
 
+	public function get_detil($id,$detil)
+	{
+		$this->db->where('detil_kontak', $detil);
+		$query = $this->db->where('id_anggota', $id)->get('kontak');
+		$result = $query->result();
+
+		return $result[0];
+	}
+
 	public function add_contact($id)
 	{
 		$data = array(
@@ -42,6 +51,15 @@ class Kontak_model extends CI_Model{
 		$this->db->where('detil_kontak',$detil);
 		
 		$query = $this->db->update('kontak',$data);
+		return $query;
+	}
+
+	public function delete_contact($id,$detil)
+	{	
+		$this->db->where('id_anggota',$id);
+		$this->db->where('detil_kontak',$detil);
+		
+		$query = $this->db->delete('kontak');
 		return $query;
 	}
 	

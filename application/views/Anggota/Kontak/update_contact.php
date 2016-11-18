@@ -5,7 +5,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputDetilKontak">Detil Kontak</label>
 						<div class="col-md-9">
-							<input name="detil_kontak" class="form-control" id="inputDetilKontak" required="" type="text" placeholder="Detil Kontak" value="" autocomplete="off">
+							<input name="detil_kontak" class="form-control" id="inputDetilKontak" required="" type="text" placeholder="Detil Kontak" value="<?php echo $kontak->detil_kontak; ?>" autocomplete="off">
 						</div>
 					</div>
 
@@ -14,14 +14,14 @@
 						<div class="col-md-9">
 							<div class="radio">
 								<label>
-									<input name="jenis_kontak" required="" type="radio" value='H'>
+									<input id="radioJenisKontakH" name="jenis_kontak" required="" type="radio" value='H'>
 									No. Telepon
 								</label>
 							</div>
 							
 							<div class="radio">
 								<label>
-									<input name="jenis_kontak" required="" type="radio" value='E'>
+									<input id="radioJenisKontakE" name="jenis_kontak" required="" type="radio" value='E'>
 									Email
 								</label>
 							</div>
@@ -40,6 +40,10 @@
 		</div> <!-- End Row -->
 		
 	</div>
+	<script>
+		var idKontak = "radioJenisKontak" + "<?php echo $kontak->jenis_kontak; ?>";
+		$("#" + idKontak).prop("checked", true);
+	</script>
 
 </body>
 </html>
