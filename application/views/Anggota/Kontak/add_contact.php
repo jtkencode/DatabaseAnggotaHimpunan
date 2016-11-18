@@ -1,5 +1,11 @@
 		<!--Start Row -->
 		<div class="row">
+		<?php if (isset($success)) : ?>
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong><?php echo $success; ?></strong>
+			</div>
+		<?php endif; ?>
 			<div class="col-md-9 col-md-offset-1">
 				<form class="form-horizontal" id="formRiwayatOrganisasi" method="post">
 					<div class="form-group">
