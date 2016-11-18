@@ -46,6 +46,16 @@ class Anggota_Model extends CI_Model{
 		return $query->result();
 	}
 
+	public function get_count_complete()
+	{
+		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
+		$this->db->where('tempat_lahir <>', '-');
+		$this->db->where('alamat_sekarang <>','-');
+		$this->db->group_by('angkatan_himpunan');
+		$query = $this->db->get('anggota');
+		return $query->result();
+	}
+
 	public function get_total_not_complete()
 	{
 		$count_not_complete = $this->get_count_not_complete();
