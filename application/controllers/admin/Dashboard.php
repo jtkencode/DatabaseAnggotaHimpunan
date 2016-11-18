@@ -32,6 +32,8 @@ class Dashboard extends Admin_Controller {
 		$data['count_total_anggota'] = $this->Anggota_Model->get_count_anggota();
 		$data['count_complete'] = $data['count_total_anggota'] - $count_not_complete;
 		$data['progress'] = (double) $data['count_complete'] / $data['count_total_anggota'];
+
+		$data['count_birthday'] = count($this->Anggota_Model->get_birthday_of_week());
 		
 		$this->load->view('Admin/index',$data);
 	}

@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		<hr>
 
+
+		<!-- Statistik Anggota-->
 		<div class="row">
 			<div class="col-md-4">
 				<div class="list-group">
@@ -57,7 +59,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</a>
 				</div>
 			</div>	
+		</div>
 
+		<!-- Tentang Anggota -->
+		<div class="row">
+			<!-- Anggota yang berulang tahun -->
+			<div class="col-md-4">
+				<div class="list-group">
+					<a href="#" class="list-group-item">
+					<?php if ($count_birthday== 0):?>
+						<h4 class="list-group-item-heading">Tidak ada anggota yang ulang tahun pekan ini.</h4>
+					<?php else :?>
+						<h4 class="list-group-item-heading"><?php echo $count_birthday; ?> Anggota berulang tahun pekan ini</h4>
+						<p class="list-group-item-text">Lihat anggota yang berulang tahun</p>
+					<?php endif;?>
+					</a>
+				</div>
+			</div>	
 		</div>
 
 		<div class="">
