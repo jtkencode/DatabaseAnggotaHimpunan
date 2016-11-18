@@ -43,7 +43,9 @@ class Dashboard extends Admin_Controller {
 
 	public function birthday()
 	{
-
+		$this->load->view('Admin/header');
+		$this->load->view('Admin/body');
+		$this->load->view('Admin/footer');
 	}
 
 }
