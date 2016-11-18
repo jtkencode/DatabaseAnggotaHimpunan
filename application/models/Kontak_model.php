@@ -31,6 +31,7 @@ class Kontak_model extends CI_Model{
 
 	public function add_contact($id)
 	{
+
 		$data = array(
 				'id_anggota' => $id,
 				'detil_kontak' => $this->input->post('detil_kontak'),
@@ -40,6 +41,31 @@ class Kontak_model extends CI_Model{
 		$query = $this->db->insert('kontak',$data);
 		return $query;
 
+	}
+
+	public function add_contacts($id)
+	{
+		$data = array(
+				'id_anggota' => $id,
+				'detil_kontak' => $this->input->post('no_hp'),
+				'jenis_kontak' => "H"
+			);
+		$query = $this->db->insert('kontak',$data);
+
+		$data = array(
+				'id_anggota' => $id,
+				'detil_kontak' => $this->input->post('email_polban'),
+				'jenis_kontak' => "E"
+			);
+		$query = $this->db->insert('kontak',$data);
+		
+		$data = array(
+				'id_anggota' => $id,
+				'detil_kontak' => $this->input->post('email_pribadi'),
+				'jenis_kontak' => "E"
+			);
+		$query = $this->db->insert('kontak',$data);
+		return $query;
 	}
 
 	public function update_contact($id,$detil)

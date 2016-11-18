@@ -61,10 +61,10 @@ class First_Time extends Anggota_Controller {
 			$ui['success'] = $this->session->flashdata('success');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/kontak/add_contact');
+			$this->load->view('anggota/first_time/add_contact');
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
-			$insert = $this->Kontak_Model->add_contact($id);
+			$insert = $this->Kontak_Model->add_contacts($id);
 			if ($insert){
 				redirect('anggota/first_time/success');
 			} else echo "Update Gagal";
