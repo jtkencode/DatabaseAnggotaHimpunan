@@ -17,7 +17,7 @@ class Anggota_Model extends CI_Model{
 		$query = $this->db->get('anggota');
 		$result = $query->result();
 
-		return (count($result) == 0);
+		return (count($result) == 1);
 	}
 
 	public function get_nim($nim)
