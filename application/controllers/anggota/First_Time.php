@@ -9,6 +9,7 @@ class First_Time extends Anggota_Controller {
 		$this->load->model('Anggota_Model');
 
 		$id = $this->session->userdata('user_id');
+
 		if (!$this->Anggota_Model->is_not_complete($id)){
 			redirect('anggota/dashboard');
 		}
