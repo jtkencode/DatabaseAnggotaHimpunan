@@ -22,8 +22,8 @@
 											</p>
 											<!-- Button for edit riwayat-->
 											<div class="hiddenButton text-center" hidden>
-												<a href="<?php echo site_url('anggota/kontak/update_contact/'.base64_encode($row->detil_kontak)); ?>" class="btn btn-success btn-sm" title="ubah data"><span class="glyphicon glyphicon-pencil"></span></a>
-												<a href="<?php echo site_url('anggota/kontak/delete_contact/'.base64_encode($row->detil_kontak));?>" class="btn btn-danger btn-sm" title="hapus data"><span class="glyphicon glyphicon-trash"></span></a>
+												<a href="<?php echo site_url('anggota/kontak/update_contact/'.($row->id_kontak)); ?>" class="btn btn-success btn-sm" title="ubah data"><span class="glyphicon glyphicon-pencil"></span></a>
+												<a href="<?php echo site_url('anggota/kontak/delete_contact/'.($row->id_kontak));?>" class="btn btn-danger btn-sm" title="hapus data"><span class="glyphicon glyphicon-trash"></span></a>
 											</div>
 										</div>
 									</div>
