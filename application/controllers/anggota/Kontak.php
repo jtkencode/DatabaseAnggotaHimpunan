@@ -45,19 +45,18 @@ class Kontak extends Anggota_Controller {
 		}	
 	}
 	
-	public function update_contact($detil)
+	public function update_contact($id_kontak)
 	{ 
-		$detil = base64_decode($detil);
 		$id = $this->session->userdata('user_id');
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['kontak'] = $this->Kontak_Model->get_detil($id,$detil);
+			$data['kontak'] = $this->Kontak_Model->get_id_kontak($id,$id_kontak);
 			$ui['page'] = 'Edit Kontak';
 			$ui['error'] = $this->session->flashdata('error');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/kontak/update_contact',$data);
 		} else {
-			$insert = $this->Kontak_Model->update_contact($id,$detil);
+			$insert = $this->Kontak_Model->update_contact($id,$id_kontak);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
@@ -65,19 +64,18 @@ class Kontak extends Anggota_Controller {
 		}	
 	}
 
-	public function delete_contact($detil)
+	public function delete_contact($id_kontak)
 	{ 
-		$detil = base64_decode($detil);
 		$id = $this->session->userdata('user_id');
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data['kontak'] = $this->Kontak_Model->get_detil($id,$detil);
+			$data['kontak'] = $this->Kontak_Model->get_id_kontak($id,$id_kontak);
 			$ui['page'] = 'Delete Kontak';
 			$ui['error'] = $this->session->flashdata('error');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/kontak/delete_contact',$data);
 		} else {
-			$delete = $this->Kontak_Model->delete_contact($id,$detil);
+			$delete = $this->Kontak_Model->delete_contact($id,$id_kontak);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('site/success');
