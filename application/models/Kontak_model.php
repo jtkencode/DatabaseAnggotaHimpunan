@@ -25,13 +25,11 @@ class Kontak_model extends CI_Model{
 		$this->db->where('id_kontak', $id_kontak);
 		$query = $this->db->where('id_anggota', $id_anggota)->get('kontak');
 		$result = $query->result();
-
 		return $result[0];
 	}
 
 	public function get_last_no($id)
 	{
-		 
 		$this->db->where('id_anggota', $id);
 		$this->db->order_by('id_kontak', 'desc');
 		$query = $this->db->limit(1)->get('kontak');;
@@ -46,7 +44,7 @@ class Kontak_model extends CI_Model{
 
 	public function add_contact($id)
 	{
-		$id_kontak = get_last_no($id) + 1;
+		$id_kontak = $this->get_last_no($id) + 1;
 		$data = array(
 				'id_anggota' => $id,
 				'id_kontak' => $id_kontak,
