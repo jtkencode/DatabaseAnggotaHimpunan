@@ -8,20 +8,18 @@ class Register extends Anggota_Controller {
 		parent::__construct();		
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
-
-		$id = $this->session->userdata('user_id');
-
-		if (!$this->Anggota_Model->is_not_complete($id) && !$this->Kontak_model->is_not_complete($id)){
-			redirect('anggota/dashboard');
-		}
-
-		
+		$id = $this->session->userdata('user_id');		
 		$this->load->helper('form');
 	}
 
 	public function index()
 	{
 		$id = $this->session->userdata('user_id');
+
+		if (!$this->Anggota_Model->is_not_complete($id) && !$this->Kontak_model->is_not_complete($id)){
+			redirect('anggota/dashboard');
+		}
+
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$this->load->view('anggota/header');
 		$this->load->view('anggota/register/body');
