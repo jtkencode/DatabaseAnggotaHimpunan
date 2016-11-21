@@ -68,9 +68,12 @@ class Register extends Register_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Kontak';
 			$ui['success'] = $this->session->flashdata('success');
+			$data['has_polban_email'] = $this->Kontak_model->has_polban_email($id);
+			$data['has_private_email'] = $this->Kontak_model->has_private_email($id);
+			$data['has_phone_number'] = $this->Kontak_model->has_phone_number($id);
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/register/crud_header',$ui);
-			$this->load->view('anggota/register/add_contact');
+			$this->load->view('anggota/register/add_contact',$data);
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
 			$insert = $this->Kontak_model->add_contacts($id);
