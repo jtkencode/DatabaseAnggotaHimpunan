@@ -17,7 +17,7 @@
 							<p><span class="glyphicon glyphicon-gift"></span> <?php echo $anggota->tempat_lahir.", ".date_format(date_create($anggota->tanggal_lahir), 'd F Y') ;?></p>
 							<p><span class="glyphicon glyphicon-home"></span> <?php echo $anggota->alamat_sekarang ;?> </p>						
 							<?php foreach ($kontak as $row) : ?>
-								<p><span class="<?php echo $glyphicon[$row->JENIS_KONTAK];?>" ></span> <?php echo $row->detil_kontak;?></p>
+								<p><span class="<?php echo $glyphicon[$row->jenis_kontak];?>" ></span> <?php echo $row->detil_kontak;?></p>
 							<?php endforeach ;?>		
 							<hr>
 						</div>
