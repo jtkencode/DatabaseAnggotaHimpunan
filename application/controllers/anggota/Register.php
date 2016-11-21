@@ -41,7 +41,7 @@ class Register extends Register_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Edit Profile';
 			$this->load->view('anggota/header');
-			$this->load->view('anggota/crud_header',$ui);
+			$this->load->view('anggota/register/crud_header',$ui);
 			$this->load->view('anggota/edit_profile',$data);
 
 		} else {
@@ -69,7 +69,7 @@ class Register extends Register_Controller {
 			$ui['page'] = 'Tambah Kontak';
 			$ui['success'] = $this->session->flashdata('success');
 			$this->load->view('anggota/header');
-			$this->load->view('anggota/crud_header',$ui);
+			$this->load->view('anggota/register/crud_header',$ui);
 			$this->load->view('anggota/register/add_contact');
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
