@@ -57,28 +57,37 @@ class Kontak_model extends CI_Model{
 
 	}
 
+	/* tambah kontak untuk register pertama kali */
 	public function add_contacts($id)
 	{
+		$id_kontak = $this->get_last_no($id) + 1;
 		$data = array(
 				'id_anggota' => $id,
+				'id_kontak' => $id_kontak,
 				'detil_kontak' => $this->input->post('no_hp'),
 				'jenis_kontak' => "H"
 			);
+
 		$query = $this->db->insert('kontak',$data);
 
+		$id_kontak = $this->get_last_no($id) + 1;
 		$data = array(
 				'id_anggota' => $id,
+				'id_kontak' => $id_kontak,
 				'detil_kontak' => $this->input->post('email_polban'),
 				'jenis_kontak' => "E"
 			);
 		$query = $this->db->insert('kontak',$data);
 		
+		$id_kontak = $this->get_last_no($id) + 1;
 		$data = array(
 				'id_anggota' => $id,
+				'id_kontak' => $id_kontak,
 				'detil_kontak' => $this->input->post('email_pribadi'),
 				'jenis_kontak' => "E"
 			);
 		$query = $this->db->insert('kontak',$data);
+
 		return $query;
 	}
 
