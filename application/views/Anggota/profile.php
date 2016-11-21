@@ -24,7 +24,6 @@
 						</div>
 
 						<div class="btn-group btn-group-justified">
-							<a href="<?php echo site_url('anggota/profile/add_contact');?>" class="btn btn-default">Tambah</a>
-							<a href="<?php echo site_url('anggota/kontak');?>" class="btn btn-default">Edit</a>
+							<a href="<?php echo site_url('anggota/kontak');?>" class="btn btn-default">Atur Kontak</a>
 						</div>
 					</div>
