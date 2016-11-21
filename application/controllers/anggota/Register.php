@@ -82,8 +82,13 @@ class Register extends Register_Controller {
 
 	public function success()
 	{
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
+		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
 		$this->load->view('anggota/header');
+		$this->load->view('anggota/register/body',$ui);
 		$this->load->view('anggota/register/success');
+		$this->load->view('anggota/register/footer');
 	}
 
 }
