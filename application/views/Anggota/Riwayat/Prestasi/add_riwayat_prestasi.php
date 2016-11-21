@@ -8,7 +8,7 @@
 							<select name="tingkat_prestasi" class="form-control" id="inputTingkatPrestasi" required="">
 								<option value="">--Pilih Tingkat Prestasi--</option>
 								<?php foreach ($tingkat_prestasi as $row) : ?>
-									<option value=<?php echo $row->ID_TINGKAT_PRESTASI; ?>> <?php echo $row->NAMA_TINGKAT_PRESTASI; ?> </option>
+									<option value=<?php echo $row->id_tingkat_prestasi; ?>> <?php echo $row->nama_tingkat_prestasi; ?> </option>
 								<?php endforeach; ?>
 							</select>
 						</div>
