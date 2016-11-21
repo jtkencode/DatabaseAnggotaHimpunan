@@ -19,10 +19,6 @@ class Admin_Controller extends My_Controller {
 		parent::__construct();
 		if (!$this->identity->is_admin())
 			redirect('site/login');
-
-		if ($this->Anggota_Model->is_not_complete($id) || $this->Kontak_model->is_not_complete($id)){
-			redirect('anggota/register');
-		}
 	}		
 }
 
@@ -33,6 +29,7 @@ class Anggota_Controller extends My_Controller {
 		if (!$this->identity->is_anggota())
 			redirect('site/login');
 
+		$id = $this->session->userdata('user_id');
 		if ($this->Anggota_Model->is_not_complete($id) || $this->Kontak_model->is_not_complete($id)){
 			redirect('anggota/register');
 		}
