@@ -8,6 +8,7 @@ class Site extends CI_Controller {
 		parent::__construct();
 		$this->load->model('identity');
 		$this->load->model('Anggota_Model');
+		$this->load->model('Kontak_model');
 		$this->load->library('session');
 	}		
 	
