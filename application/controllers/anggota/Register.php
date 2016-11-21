@@ -7,14 +7,15 @@ class Register extends Anggota_Controller {
 	{
 		parent::__construct();		
 		$this->load->model('Anggota_Model');
+		$this->load->model('Kontak_model');
 
 		$id = $this->session->userdata('user_id');
 
-		if (!$this->Anggota_Model->is_not_complete($id)){
+		if (!$this->Anggota_Model->is_not_complete($id) && !$this->Kontak_model->is_not_complete($id)){
 			redirect('anggota/dashboard');
 		}
 
-		$this->load->model('Kontak_Model');
+		
 		$this->load->helper('form');
 	}
 
@@ -31,6 +32,11 @@ class Register extends Anggota_Controller {
 	public function edit_profile()
 	{
 		$id = $this->session->userdata('user_id');
+
+		if (!$this->Anggota_Model->is_not_complete($id)){
+			redirect('anggota/register/tambah_kontak');
+		}
+
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -55,6 +61,10 @@ class Register extends Anggota_Controller {
 	public function tambah_kontak()
 	{
 		$id = $this->session->userdata('user_id');
+
+		if (!$this->Kontak_model->is_not_complete($id)){
+			redirect('anggota/register/success');
+		}
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Tambah Kontak';
@@ -64,7 +74,7 @@ class Register extends Anggota_Controller {
 			$this->load->view('anggota/register/add_contact');
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
-			$insert = $this->Kontak_Model->add_contacts($id);
+			$insert = $this->Kontak_model->add_contacts($id);
 			if ($insert){
 				redirect('anggota/register/success');
 			} else echo "Update Gagal";

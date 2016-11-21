@@ -35,7 +35,7 @@ class Site extends CI_Controller {
 					redirect('admin/dashboard');
 				} else {
 					$id = $this->session->userdata('user_id');
-					if ($this->Anggota_Model->is_not_complete($id)){
+					if ($this->Anggota_Model->is_not_complete($id) || $this->Kontak_model->is_not_complete($id)){
 						redirect('anggota/register');
 					}
 					redirect('anggota/dashboard');

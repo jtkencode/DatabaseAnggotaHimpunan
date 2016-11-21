@@ -12,6 +12,15 @@ class Kontak_model extends CI_Model{
 		parent::__construct();
 	}
 
+	public function is_not_complete($id)
+	{
+		$this->db->where('id_anggota', $id);
+		$this->db->where('jenis_kontak', 'E');
+		$query = $this->db->like('detil_kontak','@polban.ac.id')->get('kontak');;
+		$result = $query->result();
+		return (count($result) == 0);
+	}
+
 	public function get_id($id)
 	{
 		$query = $this->db->where('id_anggota', $id)->get('kontak');

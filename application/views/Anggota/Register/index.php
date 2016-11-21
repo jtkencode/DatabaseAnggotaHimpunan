@@ -1,4 +1,10 @@
 <div class="col-sm-offset-2 col-sm-8">
+	<?php if (isset($success)) : ?>
+		<div class="alert alert-dismissible alert-success">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><?php echo $success; ?></strong>
+		</div>
+	<?php endif; ?>
 	<div class="alert alert-warning" role="alert">
 		<h4 class="text-center">Selamat Datang <strong><?php echo $anggota->nama_lengkap;?></strong></h4>
 		<p>Anda belum melengkapi data anda di sistem ini, silahkan lengkapi data anda terlebih dahulu dengan menekan tombol dibawah ini. </p>
