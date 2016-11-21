@@ -9,8 +9,10 @@ class Riwayat_Pendidikan_model extends CI_Model{
 	}
 
 	public function get_id($id)
-	{
-		$query = $this->db->where('id_anggota', $id)->get('riwayat_pendidikan');
+	{	
+		$this->db->where('id_anggota', $id);
+		$this->db->order_by('tahun_masuk_pendidikan', 'desc');
+		$query = $this->db->get('riwayat_pendidikan');
 		$result = $query->result();
 
 		return $result;
