@@ -33,7 +33,7 @@ class Riwayat_Prestasi extends My_Controller {
 			$data['riwayat_prestasi'] = $this->Riwayat_Prestasi_model->get_id($id);
 			$ui['navtab']['page'] = 'prestasi';
 			$ui['navtab']['nim'] = $nim;
-			
+
 			$this->load->view('guest/header');
 			$this->load->view('guest/profile',$data);
 			$this->load->view('guest/nav_riwayat',$ui['navtab']);
