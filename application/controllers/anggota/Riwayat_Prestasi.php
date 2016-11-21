@@ -43,7 +43,7 @@ class Riwayat_Prestasi extends Anggota_Controller {
 			$ui['page'] = 'Tambah Riwayat Prestasi';
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/riwayat/prestasi/add_riwayat_prestasi');
+			$this->load->view('anggota/riwayat/prestasi/add_riwayat_prestasi',$data);
 		} else {
 			$insert = $this->Riwayat_Prestasi_model->add_riwayat_prestasi($id);
 			if ($insert){
