@@ -14,11 +14,34 @@ class Kontak_model extends CI_Model{
 
 	public function is_not_complete($id)
 	{
+		return (!$this->has_phone_number($id) || !$this->has_polban_email($id) || !$this->has_private_email($id)) ;
+	}
+
+	public function has_phone_number($id)
+	{
+		$this->db->where('id_anggota', $id);
+		$this->db->where('jenis_kontak', 'H');
+		$query = $this->db->get('kontak');
+		$result = $query->result();
+		return (count($result) > 0 );
+	}
+
+	public function has_private_email($id)
+	{
+		$this->db->where('id_anggota', $id);
+		$this->db->where('jenis_kontak', 'E');
+		$query = $this->db->not_like('detil_kontak','@polban.ac.id')->get('kontak');;
+		$result = $query->result();
+		return (count($result) > 0);
+	}
+
+	public function has_polban_email($id)
+	{
 		$this->db->where('id_anggota', $id);
 		$this->db->where('jenis_kontak', 'E');
 		$query = $this->db->like('detil_kontak','@polban.ac.id')->get('kontak');;
 		$result = $query->result();
-		return (count($result) == 0);
+		return (count($result) == 1);
 	}
 
 	public function get_id($id)
@@ -70,32 +93,43 @@ class Kontak_model extends CI_Model{
 	public function add_contacts($id)
 	{
 		$id_kontak = $this->get_last_no($id) + 1;
-		$data = array(
-				'id_anggota' => $id,
-				'id_kontak' => $id_kontak,
-				'detil_kontak' => $this->input->post('no_hp'),
-				'jenis_kontak' => "H"
-			);
+		$no_hp = $this->input->post('no_hp');		
+		if ($no_hp != null){
+			$data = array(
+					'id_anggota' => $id,
+					'id_kontak' => $id_kontak,
+					'detil_kontak' => $this->input->post('no_hp'),
+					'jenis_kontak' => "H"
+				);
 
-		$query = $this->db->insert('kontak',$data);
+			$query = $this->db->insert('kontak',$data);
+		}
 
 		$id_kontak = $this->get_last_no($id) + 1;
-		$data = array(
+		$email_polban = $this->input->post('email_polban');
+		if ($email_polban != null){
+			$data = array(
 				'id_anggota' => $id,
 				'id_kontak' => $id_kontak,
 				'detil_kontak' => $this->input->post('email_polban'),
 				'jenis_kontak' => "E"
 			);
-		$query = $this->db->insert('kontak',$data);
+			$query = $this->db->insert('kontak',$data);
+		}
+		
 		
 		$id_kontak = $this->get_last_no($id) + 1;
-		$data = array(
+		$email_pribadi = $this->input->post('email_pribadi');
+		if ($email_pribadi != null){
+			$data = array(
 				'id_anggota' => $id,
 				'id_kontak' => $id_kontak,
 				'detil_kontak' => $this->input->post('email_pribadi'),
 				'jenis_kontak' => "E"
 			);
-		$query = $this->db->insert('kontak',$data);
+			$query = $this->db->insert('kontak',$data);
+		}
+		
 
 		return $query;
 	}
