@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Register extends Anggota_Controller {
+class Register extends Register_Controller {
 	
 	public function __construct()
 	{
@@ -21,8 +21,9 @@ class Register extends Anggota_Controller {
 		}
 
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
+		$ui['nama_anggota'] = $data['anggota']->nama_lengkap;
 		$this->load->view('anggota/header');
-		$this->load->view('anggota/register/body');
+		$this->load->view('anggota/register/body',$ui);
 		$this->load->view('anggota/register/index',$data);
 		$this->load->view('anggota/register/footer');
 	}
