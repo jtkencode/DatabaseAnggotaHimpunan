@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class First_Time extends Anggota_Controller {
+class Register extends Anggota_Controller {
 	
 	public function __construct()
 	{
