@@ -11,9 +11,11 @@ class Anggota_Model extends CI_Model{
 	public function is_not_complete($id)
 	{
 		$this->db->where('id_anggota',$id);
+		$this->db->group_start();
 		$this->db->where('nama_panggilan','-');
-		$this->db->where('tempat_lahir', '-');
-		$this->db->where('alamat_sekarang','-');
+		$this->db->or_where('tempat_lahir', '-');
+		$this->db->or_where('alamat_sekarang','-');
+		$this->db->group_end();
 		$query = $this->db->get('anggota');
 		$result = $query->result();
 
