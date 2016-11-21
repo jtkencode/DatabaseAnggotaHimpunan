@@ -2,13 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kontak extends Anggota_Controller {
-	
+	private $path;
 	public function __construct()
 	{
 		parent::__construct();				
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_Model');
 		$this->load->helper('form');
+		$this->path = "anggota/kontak";
 	}
 
 	public function index()
