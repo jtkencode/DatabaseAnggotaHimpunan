@@ -36,7 +36,7 @@ class Site extends CI_Controller {
 				} else {
 					$id = $this->session->userdata('user_id');
 					if ($this->Anggota_Model->is_not_complete($id)){
-						redirect('anggota/first_time');
+						redirect('anggota/register');
 					}
 					redirect('anggota/dashboard');
 				}

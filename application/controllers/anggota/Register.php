@@ -23,9 +23,9 @@ class Register extends Anggota_Controller {
 		$id = $this->session->userdata('user_id');
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
 		$this->load->view('anggota/header');
-		$this->load->view('anggota/first_time/body');
-		$this->load->view('anggota/first_time/index',$data);
-		$this->load->view('anggota/first_time/footer');
+		$this->load->view('anggota/register/body');
+		$this->load->view('anggota/register/index',$data);
+		$this->load->view('anggota/register/footer');
 	}
 
 	public function edit_profile()
@@ -44,10 +44,10 @@ class Register extends Anggota_Controller {
 
 			if ($update){
 				$this->session->set_flashdata('success', "Update profile berhasil, data profile anda sudah tersimpan. Silahkan lanjutkan tambahkan kontak anda.");
-				redirect('anggota/first_time/tambah_kontak');
+				redirect('anggota/register/tambah_kontak');
 			} else {
 				$this->session->set_flashdata('error', "Update Profile Gagal!");
-				redirect('anggota/first_time/edit_profile');
+				redirect('anggota/register/edit_profile');
 			}
 		}
 	}
@@ -61,12 +61,12 @@ class Register extends Anggota_Controller {
 			$ui['success'] = $this->session->flashdata('success');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
-			$this->load->view('anggota/first_time/add_contact');
+			$this->load->view('anggota/register/add_contact');
 			//$this->load->view('anggota/add_contact',$data);
 		} else {
 			$insert = $this->Kontak_Model->add_contacts($id);
 			if ($insert){
-				redirect('anggota/first_time/success');
+				redirect('anggota/register/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -74,7 +74,7 @@ class Register extends Anggota_Controller {
 	public function success()
 	{
 		$this->load->view('anggota/header');
-		$this->load->view('anggota/first_time/success');
+		$this->load->view('anggota/register/success');
 	}
 
 }
