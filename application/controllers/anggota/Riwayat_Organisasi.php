@@ -45,7 +45,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$insert = $this->Riwayat_Org_model->add_riwayat_org($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
-				  redirect('site/success');
+				  redirect('anggota/dashboard/success');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -78,7 +78,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$update = $this->Riwayat_Org_model->update_riwayat_org($id,$no_urut);
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
+				redirect('anggota/dashboard/success');
 
 			} else echo "Update Gagal";
 		}	
@@ -101,7 +101,7 @@ class Riwayat_Organisasi extends Anggota_Controller {
 			$delete = $this->Riwayat_Org_model->delete_riwayat_org($id,$no_urut);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
-				 redirect('site/success');
+				 redirect('anggota/dashboard/success');
 			} else echo "Delete Gagal";
 		}	
 	}

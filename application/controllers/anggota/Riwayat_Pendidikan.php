@@ -43,7 +43,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$insert = $this->Riwayat_Pendidikan_model->add_riwayat_pendidikan($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
-				 redirect('site/success');
+				 redirect('anggota/dashboard/success');
 			} else echo "Insert Gagal";
 		}	
 	}
@@ -74,7 +74,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$update = $this->Riwayat_Pendidikan_model->update_riwayat_pendidikan($id,$no_urut);
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
-				  redirect('site/success');
+				  redirect('anggota/dashboard/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -95,7 +95,7 @@ class Riwayat_Pendidikan extends Anggota_Controller {
 			$delete = $this->Riwayat_Pendidikan_model->delete_riwayat_pendidikan($id,$no_urut);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
-				 redirect('site/success');
+				 redirect('anggota/dashboard/success');
 			} else echo "Delete Gagal";
 		}	
 	}

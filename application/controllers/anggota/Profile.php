@@ -55,7 +55,7 @@ class Profile extends Anggota_Controller {
 
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
+				redirect('anggota/dashboard/success');
 			} else echo "Update Gagal";
 		}
 	}
@@ -76,7 +76,7 @@ class Profile extends Anggota_Controller {
 
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
+				redirect('anggota/dashboard/success');
 			} else {
 				$wrong_password = $this->session->flashdata('wrong_password');
 				if ($wrong_password != null){

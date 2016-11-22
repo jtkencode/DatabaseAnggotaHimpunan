@@ -41,7 +41,7 @@ class Kontak extends Anggota_Controller {
 			$insert = $this->Kontak_Model->add_contact($id);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
+				redirect('anggota/dashboard/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -60,7 +60,7 @@ class Kontak extends Anggota_Controller {
 			$insert = $this->Kontak_Model->update_contact($id,$id_kontak);
 			if ($insert){
 				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
+				redirect('anggota/dashboard/success');
 			} else echo "Update Gagal";
 		}	
 	}
@@ -79,7 +79,7 @@ class Kontak extends Anggota_Controller {
 			$delete = $this->Kontak_Model->delete_contact($id,$id_kontak);
 			if ($delete){
 				$this->session->set_flashdata('success_path', $this->path);
-				redirect('site/success');
+				redirect('anggota/dashboard/success');
 			} else echo "Update Gagal";
 		}	
 	}
