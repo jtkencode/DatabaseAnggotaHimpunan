@@ -3,13 +3,13 @@
 					<?php if (count($riwayat_kepanitiaan) == 0):?>
 						<div class="row">
 							<div class="col-md-12">
-								<h3><small>Pernah Berkontribusi pada Kepanitiaan</small></h3>
+								<h3><small>Belum pernah berkontribusi pada kegiatan apapun</small></h3>
 							</div>
 						</div>
 					<?php else: ?>
 						<div class="row">
 							<div class="col-md-12">
-								<h3><small>Pernah Berkontribusi pada Kepanitiaan</small></h3>
+								<h3><small>Pernah berkontribusi pada kegiatan</small></h3>
 							</div>
 						</div>
 					<?php endif; ?>
