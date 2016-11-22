@@ -1,10 +1,18 @@
 					<!-- Riwayat Organisasi-->
 					<div class="col-md-9">
+					<?php if (count($riwayat_org) == 0):?>
+						<div class="row">
+							<div class="col-md-12">
+								<h3 class="text-center"><small>Belum ada riwayat organisasi yang tercatat.</small></h3>
+							</div>
+						</div>
+					<?php else: ?>
 						<div class="row">
 							<div class="col-md-12">
 								<h3><small>Riwayat Organisasi</small></h3>
 							</div>
 						</div>
+					<?php endif; ?>
 						<div class="row">
 							<?php foreach ($riwayat_org as $row) :?>
 								<div class="col-md-6">

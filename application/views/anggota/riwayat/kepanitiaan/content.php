@@ -9,7 +9,7 @@
 					<?php else: ?>
 						<div class="row">
 							<div class="col-md-12">
-								<h3><small>Pernah berkontribusi pada kegiatan</small></h3>
+								<h3><small>Kegiatan kepanitiaan yang pernah diikuti</small></h3>
 							</div>
 						</div>
 					<?php endif; ?>

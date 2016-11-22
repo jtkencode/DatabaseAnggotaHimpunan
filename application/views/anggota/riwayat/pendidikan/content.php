@@ -5,10 +5,22 @@ $left = false;
 ?>					
 					<!-- Riwayat Pendidikan -->
 					<div class="col-md-9">
+					<?php if (count($riwayat_pendidikan) == 0):?>
+						<div class="row">
+							<div class="col-md-12">
+								<h3 class="text-center"><small>Riwayat pendidikan belum tercatat.</small></h3>
+							</div>
+						</div>
+					<?php else: ?>
+						<div class="row">
+							<div class="col-md-12">
+								<h3><small>Riwayat Pendidikan</small></h3>
+							</div>
+						</div>
+					<?php endif; ?>
 						<div class="row">
 							<div class="col-md-12">
 								<!--Timeline-->
-								<h3><small>Riwayat Pendidikan</small></h3>
 								<div class="timeline-centered">
 									<?php foreach ($riwayat_pendidikan as $row) : ?>
 										<?php if ($left) :?> <article class="timeline-entry left-aligned">
