@@ -18,8 +18,8 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<p><?php echo $row->nama_prestasi;?> <small><?php echo $row->pencapaian_prestasi;?></small></p>
-											<p><small><?php echo $row->lembaga_prestasi;?></small></p>
+											<p><strong><?php echo $row->pencapaian_prestasi;?></strong> <small><?php echo $row->nama_prestasi;?></small></p>
+											<p><?php echo $row->lembaga_prestasi;?></p>
 											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_prestasi;?></small></p>
 											<!-- Button for edit riwayat-->
 											<div class="hiddenButton" hidden>

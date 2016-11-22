@@ -19,7 +19,7 @@
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<p><?php echo $row->nama_pelatihan;?></p>
-											<p><small><?php echo $row->nama_penyelenggara_pelatihan;?></small></p>
+											<p><?php echo $row->nama_penyelenggara_pelatihan;?></p>
 											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_pelatihan?></small></p>
 											<!-- Button for edit riwayat-->
 											<div class="hiddenButton" hidden>
