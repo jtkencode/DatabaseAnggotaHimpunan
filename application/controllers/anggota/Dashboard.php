@@ -26,9 +26,13 @@ class Dashboard extends Anggota_Controller {
 
 	public function success()
 	{
+		$id = $this->session->userdata('user_id');
+		$data['anggota'] = $this->Anggota_Model->get_id($id);
+		$data['nama_anggota'] = $data['anggota']->nama_lengkap;
 		$data['path'] = $this->session->flashdata('success_path');
 		$this->load->view('anggota/header');
 		$this->load->view('anggota/success',$data);
+		$this->load->view('anggota/footer');
 	}
 
 	private function get_time_condition(){
