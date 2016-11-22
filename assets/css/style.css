@@ -52,3 +52,8 @@ h6 {
 input, .login-input {
 	color:white !important;
 }
+
+.title-header {
+	color : white;
+	text-align : center;
+}
