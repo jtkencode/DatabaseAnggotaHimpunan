@@ -3,7 +3,7 @@
 					<?php if (count($riwayat_kepanitiaan) == 0):?>
 						<div class="row">
 							<div class="col-md-12">
-								<h3><small>Belum pernah berkontribusi pada kegiatan apapun</small></h3>
+								<h3 class="text-center"><small>Belum pernah berkontribusi pada kegiatan apapun</small></h3>
 							</div>
 						</div>
 					<?php else: ?>
