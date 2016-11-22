@@ -24,6 +24,13 @@ class Dashboard extends Anggota_Controller {
 
 	}
 
+	public function success()
+	{
+		$data['path'] = $this->session->flashdata('success_path');
+		$this->load->view('anggota/header');
+		$this->load->view('anggota/success',$data);
+	}
+
 	private function get_time_condition(){
 		date_default_timezone_set("Asia/Jakarta");
 		$time = localtime(time(), true);
