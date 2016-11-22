@@ -28,6 +28,50 @@ class Register extends Register_Controller {
 		$this->load->view('anggota/register/footer');
 	}
 
+	public function change_password()
+	{
+		$id = $this->session->userdata('user_id');
+
+		if ($this->Anggota_Model->is_password_changed($id)){
+			redirect('anggota/register/edit_profile');
+		}
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$ui['page'] = 'Ganti Password';
+			$ui['error'] = $this->session->flashdata('error');
+			$this->load->view('anggota/header');
+			$this->load->view('anggota/register/crud_header',$ui);
+			$this->load->view('anggota/change_password');
+
+		} else {
+			$update = $this->Anggota_Model->update_password($id);
+
+			if ($update){
+				$this->session->set_flashdata('success', "Password berhasil diubah. Silahkan lanjutkan untuk mengubah profile pribadi anda.");
+				redirect('anggota/register/edit_profile');
+			} else {
+				$wrong_password = $this->session->flashdata('wrong_password');
+				if ($wrong_password != null){
+					$this->session->set_flashdata('error', $wrong_password);
+					redirect('anggota/register/change_password');
+				}
+				else {
+					$not_match = $this->session->flashdata('not_match');
+					if ($not_match != null){
+						$this->session->set_flashdata('error', $not_match);
+						redirect('anggota/register/change_password');
+					} else {
+						$same_pass = $this->session->flashdata('same_pass');
+						if ($same_pass != null){
+							$this->session->set_flashdata('error', $same_pass);
+							redirect('anggota/register/change_password');
+						} else echo "update gagal";				
+					}
+				}
+			}
+		}
+	}
+
 	public function edit_profile()
 	{
 		$id = $this->session->userdata('user_id');

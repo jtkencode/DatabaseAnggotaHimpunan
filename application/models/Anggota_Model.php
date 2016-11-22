@@ -138,6 +138,11 @@ class Anggota_Model extends CI_Model{
 			return FALSE;
 		}
 
+		if ($pass_lama == $pass){
+			$this->session->set_flashdata('same_pass', 'Password baru yang dimasukkan harus berbeda dengan password default !');
+			return FALSE;
+		}
+
 		/*verification success */
 		$pass = password_hash($pass, PASSWORD_DEFAULT);
 		$data = array(
@@ -148,6 +153,14 @@ class Anggota_Model extends CI_Model{
 		$this->db->where('id_anggota', $id);
 		$query = $this->db->update('anggota',$data);
 		return $query;
+	}
+
+	public function is_password_changed($id)
+	{
+		$query = $this->db->where('id_anggota', $id)->get('anggota');
+		$result = $query->result();
+		$result = reset($result);
+		return ($result->password != "$2y$10$4yHnBHYoaBV1KLPXf8K2b.3F4Lzz8XRs5BcG...VCKVLYvCtBR/zG");
 	}
 
 

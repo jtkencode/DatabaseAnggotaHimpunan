@@ -6,7 +6,7 @@
 		<p>Apabila anda mengalami kesulitan dalam pengisian data, silahkan hubungi <strong>Departemen Administrasi dan Kesekretariatan</strong></p>
 		<br>
 		<div class="text-center"> 
-			<a href="<?php echo site_url('anggota/register/edit_profile');?>" class="btn btn-warning" align="center">Lengkapi Data</a>
+			<a href="<?php echo site_url('anggota/register/change_password');?>" class="btn btn-warning" align="center">Lengkapi Data</a>
 		</div>
 	</div>
 </div>
