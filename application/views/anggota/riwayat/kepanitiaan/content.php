@@ -18,7 +18,6 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-
 											<p><strong><?php echo $row->jabatan_kepanitiaan;?></strong> <small><?php echo $row->nama_kegiatan_kepanitiaan;?> </small></p>
 											<p><?php echo $row->nama_org_kepanitiaan;?></p>
 											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_kepanitiaan;?></small></p>
