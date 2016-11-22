@@ -28,3 +28,27 @@ h6 {
 	border-radius: none;
 	box-shadow: none;
 }
+
+.cover {
+	background-image: url('../img/bg-img.jpg');
+  	background-size: cover;
+  	background-attachment: fixed;
+}
+
+.no-line-header {
+	border-bottom : none;
+}
+
+.panel-no-background, .panel-no-background .panel-heading {
+	background-color: transparent;
+}
+
+.login-input::-webkit-input-placeholder { color: white; }
+.login-input:-moz-placeholder { color: white; }
+.login-input::-moz-placeholder { color: white; }
+.login-input:-ms-input-placeholder { color: white; }
+
+
+input, .login-input {
+	color:white !important;
+}
