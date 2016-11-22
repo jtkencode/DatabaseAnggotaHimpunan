@@ -1,10 +1,18 @@
 					<!-- Riwayat Kepanitiaan -->
 					<div class="col-md-9">
+					<?php if (count($riwayat_kepanitiaan) == 0):?>
 						<div class="row">
 							<div class="col-md-12">
 								<h3><small>Pernah Berkontribusi pada Kepanitiaan</small></h3>
 							</div>
 						</div>
+					<?php else: ?>
+						<div class="row">
+							<div class="col-md-12">
+								<h3><small>Pernah Berkontribusi pada Kepanitiaan</small></h3>
+							</div>
+						</div>
+					<?php endif; ?>
 						<div class="row">
 							<?php foreach ($riwayat_kepanitiaan as $row) :?>
 								<div class="col-md-6">
