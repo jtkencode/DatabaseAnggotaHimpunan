@@ -28,7 +28,7 @@ class Dashboard extends Anggota_Controller {
 	{
 		$id = $this->session->userdata('user_id');
 		$data['anggota'] = $this->Anggota_Model->get_id($id);
-		$data['nama_anggota'] = $data['anggota']->nama_lengkap;
+		$date_default_timezone_set['nama_anggota'] = $data['anggota']->nama_lengkap;
 		$data['path'] = $this->session->flashdata('success_path');
 		$this->load->view('anggota/header');
 		$this->load->view('anggota/success',$data);
@@ -41,8 +41,10 @@ class Dashboard extends Anggota_Controller {
 		$time = $time['tm_hour'];
 		if ($time >= 0 && $time < 12){
 			return "Pagi";
-		} else if ($time >= 12 && $time < 18){
+		} else if ($time >= 12 && $time < 15){
 			return "Siang";
+		}else if ($time >= 15 && $time < 18){
+			return "Sore";
 		} return "Malam";
 	}
 
