@@ -37,9 +37,9 @@
 										Berkontribusi pada kegiatan
 									</div> 
 									<div class="panel-body">
-										<p>Sekolah Kemahasiswaan</p>
-										<p>Kompetisi Pemrograman 2016</p>
-										<p>Latihan Kepemimpinan Mahasiswa Tingkat Akhir 2016 </p>
+										<p>Coming Soon</p>
+										<p>Coming Soon</p>
+										<p>Coming Soon</p>
 									</div>
 								</div>
 							</div>
