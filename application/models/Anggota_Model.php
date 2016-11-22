@@ -159,7 +159,7 @@ class Anggota_Model extends CI_Model{
     	$query = $this->db->query("select nim, nama_lengkap, str_to_date(concat(date_format(tanggal_lahir,'%d/%m/'),date_format(now(),'%y')),'%d/%m/%y') as tanggal
 		from anggota
 		having date(tanggal)
-			between date(now() - interval (1) day)
+			between date(now())
 				and date(now() + interval (7 - dayofweek(now())) day)
 		order by tanggal");
 		return  $query->result();
