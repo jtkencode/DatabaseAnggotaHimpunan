@@ -18,7 +18,7 @@
 								<div class="col-md-6">
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<p><?php echo $row->nama_org;?><br><small><?php echo $row->jabatan_org;?></small></p>
+											<p><strong><?php echo $row->nama_org;?></strong><br><small><?php echo $row->jabatan_org;?></small></p>
 											<p class="text-right"><span class="glyphicon glyphicon-time"></span><small> <?php echo $row->tahun_mulai_org.'-'.$row->tahun_selesai_org;?></small></p>
 											<!-- Button for edit riwayat-->
 											<div class="hiddenButton" hidden>
