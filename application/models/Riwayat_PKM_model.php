@@ -10,7 +10,9 @@ class Riwayat_PKM_model extends CI_Model{
 
 	public function get_id($id)
 	{
-		$query = $this->db->where('id_anggota', $id)->get('riwayat_pkm');
+		$this->db->where('id_anggota', $id);
+		$this->db->order_by('tahun_pkm','desc');
+		$query = $this->db->get('riwayat_pkm');
 		$result = $query->result();
 
 		return $result;
