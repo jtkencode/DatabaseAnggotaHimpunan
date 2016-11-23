@@ -60,6 +60,15 @@ class Anggota_Model extends CI_Model{
 		return $query->result();
 	}
 
+	public function get_anggota_angkatan_paging($angkatan,$start)
+	{
+		$this->db->where('angkatan_himpunan',$angkatan);
+		$this->db->limit(10,$start);
+		$query = $this->db->get('anggota');
+		return  $query->result();
+
+	}
+
 	public function get_count_complete()
 	{
 		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
