@@ -10,7 +10,9 @@ class Riwayat_Prestasi_model extends CI_Model{
 
 	public function get_id($id)
 	{
-		$query = $this->db->where('id_anggota', $id)->get('riwayat_prestasi');
+		$this->db->where('id_anggota', $id);
+		$this->db->order_by('tahun_prestasi','desc');
+		$query = $this->db->get('riwayat_prestasi');
 		$result = $query->result();
 
 		return $result;
