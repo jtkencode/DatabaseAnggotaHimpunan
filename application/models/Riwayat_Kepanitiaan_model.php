@@ -19,8 +19,10 @@ class Riwayat_Kepanitiaan_model extends CI_Model{
 	}
 
 	public function get_id($id)
-	{
-		$query = $this->db->where('id_anggota', $id)->get('riwayat_kepanitiaan');
+	{	
+		$this->db->where('id_anggota', $id);
+		$this->db->order_by('tahun_kepanitiaan','desc');
+		$query = $this->db->get('riwayat_kepanitiaan');
 		$result = $query->result();
 
 		return $result;
