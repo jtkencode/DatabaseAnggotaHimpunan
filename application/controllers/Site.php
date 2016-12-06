@@ -26,7 +26,13 @@ class Site extends CI_Controller {
 	public function login()
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$this->load->view('login');
+			if ($this->identity->is_admin()){
+				redirect('admin/dashboard');
+			} else if ($this->identity->is_anggota()){
+				redirect('anggota/dashboard');
+			}else
+				$this->load->view('login');
+
 		} else {
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
@@ -52,7 +58,7 @@ class Site extends CI_Controller {
 	public function logout()
 	{
 		$this->identity->logout();
-		redirect('site/login');
+		redirect('site/index');
 	}
 
 }

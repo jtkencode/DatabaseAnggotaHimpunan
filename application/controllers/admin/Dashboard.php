@@ -28,19 +28,19 @@ class Dashboard extends Admin_Controller {
 
 		$data['count_birthday'] = count($this->Anggota_Model->get_birthday_of_week());
 		$data['count_pkm'] = 0;
-		$this->load->view('Admin/header');
-		$this->load->view('Admin/body');
-		$this->load->view('Admin/dashboard',$data);
-		$this->load->view('Admin/footer');
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/dashboard',$data);
+		$this->load->view('admin/footer');
 	}
 
 	public function birthday()
 	{
 		$data['birthday'] = $this->Anggota_Model->get_birthday_of_week();
-		$this->load->view('Admin/header');
-		$this->load->view('Admin/body');
-		$this->load->view('Admin/birthday',$data);
-		$this->load->view('Admin/footer');
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/birthday',$data);
+		$this->load->view('admin/footer');
 	}
 
 	public function not_complete($page = 1)
@@ -57,10 +57,10 @@ class Dashboard extends Admin_Controller {
 		$data['page_end'] = $data['page_start'] + $data['page_length'];
 
 		//for pagination
-		$this->load->view('Admin/header');
-		$this->load->view('Admin/body');
-		$this->load->view('Admin/not_complete',$data);
-		$this->load->view('Admin/footer');
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/not_complete',$data);
+		$this->load->view('admin/footer');
 	}
 
 }

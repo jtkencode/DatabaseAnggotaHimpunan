@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Riwayat_Pendidikan extends My_Controller {
+class riwayat_pendidikan extends My_Controller {
 	
 	public function __construct()
 	{
