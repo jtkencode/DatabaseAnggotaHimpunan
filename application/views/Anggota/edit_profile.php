@@ -52,6 +52,20 @@
 				</div>
 
 				<div class="form-group">
+					<?php echo form_label('Tanggal Lahir', 'inputTanggalLahir', $attrLabel); ?>
+					<div class="col-md-10">
+						<?php echo form_input(array_merge($attrInput, array(
+								'id' => 'inputTanggalLahir',
+								'value' => $anggota->tanggal_lahir,
+								'name' => 'tanggal_lahir',
+								'placeholder' => 'Tanggal Lahir',
+								'type' => 'date',
+								'disabled' =>'false'
+							))); ?>
+					</div>
+				</div>
+
+				<div class="form-group">
 					<?php echo form_label('Alamat Sekarang', 'inputAlamatSekarang', $attrLabel); ?>
 					<div class="col-md-10">
 						<?php echo form_input(array_merge($attrInput, array(
