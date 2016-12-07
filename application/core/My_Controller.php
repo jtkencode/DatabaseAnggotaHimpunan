@@ -10,6 +10,14 @@ class My_Controller extends CI_Controller {
 		$this->load->model('Anggota_Model');
 		$this->load->model('Kontak_model');
 
+		/*set session for detect id */
+		if ($this->identity->is_anggota())
+			$this->session->set_userdata('guest_id', 'anggota');
+		else if ($this->identity->is_admin())
+			$this->session->set_userdata('guest_id', 'admin');
+		else 
+			$this->session->set_userdata('guest_id', 'guest');
+
 	}		
 }
 
@@ -44,6 +52,20 @@ class Register_Controller extends My_Controller {
 		$this->load->model('Anggota_Model');
 		if (!$this->identity->is_anggota())
 			redirect('site/login');
+	}
+}
+
+class Guest_Controller extends My_Controller {
+
+	public function __construct()
+	{
+		parent::__construct();
+		if ($this->identity->is_anggota())
+			$this->session->set_userdata('guest_id', 'anggota');
+		else if ($this->identity->is_admin())
+			$this->session->set_userdata('guest_id', 'admin');
+		else 
+			$this->session->set_userdata('guest_id', 'guest');
 	}
 }
 
