@@ -86,8 +86,8 @@ class Riwayat_pendidikan extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Pendidikan';
-			$data['table']['header'] = ["Jenjang Pendidikan", "Nama Institusi", "Tahun Masuk", "Tahun Lulus","Bidang Pendidikan"];
-			$data['attribute'] = ["jenjang_pendidikan","nama_institusi_pendidikan","tahun_masuk_pendidikan","tahun_lulus_pendidikan","bidang_pendidikan"];
+			$data['table']['header'] = ["Nama Institusi", "Tahun Masuk", "Tahun Lulus","Bidang Pendidikan"];
+			$data['attribute'] = ["nama_institusi_pendidikan","tahun_masuk_pendidikan","tahun_lulus_pendidikan","bidang_pendidikan"];
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);

@@ -91,8 +91,8 @@ class Riwayat_Organisasi extends Anggota_Controller {
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Hapus Riwayat Organisasi';
-			$data['table']['header'] = ["Nama Organisasi","Jabatan","Tahun Mulai","Tahun Selesai","Organisasi Kemahasiswaan"];
-			$data['attribute'] = ["nama_org","jabatan_org","tahun_mulai_org","tahun_selesai_org","org_kemahasiswaan"];
+			$data['table']['header'] = ["Nama Organisasi","Jabatan","Tahun Mulai","Tahun Selesai"];
+			$data['attribute'] = ["nama_org","jabatan_org","tahun_mulai_org","tahun_selesai_org"];
 			$data['riwayat']= (array) $this->get($no_urut);
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);

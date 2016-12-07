@@ -95,8 +95,8 @@ class Riwayat_Prestasi extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Prestasi';
-			$data['table']['header'] = ["Tingkat Prestasi","Nama Prestasi","Pencapaian Prestasi","Lembaga Prestasi","Tahun Prestasi","Jenis Prestasi"];
-			$data['attribute'] = ["id_tingkat_prestasi","nama_prestasi","pencapaian_prestasi","lembaga_prestasi","tahun_prestasi","jenis_prestasi"];
+			$data['table']['header'] = ["Nama Prestasi","Pencapaian Prestasi","Lembaga Prestasi","Tahun Prestasi"];
+			$data['attribute'] = ["nama_prestasi","pencapaian_prestasi","lembaga_prestasi","tahun_prestasi"];
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);

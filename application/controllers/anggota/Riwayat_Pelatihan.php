@@ -88,8 +88,8 @@ class Riwayat_Pelatihan extends Anggota_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$data['riwayat']= (array) $this->get($no_urut);
 			$ui['page'] = 'Hapus Riwayat Pelatihan';
-			$data['table']['header'] = ["Nama Pelatihan","Nama Penyelenggara","Tahun Pelatihan","Pelatihan Kemahasiswaan"];
-			$data['attribute'] = ["nama_pelatihan","nama_penyelenggara_pelatihan","tahun_pelatihan","pelatihan_kemahasiswaan"];
+			$data['table']['header'] = ["Nama Pelatihan","Nama Penyelenggara","Tahun Pelatihan"];
+			$data['attribute'] = ["nama_pelatihan","nama_penyelenggara_pelatihan","tahun_pelatihan"];
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/hapus_riwayat',$data);
