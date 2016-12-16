@@ -41,7 +41,7 @@ class Kontak_model extends CI_Model{
 		$this->db->where('jenis_kontak', 'E');
 		$query = $this->db->like('detil_kontak','@polban.ac.id')->get('kontak');;
 		$result = $query->result();
-		return (count($result) == 1);
+		return (count($result) >= 1); //jaga-jaga hasil dari re-submissions
 	}
 
 	public function get_id($id)
@@ -107,11 +107,13 @@ class Kontak_model extends CI_Model{
 
 		$id_kontak = $this->get_last_no($id) + 1;
 		$email_polban = $this->input->post('email_polban');
-		if ($email_polban != null){
+		$email_polban .= "@polban.ac.id";
+
+		if ($email_polban != "@polban.ac.id"){
 			$data = array(
 				'id_anggota' => $id,
 				'id_kontak' => $id_kontak,
-				'detil_kontak' => $this->input->post('email_polban'),
+				'detil_kontak' => $email_polban,
 				'jenis_kontak' => "E"
 			);
 			$query = $this->db->insert('kontak',$data);
