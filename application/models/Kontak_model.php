@@ -41,7 +41,7 @@ class Kontak_model extends CI_Model{
 		$this->db->where('jenis_kontak', 'E');
 		$query = $this->db->like('detil_kontak','@polban.ac.id')->get('kontak');;
 		$result = $query->result();
-		return (count($result) >= 1); //jaga-jaga hasil dari re-submissions
+		return (count($result) > 0); //jaga-jaga hasil dari re-submissions
 	}
 
 	public function get_id($id)
