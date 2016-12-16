@@ -35,7 +35,9 @@
 									'name' => 'password_baru',
 									'placeholder' => 'Password baru',
 									'autofocus' => '',
-									'type' => 'password'
+									'type' => 'password',
+									'pattern' =>".{6,}",
+									'title' => "Minimal 6 Karakter"
 								))); ?>
 						</div>
 					</div>			
@@ -48,7 +50,9 @@
 									'name' => 'password_baru2',
 									'placeholder' => 'Password Baru',
 									'autofocus' => '',
-									'type' => 'password'
+									'type' => 'password',
+									'pattern' =>".{6,}",
+									'title' => "Minimal 6 Karakter"
 								))); ?>
 						</div>
 					</div>							
