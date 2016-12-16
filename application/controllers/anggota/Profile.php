@@ -46,17 +46,23 @@ class Profile extends Anggota_Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Edit Profile';
+			$ui['error'] = $this->session->flashdata('error');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/crud_header',$ui);
 			$this->load->view('anggota/edit_profile',$data);
 
 		} else {
 			$update = $this->Anggota_Model->update_profile($id);
-
 			if ($update){
 				$this->session->set_flashdata('success_path', $this->path);
 				redirect('anggota/dashboard/success');
-			} else echo "Update Gagal";
+			} else {
+				$error_update_profile = $this->session->flashdata('error_update_profile');
+				if ($error_update_profile != null){
+					$this->session->set_flashdata('error', $error_update_profile);
+					redirect('anggota/profile/edit_profile');
+				} else echo "update gagal";
+			}
 		}
 	}
 

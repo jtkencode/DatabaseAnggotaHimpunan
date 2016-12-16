@@ -71,6 +71,7 @@ class Register extends Register_Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ui['page'] = 'Edit Profile';
+			$ui['error'] = $this->session->flashdata('error');
 			$this->load->view('anggota/header');
 			$this->load->view('anggota/register/crud_header',$ui);
 			$this->load->view('anggota/edit_profile',$data);
@@ -82,8 +83,11 @@ class Register extends Register_Controller {
 				$this->session->set_flashdata('success', "Update profile berhasil, data profile anda sudah tersimpan. Silahkan lanjutkan tambahkan kontak anda.");
 				redirect('anggota/register/tambah_kontak');
 			} else {
-				$this->session->set_flashdata('error', "Update Profile Gagal!");
-				redirect('anggota/register/edit_profile');
+				$error_update_profile = $this->session->flashdata('error_update_profile');
+				if ($error_update_profile != null){
+					$this->session->set_flashdata('error', $error_update_profile);
+					redirect('anggota/register/edit_profile');
+				}
 			}
 		}
 	}

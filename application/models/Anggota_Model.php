@@ -117,6 +117,14 @@ class Anggota_Model extends CI_Model{
 				'alamat_sekarang' => $this->input->post('alamat_sekarang')
 		);
 
+		/*check field*/
+		foreach($data as $key => $value){
+			if ($value == '-' || $value == ""){
+				$this->session->set_flashdata('error_update_profile', 'Isi setiap field dengan benar !');
+				return FALSE;
+			}
+		}
+
 		/*Update to DB*/
 		$this->db->where('id_anggota', $id);
 		$query = $this->db->update('anggota',$data);
