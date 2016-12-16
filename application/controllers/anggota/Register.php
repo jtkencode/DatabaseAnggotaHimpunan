@@ -45,29 +45,16 @@ class Register extends Register_Controller {
 
 		} else {
 			$update = $this->Anggota_Model->update_password($id);
-
 			if ($update){
 				$this->session->set_flashdata('success', "Password berhasil diubah. Silahkan lanjutkan untuk mengubah profile pribadi anda.");
 				redirect('anggota/register/edit_profile');
 			} else {
-				$wrong_password = $this->session->flashdata('wrong_password');
-				if ($wrong_password != null){
-					$this->session->set_flashdata('error', $wrong_password);
+				$error_change_password = $this->session->flashdata('error_change_password');
+				if ($error_change_password != null){
+					$this->session->set_flashdata('error', $error_change_password);
 					redirect('anggota/register/change_password');
-				}
-				else {
-					$not_match = $this->session->flashdata('not_match');
-					if ($not_match != null){
-						$this->session->set_flashdata('error', $not_match);
-						redirect('anggota/register/change_password');
-					} else {
-						$same_pass = $this->session->flashdata('same_pass');
-						if ($same_pass != null){
-							$this->session->set_flashdata('error', $same_pass);
-							redirect('anggota/register/change_password');
-						} else echo "update gagal";				
-					}
-				}
+				} else echo "update gagal";				
+			
 			}
 		}
 	}
