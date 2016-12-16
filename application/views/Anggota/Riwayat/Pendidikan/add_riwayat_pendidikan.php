@@ -49,14 +49,14 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunMasuk">Tahun Masuk</label>
 						<div class="col-md-9">
-							<input name="tahun_masuk" class="form-control" id="inputTahunMasuk" required="" type="text" placeholder="Tahun masuk" value="" autocomplete="off">
+							<input name="tahun_masuk" class="form-control" id="inputTahunMasuk" required="" type="year" placeholder="Tahun masuk" value="" autocomplete="off" pattern="[0-9]{4,4}" title="Format Tahun : YYYY, contoh : 2016">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunLulus">Tahun Lulus</label>
 						<div class="col-md-9">
-							<input name="tahun_lulus" class="form-control" id="inputTahunLulus" required="" type="text" placeholder="Tahun lulus" value="" autocomplete="off">
+							<input name="tahun_lulus" class="form-control" id="inputTahunLulus" required="" type="year" placeholder="Tahun lulus" value="" autocomplete="off" pattern="[0-9]{4,4}" title="Format Tahun : YYYY, contoh : 2016">
 						</div>
 					</div>
 

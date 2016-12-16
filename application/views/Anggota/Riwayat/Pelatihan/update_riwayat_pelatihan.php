@@ -19,7 +19,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunPelatihan">Tahun Pelatihan</label>
 						<div class="col-md-9">
-							<input name="tahun_pelatihan" class="form-control" id="inputTahunPelatihan" required="" type="text" placeholder="Tahun Pelatihan" value="<?php echo $riwayat_pelatihan->tahun_pelatihan; ?>" autocomplete="off">
+							<input name="tahun_pelatihan" class="form-control" id="inputTahunPelatihan" required="" type="text" placeholder="Tahun Pelatihan" value="<?php echo $riwayat_pelatihan->tahun_pelatihan; ?>" autocomplete="off" pattern="[0-9]{4,4}" title="Format Tahun : YYYY, contoh : 2016">
 						</div>
 					</div>
 

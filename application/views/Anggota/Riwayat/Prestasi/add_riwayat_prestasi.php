@@ -38,7 +38,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunPrestasi">Tahun Prestasi</label>
 						<div class="col-md-9">
-							<input name="tahun_prestasi" class="form-control" id="inputTahunPrestasi" required="" type="text" placeholder="Tahun Prestasi" value="" autocomplete="off">
+							<input name="tahun_prestasi" class="form-control" id="inputTahunPrestasi" required="" type="text" placeholder="Tahun Prestasi" value="" autocomplete="off" pattern="[0-9]{4,4}" title="Format Tahun : YYYY, contoh : 2016">
 						</div>
 					</div>
 

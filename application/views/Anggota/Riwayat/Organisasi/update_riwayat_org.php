@@ -19,14 +19,14 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunMulaiOrganisasi">Tahun Mulai</label>
 						<div class="col-md-9">
-							<input name="tahun_mulai_org" class="form-control" id="inputTahunMulaiOrganisasi" required="" type="text" placeholder="Tahun Mulai" value="<?php echo $riwayat_org->tahun_mulai_org; ?>" autocomplete="off">
+							<input name="tahun_mulai_org" class="form-control" id="inputTahunMulaiOrganisasi" required="" type="text" placeholder="Tahun Mulai" value="<?php echo $riwayat_org->tahun_mulai_org; ?>" autocomplete="off" pattern="[0-9]{4,4}" title="Format Tahun : YYYY, contoh : 2016">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputTahunSelesaiOrganisasi">Tahun Selesai</label>
 						<div class="col-md-9">
-							<input name="tahun_selesai_org" class="form-control" id="inputTahunSelesaiOrganisasi" required="" type="text" placeholder="Tahun Selesai" value="<?php echo $riwayat_org->tahun_selesai_org; ?>" autocomplete="off">
+							<input name="tahun_selesai_org" class="form-control" id="inputTahunSelesaiOrganisasi" required="" type="text" placeholder="Tahun Selesai" value="<?php echo $riwayat_org->tahun_selesai_org; ?>" autocomplete="off" pattern="[0-9]{4,4}" title="Format Tahun : YYYY, contoh : 2016">
 						</div>
 					</div>
 
