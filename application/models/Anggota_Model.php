@@ -133,22 +133,28 @@ class Anggota_Model extends CI_Model{
 		$result = reset($result);
 
 		if (! password_verify($pass_lama,$result->password) ){
-			$this->session->set_flashdata('wrong_password', 'Password Lama yang dimasukkan Salah !');
+			$this->session->set_flashdata('error_change_password', 'Password Lama yang dimasukkan Salah !');
+			return FALSE;
+		}
+		
+		$pass = $this->input->post('password_baru');
+		
+		/*Check min password length*/
+		if (strlen($pass) < 6){
+			$this->session->set_flashdata('error_change_password', 'Minimal panjang panjang karakter password 6 karakter !');
 			return FALSE;
 		}
 
-
 		/*Check password verification */
-		$pass = $this->input->post('password_baru');
 		$pass_verify = $this->input->post('password_baru2');
 
 		if ($pass != $pass_verify){
-			$this->session->set_flashdata('not_match', 'Verifikasi Pasword Tidak Sesuai !');
+			$this->session->set_flashdata('error_change_password', 'Verifikasi Pasword Tidak Sesuai !');
 			return FALSE;
 		}
 
 		if ($pass_lama == $pass){
-			$this->session->set_flashdata('same_pass', 'Password baru yang dimasukkan harus berbeda dengan password default !');
+			$this->session->set_flashdata('error_change_password', 'Password baru yang dimasukkan harus berbeda dengan password default !');
 			return FALSE;
 		}
 
