@@ -307,6 +307,17 @@ class Anggota_Model extends CI_Model{
 		return $query->result();
 	}
 
+	public function reset_password($id)
+	{
+		$pass_default = "$2y$10$4yHnBHYoaBV1KLPXf8K2b.3F4Lzz8XRs5BcG...VCKVLYvCtBR/zG";
+		$data = array (
+			"password" => $pass_default
+		);
+		$this->db->where('id_anggota',$id);
+		$query = $this->db->update('anggota',$data);
+		return $query;
+	}
+
 }
 	
 ?>

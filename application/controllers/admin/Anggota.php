@@ -71,4 +71,34 @@ class Anggota extends Admin_Controller {
 			echo json_encode($result);
 		}
 	}
+
+	/**
+	 * Mengambalikan password anggota ke DEFAULT
+	*/
+	public function reset_password()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'GET')
+		{
+			$data['angkatan_himpunan'] = $this->Anggota_Model->get_angkatan_himpunan();
+			$data['error'] = $this->session->flashdata('reset_error');
+			$data['success'] = $this->session->flashdata('reset_success');
+
+			$this->load->view('admin/header');
+			$this->load->view('admin/body');
+			$this->load->view('admin/reset_password',$data);
+			$this->load->view('admin/footer');
+		} else {
+			$id_anggota = $this->input->post('anggota');
+			$reset = $this->Anggota_Model->reset_password($id_anggota);
+
+			if ($reset){
+				$this->session->set_flashdata('reset_success', "Reset pasword berhasil, password dikembalikan menjadi default");
+				redirect('admin/anggota/reset_password');
+			} else {
+				$this->session->set_flashdata('reset_error', "Reset Passoword Gagal");
+				redirect('admin/anggota/reset_password');
+			}
+		}
+		
+	}
 }
