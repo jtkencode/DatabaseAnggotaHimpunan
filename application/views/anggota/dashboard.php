@@ -9,8 +9,6 @@
 
 						<div>
 							<h4>Kegiatan pada bulan ini: </h4>
-							<p>Sekolah Kemahasiswaan 2016</p>
-							<p>Pemilihan Ketua Himpunan Mahasiswa Komputer 2016-2017</p>
 							<p>Serah Terima Jabatan</p>
 							<p>Liga JTK 2016</p>
 						</div>
