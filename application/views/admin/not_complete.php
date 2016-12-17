@@ -11,7 +11,7 @@
 					<?php foreach ($data_not_complete as $anggota) :?>
 						<tr>
 							<td><?php echo $anggota->nim ;?></td>
-							<td><?php echo $anggota->nama_lengkap ;?></td>
+							<td><a href="<?php echo site_url('profile/view/'.$anggota->nim);?>"><?php echo $anggota->nama_lengkap ;?></a></td>
 						</tr>
 					<?php endforeach ; ?>
 				</tbody>
