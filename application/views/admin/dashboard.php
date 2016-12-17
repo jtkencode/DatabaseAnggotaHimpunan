@@ -11,7 +11,7 @@
 			<div class="col-md-4">
 				<div class="list-group">
 					<a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">anggota yang sudah terdatar</h4>
+						<h4 class="list-group-item-heading">anggota yang sudah terdaftar</h4>
 						<?php foreach ($count_anggota_angkatan as $row) : ?>
 							<p class="list-group-item-text"><?php echo $row->jumlah_anggota." Anggota angkatan ".$row->angkatan_himpunan;?></p>
 						<?php endforeach; ?>
@@ -34,7 +34,7 @@
 			<!-- anggota yang sudah melengkapi data-->
 			<div class="col-md-4">
 				<div class="list-group">
-					<a href="#" class="list-group-item">
+					<a href="<?php echo site_url('admin/dashboard/complete/');?>" class="list-group-item">
 						<h4 class="list-group-item-heading">anggota sudah melengkapi data</h4>
 						<?php foreach ($count_anggota_complete as $row) : ?>
 							<p class="list-group-item-text"><?php echo $row->jumlah_anggota." Anggota angkatan ".$row->angkatan_himpunan;?></p>
