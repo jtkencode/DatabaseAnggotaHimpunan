@@ -9,6 +9,8 @@ class Anggota extends Admin_Controller {
 		$this->load->helper('html');
 		$this->load->helper('url');
 		$this->load->model('Anggota_Model');
+		$this->load->model('Program_Studi_model');
+		$this->load->model('Kelas_model');
 	}
 
 	public function index()
@@ -16,6 +18,12 @@ class Anggota extends Admin_Controller {
 		redirect('admin/anggota/view');
 	}
 
+
+	/* 
+		**Method ini niatnya ingin menampilkan semua anggota berdsaarkan angkatan
+		**Butuh paging, silahkan coba eksplorasi penggunaan paging pake CI 
+		commented : 17 Desember 2016, IF
+	*/
 	public function view($page = 1, $angkatan = null)
 	{		
 		$data['page_size'] = 10;
@@ -27,9 +35,40 @@ class Anggota extends Admin_Controller {
 		$data['page_start'] = 1 + floor(($page-1) / $data['page_length'])*$data['page_length'];
 		$data['page_end'] = $data['page_start'] + $data['page_length'];
 
-		$this->load->view('Admin/header');
-		$this->load->view('Admin/body');
-		$this->load->view('Admin/anggota/view',$data);
-		$this->load->view('Admin/footer');
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/anggota/view',$data);
+		$this->load->view('admin/footer');
+	}
+
+
+	/*
+		**Menambahkan anggota ke tabel terdaftar di kelas
+		**Issue : Masalah interface, butuh ajax, interaksi pemilihan anggota.. silahkan dicoba :)
+		17 Desember 2016, IF
+	*/
+	public function add_anggota_kelas()
+	{
+		$data['program_studi'] = $this->Program_Studi_model->get_all();
+		$data['angkatan_himpunan'] = $this->Anggota_Model->get_angkatan_himpunan();
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/add_anggota_kelas',$data);
+		$this->load->view('admin/footer');
+	}
+
+
+	/*
+		**Method ini untuk mengambil data anggota berdasarkan angkatan yang dipanggil dengan ajax, untuk kasus meanambah anggota
+		17 Desember 2016, IF
+	*/
+	public function get_anggota_angkatan_ajax()
+	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			$angkatan = $this->input->post('angkatan');
+			$result = $this->Anggota_Model->get_anggota_angkatan($angkatan);
+			echo json_encode($result);
+		}
 	}
 }
