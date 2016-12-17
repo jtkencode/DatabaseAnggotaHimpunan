@@ -63,4 +63,24 @@ class Dashboard extends Admin_Controller {
 		$this->load->view('admin/footer');
 	}
 
+	public function complete($page = 1)
+	{
+		//for pagination
+		$count_complete = $this->Anggota_Model->get_total_complete();
+		$data['page_size'] = 10;
+		$start = 1 + ($page - 1)*$data['page_size'];
+		$data['data_complete'] = $this->Anggota_Model->get_complete($start);
+		$data['pages'] = $count_complete / $data['page_size'];
+		$data['page_length'] = 5;
+		$data['page_active'] = $page;
+		$data['page_start'] = 1 + floor(($page-1) / $data['page_length'])*$data['page_length'];
+		$data['page_end'] = $data['page_start'] + (($count_complete-($page*count($data['data_complete'])))/$data['page_size']);
+
+		//for pagination
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/complete',$data);
+		$this->load->view('admin/footer');
+	}
+
 }

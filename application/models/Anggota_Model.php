@@ -70,6 +70,66 @@ class Anggota_Model extends CI_Model{
 
 
 	/**
+	 * Mengambil data anggota yang sudah melengkapi data
+	 * Sementara angkatan himpunan yang diambil > 28
+	 * Seharusnya angkatan himpunan yang diambil bisa dari angkatan yang sedang aktif
+	*/
+	public function get_complete($start)
+	{
+		$this->db->where('nama_panggilan <>','-');
+		$this->db->where('tempat_lahir <>', '-');
+		$this->db->where('alamat_sekarang <>','-');
+		$this->db->where('angkatan_himpunan >','28');
+		$this->db->limit(10,$start);
+		$query = $this->db->get('anggota');
+		return  $query->result();
+	}
+
+	/**
+	 * Menghitung data anggota yang sudah melengkapi data
+	 * Perhitungan berdasarkan angkatan *group by angkatan himpunan
+	 * Update 17 Desember 2016 : pengecekan dengan or, sehinga butuh group_start, silahkan baca doc CI :)
+	*/
+	public function get_count_complete()
+	{
+		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
+		$this->db->where('nama_panggilan <>','-');
+		$this->db->where('tempat_lahir <>', '-');
+		$this->db->where('alamat_sekarang <>','-');
+		$this->db->group_by('angkatan_himpunan');
+		$query = $this->db->get('anggota');
+		return $query->result();
+	}
+
+	/**
+	 * Menghitung jumlah / total anggota yang sudah melengkapi data
+	*/
+
+	public function get_total_complete()
+	{
+		$count_complete = $this->get_count_complete();
+		$result = 0;
+		foreach ($count_complete as $row) {
+			$result += $row->jumlah_anggota;
+		}
+
+		return $result;
+	}
+
+	public function get_not_complete($start)
+	{
+		$this->db->group_start();
+		$this->db->where('nama_panggilan','-');
+		$this->db->or_where('tempat_lahir', '-');
+		$this->db->or_where('alamat_sekarang','-');
+		$this->db->group_end();
+		$this->db->where('angkatan_himpunan >','28');
+		$this->db->limit(10,$start);
+		$query = $this->db->get('anggota');
+		return  $query->result();
+	}
+
+	/**
 	 * Menghitung data anggota yang belum melengkapi data
 	 * Perhitungan berdasarkan angkatan *group by angkatan himpunan
 	 * Update 17 Desember 2016 : pengecekan dengan or, sehinga butuh group_start, silahkan baca doc CI :)
@@ -103,21 +163,6 @@ class Anggota_Model extends CI_Model{
 	}
 
 	/**
-	 * Menghitung jumlah anggota yang sudah melengkapi data
-	*/
-	public function get_count_complete()
-	{
-		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
-		$this->db->where('nama_panggilan <>','-');
-		$this->db->where('tempat_lahir <>', '-');
-		$this->db->where('alamat_sekarang <>','-');
-		$this->db->group_by('angkatan_himpunan');
-		$query = $this->db->get('anggota');
-		return $query->result();
-	}
-
-
-	/**
 	 * Mengambil data angkatan himpunan dari tabel anggota
 	*/
 	public function get_angkatan_himpunan()
@@ -146,17 +191,6 @@ class Anggota_Model extends CI_Model{
 	public function get_anggota_angkatan_paging($angkatan,$start)
 	{
 		$this->db->where('angkatan_himpunan',$angkatan);
-		$this->db->limit(10,$start);
-		$query = $this->db->get('anggota');
-		return  $query->result();
-	}
-
-
-	public function get_not_complete($start)
-	{
-		$this->db->where('tempat_lahir', '-');
-		$this->db->where('alamat_sekarang','-');
-		$this->db->where('angkatan_himpunan >','28');
 		$this->db->limit(10,$start);
 		$query = $this->db->get('anggota');
 		return  $query->result();
