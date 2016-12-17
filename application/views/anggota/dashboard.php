@@ -4,7 +4,7 @@
 						<div class="alert alert-dismissible alert-warning">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
 							<h4>Selamat <?php echo $waktu;?> <strong><?php echo $anggota->nama_lengkap;?></strong></h4>
-							<p>Silahkan lengkapi data pribadi dan data riwayat anda <a href="#">disini</a>, Apabila mengalami kesulitan silahkan hubungi <a>Departemen Administrasi dan Kesekretariatan</a>.</p>
+							<p>Silahkan lengkapi data pribadi dan data riwayat anda <a href="<?php echo site_url('anggota/profile');?>">disini</a>, tetap produktif, jangan lupa berkarya :)</p>
 						</div>
 
 						<div>
