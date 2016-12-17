@@ -1,6 +1,11 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Model untuk mengatur atau mengolah data anggota
+ * @author IF 1429044  <imamfznr@gmail.com>
+ */
+
 class Anggota_Model extends CI_Model{
 	
 	public function __construct()
@@ -8,6 +13,10 @@ class Anggota_Model extends CI_Model{
 		parent::__construct();
 	}
 
+	/** 
+	 * Cek data anggota yang belum lengkap,
+	 * Method ini digunakan pada saat pertama kali login (controller register)
+	*/
 	public function is_not_complete($id)
 	{
 		$this->db->where('id_anggota',$id);
@@ -22,6 +31,9 @@ class Anggota_Model extends CI_Model{
 		return (count($result) == 1);
 	}
 
+	/**
+	 * Mengambil data anggota berdasasrkan nim
+	*/
 	public function get_nim($nim)
 	{
 		$query = $this->db->where('nim', $nim)->get('anggota');
@@ -33,6 +45,9 @@ class Anggota_Model extends CI_Model{
 		return FALSE;
 	}
 
+	/**
+	 * Mengambil data anggota berdasarkan surrogate key pada table (id)
+	*/
 	public function get_id($id)
 	{
 		$query = $this->db->where('id_anggota', $id)->get('anggota');
@@ -44,40 +59,37 @@ class Anggota_Model extends CI_Model{
 		return FALSE;
 	}
 
+	/**
+	 * Mengambil seluruh data anggota
+	*/
 	public function get_all()
 	{
 		$query = $this->db->get('anggota');
 		return $query->result();
 	}
 
+
+	/**
+	 * Menghitung data anggota yang belum melengkapi data
+	 * Perhitungan berdasarkan angkatan *group by angkatan himpunan
+	 * Update 17 Desember 2016 : pengecekan dengan or, sehinga butuh group_start, silahkan baca doc CI :)
+	*/
 	public function get_count_not_complete()
 	{
 		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
-		$this->db->where('tempat_lahir', '-');
-		$this->db->where('alamat_sekarang','-');
+		$this->db->group_start();
+		$this->db->where('nama_panggilan','-');
+		$this->db->or_where('tempat_lahir', '-');
+		$this->db->or_where('alamat_sekarang','-');
+		$this->db->group_end();
 		$this->db->group_by('angkatan_himpunan');
 		$query = $this->db->get('anggota');
 		return $query->result();
 	}
 
-	public function get_anggota_angkatan_paging($angkatan,$start)
-	{
-		$this->db->where('angkatan_himpunan',$angkatan);
-		$this->db->limit(10,$start);
-		$query = $this->db->get('anggota');
-		return  $query->result();
-
-	}
-
-	public function get_count_complete()
-	{
-		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
-		$this->db->where('tempat_lahir <>', '-');
-		$this->db->where('alamat_sekarang <>','-');
-		$this->db->group_by('angkatan_himpunan');
-		$query = $this->db->get('anggota');
-		return $query->result();
-	}
+	/**
+	 * Menghitung jumlah / total anggota yang belum melengkapi data
+	*/
 
 	public function get_total_not_complete()
 	{
@@ -89,6 +101,56 @@ class Anggota_Model extends CI_Model{
 
 		return $result;
 	}
+
+	/**
+	 * Menghitung jumlah anggota yang sudah melengkapi data
+	*/
+	public function get_count_complete()
+	{
+		$this->db->select('angkatan_himpunan, count(*) as jumlah_anggota');
+		$this->db->where('nama_panggilan <>','-');
+		$this->db->where('tempat_lahir <>', '-');
+		$this->db->where('alamat_sekarang <>','-');
+		$this->db->group_by('angkatan_himpunan');
+		$query = $this->db->get('anggota');
+		return $query->result();
+	}
+
+
+	/**
+	 * Mengambil data angkatan himpunan dari tabel anggota
+	*/
+	public function get_angkatan_himpunan()
+	{
+		$this->db->select('angkatan_himpunan');
+		$this->db->distinct();
+		$query = $this->db->get('anggota');
+		return  $query->result();
+	}
+
+	/** 
+	 * Memngambil data anggota berdasarkan angkatan himpunan
+	*/
+	public function get_anggota_angkatan($angkatan)
+	{
+		$this->db->where('angkatan_himpunan',$angkatan);
+		$query = $this->db->get('anggota');
+		return  $query->result();
+	}
+
+	/**
+	 * Mengambil data anggota berdasarkan angkatan
+	 * Dengan jumlah limit 10
+	 * Untuk keperluan menampilkan data anggota dengan paging
+	*/
+	public function get_anggota_angkatan_paging($angkatan,$start)
+	{
+		$this->db->where('angkatan_himpunan',$angkatan);
+		$this->db->limit(10,$start);
+		$query = $this->db->get('anggota');
+		return  $query->result();
+	}
+
 
 	public function get_not_complete($start)
 	{
@@ -187,8 +249,9 @@ class Anggota_Model extends CI_Model{
 	}
 
 
-	/* 	author : if
-		between date(now() - interval (1) day) -> yang ulang tahun hari ini
+	/**
+	 * Anggota yang berulang tahun pada current week
+	 * Berakhir pada hari minggu, dimulai dari hari senin
 	*/
 	public function get_birthday_of_week()
 	{
